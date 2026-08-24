@@ -9,22 +9,22 @@
 
 ## Table of Contents
 
-1. [Abstract](#1-abstract)
-2. [Motivation and Problem Statement](#2-motivation-and-problem-statement)
-   - 2.1 [Limitations of Existing Approaches](#21-limitations-of-existing-approaches)
-   - 2.2 [Core Contributions and Design Principles](#22-core-contributions-and-design-principles)
-3. [Software Description](#3-software-description)
-   - 3.1 [Architecture Overview](#31-architecture-overview)
-   - 3.2 [Module-by-Module Reference](#32-module-by-module-reference)
-4. [Mathematical Foundations](#4-mathematical-foundations)
-5. [Installation and Deployment](#5-installation-and-deployment)
-6. [Usage Guide](#6-usage-guide)
-7. [Testing](#7-testing)
-8. [Benchmark Evaluation](#8-benchmark-evaluation)
-9. [Performance and Hardware Notes](#9-performance-and-hardware-notes)
-10. [Known Limitations and Responsible Use](#10-known-limitations-and-responsible-use)
-11. [Reuse and Extensibility](#11-reuse-and-extensibility)
-12. [Related Work and References](#12-related-work-and-references)
+- [1. Abstract](#1-abstract)
+- [2. Motivation and Problem Statement](#2-motivation-and-problem-statement)
+  - [2.1 Limitations of Existing Approaches](#21-limitations-of-existing-approaches)
+  - [2.2 Core Contributions and Design Principles](#22-core-contributions-and-design-principles)
+- [3. Software Description](#3-software-description)
+  - [3.1 Architecture Overview](#31-architecture-overview)
+  - [3.2 Module-by-Module Reference](#32-module-by-module-reference)
+- [4. Mathematical Foundations](#4-mathematical-foundations)
+- [5. Installation and Deployment](#5-installation-and-deployment)
+- [6. Usage Guide](#6-usage-guide)
+- [7. Testing](#7-testing)
+- [8. Benchmark Evaluation](#8-benchmark-evaluation)
+- [9. Performance and Hardware Notes](#9-performance-and-hardware-notes)
+- [10. Known Limitations and Responsible Use](#10-known-limitations-and-responsible-use)
+- [11. Reuse and Extensibility](#11-reuse-and-extensibility)
+- [12. Related Work and References](#12-related-work-and-references)
 
 ---
 
