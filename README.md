@@ -282,21 +282,6 @@ If you use VietAIDetector in your research, please cite both the algorithm paper
 }
 ```
 
-**Software (VietAIDetector):**
-
-{% raw %}
-```bibtex
-@software{nguyen2025vietaidetector,
-  author    = {Trieu Hai Nguyen and Sivaswamy Akilesh},
-  title     = {{VietAIDetector}: Vietnamese AI-Generated Text Detection Software},
-  year      = {2025},
-  version   = {1.1.0},
-  url       = {https://github.com/trieuntu/VietAIDetector},
-  license   = {MIT}
-}
-```
-{% endraw %}
-
 ## License
 
 This software is released under the [MIT License](LICENSE).
