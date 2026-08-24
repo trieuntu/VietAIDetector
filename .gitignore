@@ -1,0 +1,24 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+.pytest_cache/
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+
+# MkDocs build output
+site/
+
+# Temporary benchmark scripts (not for distribution)
+benchmarks/grid_eval.py
+benchmarks/plot_comparison.py
+
+# Temporary evaluation outputs
+benchmarks/results/

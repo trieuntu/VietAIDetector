@@ -1,0 +1,1134 @@
+%!PS-Adobe-3.0 EPSF-3.0
+%%Creator: graphviz version 12.2.1 (20241206.2353)
+%%Title: VietAIDetectorArchitecture
+%%Pages: 1
+%%BoundingBox: 36 36 3120 1807
+%%EndComments
+save
+%%BeginProlog
+/DotDict 200 dict def
+DotDict begin
+
+/setupLatin1 {
+mark
+/EncodingVector 256 array def
+ EncodingVector 0
+
+ISOLatin1Encoding 0 255 getinterval putinterval
+EncodingVector 45 /hyphen put
+
+% Set up ISO Latin 1 character encoding
+/starnetISO {
+        dup dup findfont dup length dict begin
+        { 1 index /FID ne { def }{ pop pop } ifelse
+        } forall
+        /Encoding EncodingVector def
+        currentdict end definefont
+} def
+/Times-Roman starnetISO def
+/Times-Italic starnetISO def
+/Times-Bold starnetISO def
+/Times-BoldItalic starnetISO def
+/Helvetica starnetISO def
+/Helvetica-Oblique starnetISO def
+/Helvetica-Bold starnetISO def
+/Helvetica-BoldOblique starnetISO def
+/Courier starnetISO def
+/Courier-Oblique starnetISO def
+/Courier-Bold starnetISO def
+/Courier-BoldOblique starnetISO def
+cleartomark
+} bind def
+
+%%BeginResource: procset graphviz 0 0
+/coord-font-family /Times-Roman def
+/default-font-family /Times-Roman def
+/coordfont coord-font-family findfont 8 scalefont def
+
+/InvScaleFactor 1.0 def
+/set_scale {
+       dup 1 exch div /InvScaleFactor exch def
+       scale
+} bind def
+
+% styles
+/solid { [] 0 setdash } bind def
+/dashed { [9 InvScaleFactor mul dup ] 0 setdash } bind def
+/dotted { [1 InvScaleFactor mul 6 InvScaleFactor mul] 0 setdash } bind def
+/invis {/fill {newpath} def /stroke {newpath} def /show {pop newpath} def} bind def
+/bold { 2 setlinewidth } bind def
+/filled { } bind def
+/unfilled { } bind def
+/rounded { } bind def
+/diagonals { } bind def
+/tapered { } bind def
+
+% hooks for setting color 
+/nodecolor { sethsbcolor } bind def
+/edgecolor { sethsbcolor } bind def
+/graphcolor { sethsbcolor } bind def
+/nopcolor {pop pop pop} bind def
+
+/beginpage {	% i j npages
+	/npages exch def
+	/j exch def
+	/i exch def
+	/str 10 string def
+	npages 1 gt {
+		gsave
+			coordfont setfont
+			0 0 moveto
+			(\() show i str cvs show (,) show j str cvs show (\)) show
+		grestore
+	} if
+} bind def
+
+/set_font {
+	findfont exch
+	scalefont setfont
+} def
+
+% draw text fitted to its expected width
+/alignedtext {			% width text
+	/text exch def
+	/width exch def
+	gsave
+		width 0 gt {
+			[] 0 setdash
+			text stringwidth pop width exch sub text length div 0 text ashow
+		} if
+	grestore
+} def
+
+/boxprim {				% xcorner ycorner xsize ysize
+		4 2 roll
+		moveto
+		2 copy
+		exch 0 rlineto
+		0 exch rlineto
+		pop neg 0 rlineto
+		closepath
+} bind def
+
+/ellipse_path {
+	/ry exch def
+	/rx exch def
+	/y exch def
+	/x exch def
+	matrix currentmatrix
+	newpath
+	x y translate
+	rx ry scale
+	0 0 1 0 360 arc
+	setmatrix
+} bind def
+
+/endpage { showpage } bind def
+/showpage { } def
+
+/layercolorseq
+	[	% layer color sequence - darkest to lightest
+		[0 0 0]
+		[.2 .8 .8]
+		[.4 .8 .8]
+		[.6 .8 .8]
+		[.8 .8 .8]
+	]
+def
+
+/layerlen layercolorseq length def
+
+/setlayer {/maxlayer exch def /curlayer exch def
+	layercolorseq curlayer 1 sub layerlen mod get
+	aload pop sethsbcolor
+	/nodecolor {nopcolor} def
+	/edgecolor {nopcolor} def
+	/graphcolor {nopcolor} def
+} bind def
+
+/onlayer { curlayer ne {invis} if } def
+
+/onlayers {
+	/myupper exch def
+	/mylower exch def
+	curlayer mylower lt
+	curlayer myupper gt
+	or
+	{invis} if
+} def
+
+/curlayer 0 def
+
+%%EndResource
+%%EndProlog
+%%BeginSetup
+14 default-font-family set_font
+% /arrowlength 10 def
+% /arrowwidth 5 def
+
+% make sure pdfmark is harmless for PS-interpreters other than Distiller
+/pdfmark where {pop} {userdict /pdfmark /cleartomark load put} ifelse
+% make '<<' and '>>' safe on PS Level 1 devices
+/languagelevel where {pop languagelevel}{1} ifelse
+2 lt {
+    userdict (<<) cvn ([) cvn load put
+    userdict (>>) cvn ([) cvn load put
+} if
+
+%%EndSetup
+setupLatin1
+%%Page: 1 1
+%%PageBoundingBox: 36 36 3120 1807
+%%PageOrientation: Portrait
+0 0 1 beginpage
+gsave
+36 36 3084 1771 boxprim clip newpath
+1 1 set_scale 0 rotate 40 40 translate
+% cluster_report
+gsave
+0.69841 0.082677 0.99608 graphcolor
+newpath 20 477.688 moveto
+20 477.688 492 477.688 492 477.688 curveto
+498 477.688 504 483.688 504 489.688 curveto
+504 489.688 504 748.188 504 748.188 curveto
+504 754.188 498 760.188 492 760.188 curveto
+492 760.188 20 760.188 20 760.188 curveto
+14 760.188 8 754.188 8 748.188 curveto
+8 748.188 8 489.688 8 489.688 curveto
+8 483.688 14 477.688 20 477.688 curveto
+closepath fill
+1 setlinewidth
+filled
+0.72812 0.75527 0.92941 graphcolor
+newpath 20 477.688 moveto
+20 477.688 492 477.688 492 477.688 curveto
+498 477.688 504 483.688 504 489.688 curveto
+504 489.688 504 748.188 504 748.188 curveto
+504 754.188 498 760.188 492 760.188 curveto
+492 760.188 20 760.188 20 760.188 curveto
+14 760.188 8 754.188 8 748.188 curveto
+8 748.188 8 489.688 8 489.688 curveto
+8 483.688 14 477.688 20 477.688 curveto
+stroke
+0.73164 0.81567 0.85098 graphcolor
+48 /CMU Serif set_font
+58.375 710.587 moveto 395.25 (5. Reporting Layer) alignedtext
+grestore
+% cluster_frontend
+gsave
+0.56667 0.11811 0.99608 graphcolor
+newpath 1512 1264.438 moveto
+1512 1264.438 2036 1264.438 2036 1264.438 curveto
+2042 1264.438 2048 1270.438 2048 1276.438 curveto
+2048 1276.438 2048 1534.938 2048 1534.938 curveto
+2048 1540.938 2042 1546.938 2036 1546.938 curveto
+2036 1546.938 1512 1546.938 1512 1546.938 curveto
+1506 1546.938 1500 1540.938 1500 1534.938 curveto
+1500 1534.938 1500 1276.438 1500 1276.438 curveto
+1500 1270.438 1506 1264.438 1512 1264.438 curveto
+closepath fill
+1 setlinewidth
+filled
+0.55668 0.98995 0.78039 graphcolor
+newpath 1512 1264.438 moveto
+1512 1264.438 2036 1264.438 2036 1264.438 curveto
+2042 1264.438 2048 1270.438 2048 1276.438 curveto
+2048 1276.438 2048 1534.938 2048 1534.938 curveto
+2048 1540.938 2042 1546.938 2036 1546.938 curveto
+2036 1546.938 1512 1546.938 1512 1546.938 curveto
+1506 1546.938 1500 1540.938 1500 1534.938 curveto
+1500 1534.938 1500 1276.438 1500 1276.438 curveto
+1500 1270.438 1506 1264.438 1512 1264.438 curveto
+stroke
+0.55907 0.98137 0.63137 graphcolor
+48 /CMU Serif set_font
+1549.375 1497.338 moveto 449.25 (1. Presentation Layer) alignedtext
+grestore
+% cluster_preproc
+gsave
+0.41463 0.164 0.98039 graphcolor
+newpath 838 896.188 moveto
+838 896.188 2670 896.188 2670 896.188 curveto
+2676 896.188 2682 902.188 2682 908.188 curveto
+2682 908.188 2682 1166.688 2682 1166.688 curveto
+2682 1172.688 2676 1178.688 2670 1178.688 curveto
+2670 1178.688 838 1178.688 838 1178.688 curveto
+832 1178.688 826 1172.688 826 1166.688 curveto
+826 1166.688 826 908.188 826 908.188 curveto
+826 902.188 832 896.188 838 896.188 curveto
+closepath fill
+1 setlinewidth
+filled
+0.44828 0.96667 0.58824 graphcolor
+newpath 838 896.188 moveto
+838 896.188 2670 896.188 2670 896.188 curveto
+2676 896.188 2682 902.188 2682 908.188 curveto
+2682 908.188 2682 1166.688 2682 1166.688 curveto
+2682 1172.688 2676 1178.688 2670 1178.688 curveto
+2670 1178.688 838 1178.688 838 1178.688 curveto
+832 1178.688 826 1172.688 826 1166.688 curveto
+826 1166.688 826 908.188 826 908.188 curveto
+826 902.188 832 896.188 838 896.188 curveto
+stroke
+0.45259 0.96667 0.47059 graphcolor
+48 /CMU Serif set_font
+1327.625 1129.088 moveto 852.75 (2. Data Ingestion & Preprocessing Layer) alignedtext
+grestore
+% cluster_processing
+gsave
+0.13333 0.21654 0.99608 graphcolor
+newpath 672 427.438 moveto
+672 427.438 2742 427.438 2742 427.438 curveto
+2748 427.438 2754 433.438 2754 439.438 curveto
+2754 439.438 2754 798.438 2754 798.438 curveto
+2754 804.438 2748 810.438 2742 810.438 curveto
+2742 810.438 672 810.438 672 810.438 curveto
+666 810.438 660 804.438 660 798.438 curveto
+660 798.438 660 439.438 660 439.438 curveto
+660 433.438 666 427.438 672 427.438 curveto
+closepath fill
+1 setlinewidth
+filled
+0.089258 0.97235 0.85098 graphcolor
+newpath 672 427.438 moveto
+672 427.438 2742 427.438 2742 427.438 curveto
+2748 427.438 2754 433.438 2754 439.438 curveto
+2754 439.438 2754 798.438 2754 798.438 curveto
+2754 804.438 2748 810.438 2742 810.438 curveto
+2742 810.438 672 810.438 672 810.438 curveto
+666 810.438 660 804.438 660 798.438 curveto
+660 798.438 660 439.438 660 439.438 curveto
+660 433.438 666 427.438 672 427.438 curveto
+stroke
+0.072125 0.95 0.70588 graphcolor
+48 /CMU Serif set_font
+1503.75 760.837 moveto 406.5 (3. Processing Layer) alignedtext
+grestore
+% cluster_core
+gsave
+0 0.11024 0.99608 graphcolor
+newpath 809 8 moveto
+809 8 2902 8 2902 8 curveto
+2908 8 2914 14 2914 20 curveto
+2914 20 2914 329.688 2914 329.688 curveto
+2914 335.688 2908 341.688 2902 341.688 curveto
+2902 341.688 809 341.688 809 341.688 curveto
+803 341.688 797 335.688 797 329.688 curveto
+797 329.688 797 20 797 20 curveto
+797 14 803 8 809 8 curveto
+closepath fill
+1 setlinewidth
+filled
+0 0.82727 0.86275 graphcolor
+newpath 809 8 moveto
+809 8 2902 8 2902 8 curveto
+2908 8 2914 14 2914 20 curveto
+2914 20 2914 329.688 2914 329.688 curveto
+2914 335.688 2908 341.688 2902 341.688 curveto
+2902 341.688 809 341.688 809 341.688 curveto
+803 341.688 797 335.688 797 329.688 curveto
+797 329.688 797 20 797 20 curveto
+797 14 803 8 809 8 curveto
+stroke
+0 0.84865 0.72549 graphcolor
+48 /CMU Serif set_font
+1422.375 292.087 moveto 866.25 (4. Core Detection Layer \(VietBinoculars\)) alignedtext
+grestore
+% PDFGen
+gsave
+0.69583 0.15748 0.99608 nodecolor
+newpath 484.45 622.188 moveto
+484.45 622.188 27.55 622.188 27.55 622.188 curveto
+21.55 622.188 15.55 616.188 15.55 610.188 curveto
+15.55 610.188 15.55 497.688 15.55 497.688 curveto
+15.55 491.688 21.55 485.688 27.55 485.688 curveto
+27.55 485.688 484.45 485.688 484.45 485.688 curveto
+490.45 485.688 496.45 491.688 496.45 497.688 curveto
+496.45 497.688 496.45 610.188 496.45 610.188 curveto
+496.45 616.188 490.45 622.188 484.45 622.188 curveto
+closepath fill
+2 setlinewidth
+filled
+0.72812 0.75527 0.92941 nodecolor
+newpath 484.45 622.188 moveto
+484.45 622.188 27.55 622.188 27.55 622.188 curveto
+21.55 622.188 15.55 616.188 15.55 610.188 curveto
+15.55 610.188 15.55 497.688 15.55 497.688 curveto
+15.55 491.688 21.55 485.688 27.55 485.688 curveto
+27.55 485.688 484.45 485.688 484.45 485.688 curveto
+490.45 485.688 496.45 491.688 496.45 497.688 curveto
+496.45 497.688 496.45 610.188 496.45 610.188 curveto
+496.45 616.188 490.45 622.188 484.45 622.188 curveto
+stroke
+0 0 0 nodecolor
+42 /CMU Serif set_font
+40.75 564.288 moveto 430.5 (PDF Report Generator) alignedtext
+0 0 0 nodecolor
+42 /CMU Serif set_font
+192.25 514.038 moveto 127.5 (\(fpdf2\)) alignedtext
+grestore
+% UI
+gsave
+0.55721 0.26482 0.99216 nodecolor
+newpath 2027.575 1408.938 moveto
+2027.575 1408.938 1520.425 1408.938 1520.425 1408.938 curveto
+1514.425 1408.938 1508.425 1402.938 1508.425 1396.938 curveto
+1508.425 1396.938 1508.425 1284.438 1508.425 1284.438 curveto
+1508.425 1278.438 1514.425 1272.438 1520.425 1272.438 curveto
+1520.425 1272.438 2027.575 1272.438 2027.575 1272.438 curveto
+2033.575 1272.438 2039.575 1278.438 2039.575 1284.438 curveto
+2039.575 1284.438 2039.575 1396.938 2039.575 1396.938 curveto
+2039.575 1402.938 2033.575 1408.938 2027.575 1408.938 curveto
+closepath fill
+2 setlinewidth
+filled
+0.55668 0.98995 0.78039 nodecolor
+newpath 2027.575 1408.938 moveto
+2027.575 1408.938 1520.425 1408.938 1520.425 1408.938 curveto
+1514.425 1408.938 1508.425 1402.938 1508.425 1396.938 curveto
+1508.425 1396.938 1508.425 1284.438 1508.425 1284.438 curveto
+1508.425 1278.438 1514.425 1272.438 1520.425 1272.438 curveto
+1520.425 1272.438 2027.575 1272.438 2027.575 1272.438 curveto
+2033.575 1272.438 2039.575 1278.438 2039.575 1284.438 curveto
+2039.575 1284.438 2039.575 1396.938 2039.575 1396.938 curveto
+2039.575 1402.938 2033.575 1408.938 2027.575 1408.938 curveto
+stroke
+0 0 0 nodecolor
+42 /CMU Serif set_font
+1575.25 1351.037 moveto 397.5 (Gradio Web Interface) alignedtext
+0 0 0 nodecolor
+42 /CMU Serif set_font
+1533.625 1300.787 moveto 480.75 (\(frontend/gradio_app.py\)) alignedtext
+grestore
+% PDFGen->UI
+gsave
+3 setlinewidth
+solid
+0.57843 0.136 0.4902 edgecolor
+newpath 257.553 623.058 moveto
+264.523 753.668 299.804 1038.742 472 1178.688 curveto
+623.063 1301.458 1152.861 1332.058 1488.283 1338.839 curveto
+stroke
+0.57843 0.136 0.4902 edgecolor
+newpath 1487.956 1344.083 moveto
+1503.053 1339.12 lineto
+1488.156 1333.585 lineto
+closepath fill
+3 setlinewidth
+solid
+0.57843 0.136 0.4902 edgecolor
+newpath 1487.956 1344.083 moveto
+1503.053 1339.12 lineto
+1488.156 1333.585 lineto
+closepath stroke
+0 0 0 edgecolor
+36 /CMU Serif set_font
+472 959.612 moveto 333 ( Downloadable PDF ) alignedtext
+grestore
+% Thresholds
+gsave
+0.13333 0.45455 0.99216 nodecolor
+newpath 1271.575 672.438 moveto
+1268.575 676.438 lineto
+1247.575 676.438 lineto
+1244.575 672.438 lineto
+668.425 672.438 lineto
+668.425 435.438 lineto
+1271.575 435.438 lineto
+closepath fill
+2 setlinewidth
+filled
+0.089258 0.97235 0.85098 nodecolor
+newpath 1271.575 672.438 moveto
+1268.575 676.438 lineto
+1247.575 676.438 lineto
+1244.575 672.438 lineto
+668.425 672.438 lineto
+668.425 435.438 lineto
+1271.575 435.438 lineto
+closepath stroke
+0 0 0 nodecolor
+42 /CMU Serif set_font
+773.5 614.538 moveto 393 (Detection Thresholds) alignedtext
+0 0 0 nodecolor
+42 /CMU Serif set_font
+748 564.288 moveto 444 (- Youden \(Balanced F1\)) alignedtext
+0 0 0 nodecolor
+42 /CMU Serif set_font
+693.625 514.038 moveto 552.75 (- Closest Point \(Near-Perfect\)) alignedtext
+0 0 0 nodecolor
+42 /CMU Serif set_font
+867.25 463.788 moveto 205.5 (- Low FPR) alignedtext
+grestore
+% PDFGen->Thresholds
+% DocReader
+gsave
+0.42325 0.31276 0.95294 nodecolor
+newpath 1205.7 1040.688 moveto
+1205.7 1040.688 846.3 1040.688 846.3 1040.688 curveto
+840.3 1040.688 834.3 1034.688 834.3 1028.688 curveto
+834.3 1028.688 834.3 916.188 834.3 916.188 curveto
+834.3 910.188 840.3 904.188 846.3 904.188 curveto
+846.3 904.188 1205.7 904.188 1205.7 904.188 curveto
+1211.7 904.188 1217.7 910.188 1217.7 916.188 curveto
+1217.7 916.188 1217.7 1028.688 1217.7 1028.688 curveto
+1217.7 1034.688 1211.7 1040.688 1205.7 1040.688 curveto
+closepath fill
+2 setlinewidth
+filled
+0.44828 0.96667 0.58824 nodecolor
+newpath 1205.7 1040.688 moveto
+1205.7 1040.688 846.3 1040.688 846.3 1040.688 curveto
+840.3 1040.688 834.3 1034.688 834.3 1028.688 curveto
+834.3 1028.688 834.3 916.188 834.3 916.188 curveto
+834.3 910.188 840.3 904.188 846.3 904.188 curveto
+846.3 904.188 1205.7 904.188 1205.7 904.188 curveto
+1211.7 904.188 1217.7 910.188 1217.7 916.188 curveto
+1217.7 916.188 1217.7 1028.688 1217.7 1028.688 curveto
+1217.7 1034.688 1211.7 1040.688 1205.7 1040.688 curveto
+stroke
+0 0 0 nodecolor
+42 /CMU Serif set_font
+859.5 982.788 moveto 333 (Document Reader) alignedtext
+0 0 0 nodecolor
+42 /CMU Serif set_font
+880.125 932.538 moveto 291.75 (\(txt, docx, pdf\)) alignedtext
+grestore
+% UI->DocReader
+gsave
+3 setlinewidth
+solid
+0.57843 0.136 0.4902 edgecolor
+newpath 1507.682 1323.349 moveto
+1267.881 1305.849 947.093 1274.387 907.5 1229.438 curveto
+863.412 1179.384 899.774 1110.131 943.465 1056.274 curveto
+stroke
+0.57843 0.136 0.4902 edgecolor
+newpath 947.327 1059.839 moveto
+952.992 1044.991 lineto
+939.304 1053.065 lineto
+closepath fill
+3 setlinewidth
+solid
+0.57843 0.136 0.4902 edgecolor
+newpath 947.327 1059.839 moveto
+952.992 1044.991 lineto
+939.304 1053.065 lineto
+closepath stroke
+0 0 0 edgecolor
+36 /CMU Serif set_font
+907.5 1195.237 moveto 586.5 ( Process input                              ) alignedtext
+grestore
+% OCR
+gsave
+0.42325 0.31276 0.95294 nodecolor
+newpath 1990.825 1040.688 moveto
+1990.825 1040.688 1557.175 1040.688 1557.175 1040.688 curveto
+1551.175 1040.688 1545.175 1034.688 1545.175 1028.688 curveto
+1545.175 1028.688 1545.175 916.188 1545.175 916.188 curveto
+1545.175 910.188 1551.175 904.188 1557.175 904.188 curveto
+1557.175 904.188 1990.825 904.188 1990.825 904.188 curveto
+1996.825 904.188 2002.825 910.188 2002.825 916.188 curveto
+2002.825 916.188 2002.825 1028.688 2002.825 1028.688 curveto
+2002.825 1034.688 1996.825 1040.688 1990.825 1040.688 curveto
+closepath fill
+2 setlinewidth
+filled
+0.44828 0.96667 0.58824 nodecolor
+newpath 1990.825 1040.688 moveto
+1990.825 1040.688 1557.175 1040.688 1557.175 1040.688 curveto
+1551.175 1040.688 1545.175 1034.688 1545.175 1028.688 curveto
+1545.175 1028.688 1545.175 916.188 1545.175 916.188 curveto
+1545.175 910.188 1551.175 904.188 1557.175 904.188 curveto
+1557.175 904.188 1990.825 904.188 1990.825 904.188 curveto
+1996.825 904.188 2002.825 910.188 2002.825 916.188 curveto
+2002.825 916.188 2002.825 1028.688 2002.825 1028.688 curveto
+2002.825 1034.688 1996.825 1040.688 1990.825 1040.688 curveto
+stroke
+0 0 0 nodecolor
+42 /CMU Serif set_font
+1656.625 982.788 moveto 234.75 (OCR Engine) alignedtext
+0 0 0 nodecolor
+42 /CMU Serif set_font
+1570.375 932.538 moveto 407.25 (\(Vintern-1B-v2 VLM\)) alignedtext
+grestore
+% UI->OCR
+% User
+gsave
+0.61111 0.012195 0.96471 nodecolor
+1774 1701.675 94.505 60.988 ellipse_path fill
+2 setlinewidth
+filled
+0.60526 0.10857 0.68627 nodecolor
+1774 1701.675 94.505 60.988 ellipse_path stroke
+0 0 0 nodecolor
+42 /CMU Serif set_font
+1732.375 1686.9 moveto 83.25 (User) alignedtext
+grestore
+% UI->User
+gsave
+3 setlinewidth
+solid
+0.57843 0.136 0.4902 edgecolor
+newpath 1552.58 1409.934 moveto
+1446.977 1454.401 1355.291 1518.788 1414.75 1597.688 curveto
+1444.766 1637.518 1568.291 1666.651 1662.19 1683.57 curveto
+stroke
+0.57843 0.136 0.4902 edgecolor
+newpath 1661.28 1688.741 moveto
+1676.961 1686.16 lineto
+1663.093 1678.398 lineto
+closepath fill
+3 setlinewidth
+solid
+0.57843 0.136 0.4902 edgecolor
+newpath 1661.28 1688.741 moveto
+1676.961 1686.16 lineto
+1663.093 1678.398 lineto
+closepath stroke
+0 0 0 edgecolor
+36 /CMU Serif set_font
+1414.75 1563.487 moveto 338.25 ( Display Dashboards ) alignedtext
+grestore
+% DocReader->OCR
+% DocReader->OCR
+gsave
+3 setlinewidth
+solid
+0.57843 0.136 0.4902 edgecolor
+newpath 1218.629 972.438 moveto
+1311.961 972.438 1425.177 972.438 1524.977 972.438 curveto
+stroke
+0.57843 0.136 0.4902 edgecolor
+newpath 1524.882 977.688 moveto
+1539.882 972.438 lineto
+1524.882 967.188 lineto
+closepath fill
+3 setlinewidth
+solid
+0.57843 0.136 0.4902 edgecolor
+newpath 1524.882 977.688 moveto
+1539.882 972.438 lineto
+1524.882 967.188 lineto
+closepath stroke
+0 0 0 edgecolor
+36 /CMU Serif set_font
+1260.312 983.987 moveto 242.25 ( Scanned PDF ) alignedtext
+grestore
+% Normalizer
+gsave
+0.42325 0.31276 0.95294 nodecolor
+newpath 2662.325 1015.562 moveto
+2662.325 1015.562 2333.675 1015.562 2333.675 1015.562 curveto
+2327.675 1015.562 2321.675 1009.562 2321.675 1003.562 curveto
+2321.675 1003.562 2321.675 941.312 2321.675 941.312 curveto
+2321.675 935.312 2327.675 929.312 2333.675 929.312 curveto
+2333.675 929.312 2662.325 929.312 2662.325 929.312 curveto
+2668.325 929.312 2674.325 935.312 2674.325 941.312 curveto
+2674.325 941.312 2674.325 1003.562 2674.325 1003.562 curveto
+2674.325 1009.562 2668.325 1015.562 2662.325 1015.562 curveto
+closepath fill
+2 setlinewidth
+filled
+0.44828 0.96667 0.58824 nodecolor
+newpath 2662.325 1015.562 moveto
+2662.325 1015.562 2333.675 1015.562 2333.675 1015.562 curveto
+2327.675 1015.562 2321.675 1009.562 2321.675 1003.562 curveto
+2321.675 1003.562 2321.675 941.312 2321.675 941.312 curveto
+2321.675 935.312 2327.675 929.312 2333.675 929.312 curveto
+2333.675 929.312 2662.325 929.312 2662.325 929.312 curveto
+2668.325 929.312 2674.325 935.312 2674.325 941.312 curveto
+2674.325 941.312 2674.325 1003.562 2674.325 1003.562 curveto
+2674.325 1009.562 2668.325 1015.562 2662.325 1015.562 curveto
+stroke
+0 0 0 nodecolor
+42 /CMU Serif set_font
+2346.875 957.663 moveto 302.25 (Text Normalizer) alignedtext
+grestore
+% DocReader->Normalizer
+gsave
+3 setlinewidth
+solid
+0.57843 0.136 0.4902 edgecolor
+newpath 1154.523 1041.515 moveto
+1247.937 1087.65 1379.037 1144.168 1502 1168.5 curveto
+1739.179 1215.434 1809.267 1217.632 2046 1168.5 curveto
+2177.124 1141.286 2316.922 1074.027 2405.741 1025.883 curveto
+stroke
+0.57843 0.136 0.4902 edgecolor
+newpath 2408.197 1030.524 moveto
+2418.826 1018.709 lineto
+2403.149 1021.317 lineto
+closepath fill
+3 setlinewidth
+solid
+0.57843 0.136 0.4902 edgecolor
+newpath 2408.197 1030.524 moveto
+2418.826 1018.709 lineto
+2403.149 1021.317 lineto
+closepath stroke
+0 0 0 edgecolor
+36 /CMU Serif set_font
+1514.625 1195.237 moveto 210.75 ( Native Text ) alignedtext
+grestore
+% DocReader->Thresholds
+% OCR->Normalizer
+% OCR->Normalizer
+gsave
+3 setlinewidth
+solid
+0.57843 0.136 0.4902 edgecolor
+newpath 2003.575 972.438 moveto
+2099.371 972.438 2209.518 972.438 2301.499 972.438 curveto
+stroke
+0.57843 0.136 0.4902 edgecolor
+newpath 2301.299 977.688 moveto
+2316.299 972.438 lineto
+2301.299 967.188 lineto
+closepath fill
+3 setlinewidth
+solid
+0.57843 0.136 0.4902 edgecolor
+newpath 2301.299 977.688 moveto
+2316.299 972.438 lineto
+2301.299 967.188 lineto
+closepath stroke
+0 0 0 edgecolor
+36 /CMU Serif set_font
+2045.625 983.987 moveto 233.25 ( OCR Output ) alignedtext
+grestore
+% Aggregator
+gsave
+0.13333 0.45455 0.99216 nodecolor
+newpath 1963.825 622.188 moveto
+1963.825 622.188 1584.175 622.188 1584.175 622.188 curveto
+1578.175 622.188 1572.175 616.188 1572.175 610.188 curveto
+1572.175 610.188 1572.175 497.688 1572.175 497.688 curveto
+1572.175 491.688 1578.175 485.688 1584.175 485.688 curveto
+1584.175 485.688 1963.825 485.688 1963.825 485.688 curveto
+1969.825 485.688 1975.825 491.688 1975.825 497.688 curveto
+1975.825 497.688 1975.825 610.188 1975.825 610.188 curveto
+1975.825 616.188 1969.825 622.188 1963.825 622.188 curveto
+closepath fill
+2 setlinewidth
+filled
+0.089258 0.97235 0.85098 nodecolor
+newpath 1963.825 622.188 moveto
+1963.825 622.188 1584.175 622.188 1584.175 622.188 curveto
+1578.175 622.188 1572.175 616.188 1572.175 610.188 curveto
+1572.175 610.188 1572.175 497.688 1572.175 497.688 curveto
+1572.175 491.688 1578.175 485.688 1584.175 485.688 curveto
+1584.175 485.688 1963.825 485.688 1963.825 485.688 curveto
+1969.825 485.688 1975.825 491.688 1975.825 497.688 curveto
+1975.825 497.688 1975.825 610.188 1975.825 610.188 curveto
+1975.825 616.188 1969.825 622.188 1963.825 622.188 curveto
+stroke
+0 0 0 nodecolor
+42 /CMU Serif set_font
+1605.625 564.288 moveto 336.75 (Result Aggregator) alignedtext
+0 0 0 nodecolor
+42 /CMU Serif set_font
+1597.375 514.038 moveto 353.25 (\(Threshold Voting\)) alignedtext
+grestore
+% OCR->Aggregator
+% Chunker
+gsave
+0.13333 0.45455 0.99216 nodecolor
+newpath 2734.325 622.188 moveto
+2734.325 622.188 2159.675 622.188 2159.675 622.188 curveto
+2153.675 622.188 2147.675 616.188 2147.675 610.188 curveto
+2147.675 610.188 2147.675 497.688 2147.675 497.688 curveto
+2147.675 491.688 2153.675 485.688 2159.675 485.688 curveto
+2159.675 485.688 2734.325 485.688 2734.325 485.688 curveto
+2740.325 485.688 2746.325 491.688 2746.325 497.688 curveto
+2746.325 497.688 2746.325 610.188 2746.325 610.188 curveto
+2746.325 616.188 2740.325 622.188 2734.325 622.188 curveto
+closepath fill
+2 setlinewidth
+filled
+0.089258 0.97235 0.85098 nodecolor
+newpath 2734.325 622.188 moveto
+2734.325 622.188 2159.675 622.188 2159.675 622.188 curveto
+2153.675 622.188 2147.675 616.188 2147.675 610.188 curveto
+2147.675 610.188 2147.675 497.688 2147.675 497.688 curveto
+2147.675 491.688 2153.675 485.688 2159.675 485.688 curveto
+2159.675 485.688 2734.325 485.688 2734.325 485.688 curveto
+2740.325 485.688 2746.325 491.688 2746.325 497.688 curveto
+2746.325 497.688 2746.325 610.188 2746.325 610.188 curveto
+2746.325 616.188 2740.325 622.188 2734.325 622.188 curveto
+stroke
+0 0 0 nodecolor
+42 /CMU Serif set_font
+2216 564.288 moveto 462 (Sliding Window Chunker) alignedtext
+0 0 0 nodecolor
+42 /CMU Serif set_font
+2172.875 514.038 moveto 548.25 (\(Dynamic Length & Overlap\)) alignedtext
+grestore
+% Normalizer->Chunker
+% Normalizer->Chunker
+gsave
+3 setlinewidth
+solid
+0.57843 0.136 0.4902 edgecolor
+newpath 2492.734 928.433 moveto
+2484.509 861.261 2468.445 730.07 2457.715 642.447 curveto
+stroke
+0.57843 0.136 0.4902 edgecolor
+newpath 2462.931 641.845 moveto
+2455.897 627.595 lineto
+2452.509 643.121 lineto
+closepath fill
+3 setlinewidth
+solid
+0.57843 0.136 0.4902 edgecolor
+newpath 2462.931 641.845 moveto
+2455.897 627.595 lineto
+2452.509 643.121 lineto
+closepath stroke
+0 0 0 edgecolor
+36 /CMU Serif set_font
+2484.322 826.987 moveto 286.5 ( Normalized Text ) alignedtext
+grestore
+% Scorer
+gsave
+0 0.20472 0.99608 nodecolor
+newpath 1947.7 178.094 moveto
+1947.7 178.094 1600.3 178.094 1600.3 178.094 curveto
+1594.3 178.094 1588.3 172.094 1588.3 166.094 curveto
+1588.3 166.094 1588.3 53.594 1588.3 53.594 curveto
+1588.3 47.594 1594.3 41.594 1600.3 41.594 curveto
+1600.3 41.594 1947.7 41.594 1947.7 41.594 curveto
+1953.7 41.594 1959.7 47.594 1959.7 53.594 curveto
+1959.7 53.594 1959.7 166.094 1959.7 166.094 curveto
+1959.7 172.094 1953.7 178.094 1947.7 178.094 curveto
+closepath fill
+2 setlinewidth
+filled
+0 0.82727 0.86275 nodecolor
+newpath 1947.7 178.094 moveto
+1947.7 178.094 1600.3 178.094 1600.3 178.094 curveto
+1594.3 178.094 1588.3 172.094 1588.3 166.094 curveto
+1588.3 166.094 1588.3 53.594 1588.3 53.594 curveto
+1588.3 47.594 1594.3 41.594 1600.3 41.594 curveto
+1600.3 41.594 1947.7 41.594 1947.7 41.594 curveto
+1953.7 41.594 1959.7 47.594 1959.7 53.594 curveto
+1959.7 53.594 1959.7 166.094 1959.7 166.094 curveto
+1959.7 172.094 1953.7 178.094 1947.7 178.094 curveto
+stroke
+0 0 0 nodecolor
+42 /CMU Serif set_font
+1646.125 120.194 moveto 255.75 (Scorer Engine) alignedtext
+0 0 0 nodecolor
+42 /CMU Serif set_font
+1613.5 69.944 moveto 321 (\(Batch Inference\)) alignedtext
+grestore
+% Chunker->Scorer
+gsave
+3 setlinewidth
+solid
+0.57843 0.136 0.4902 edgecolor
+newpath 2343.319 484.829 moveto
+2222.037 405.159 2021.611 273.499 1893.79 189.534 curveto
+stroke
+0.57843 0.136 0.4902 edgecolor
+newpath 1897.014 185.37 moveto
+1881.594 181.522 lineto
+1891.249 194.146 lineto
+closepath fill
+3 setlinewidth
+solid
+0.57843 0.136 0.4902 edgecolor
+newpath 1897.014 185.37 moveto
+1881.594 181.522 lineto
+1891.249 194.146 lineto
+closepath stroke
+0 0 0 edgecolor
+36 /CMU Serif set_font
+2190.571 358.238 moveto 214.5 ( Text Chunks) alignedtext
+grestore
+% PhoGPTChat
+gsave
+0 0.20472 0.99608 nodecolor
+newpath 2905.95 186.625 moveto
+2905.95 196.04 2767.922 203.688 2598 203.688 curveto
+2428.078 203.688 2290.05 196.04 2290.05 186.625 curveto
+2290.05 186.625 2290.05 33.062 2290.05 33.062 curveto
+2290.05 23.648 2428.078 16 2598 16 curveto
+2767.922 16 2905.95 23.648 2905.95 33.062 curveto
+2905.95 33.062 2905.95 186.625 2905.95 186.625 curveto
+closepath fill
+2 setlinewidth
+filled
+0 0.82727 0.86275 nodecolor
+newpath 2905.95 186.625 moveto
+2905.95 196.04 2767.922 203.688 2598 203.688 curveto
+2428.078 203.688 2290.05 196.04 2290.05 186.625 curveto
+2290.05 186.625 2290.05 33.062 2290.05 33.062 curveto
+2290.05 23.648 2428.078 16 2598 16 curveto
+2767.922 16 2905.95 23.648 2905.95 33.062 curveto
+2905.95 33.062 2905.95 186.625 2905.95 186.625 curveto
+stroke
+2 setlinewidth
+filled
+0 0.82727 0.86275 nodecolor
+newpath 2905.95 186.625 moveto
+2905.95 177.21 2767.922 169.562 2598 169.562 curveto
+2428.078 169.562 2290.05 177.21 2290.05 186.625 curveto
+stroke
+0 0 0 nodecolor
+42 /CMU Serif set_font
+2315.25 120.194 moveto 565.5 (PhoGPT-4B-Chat \(Performer\)) alignedtext
+0 0 0 nodecolor
+42 /CMU Serif set_font
+2434.125 69.944 moveto 327.75 (Computes X-PPL) alignedtext
+grestore
+% Chunker->PhoGPTChat
+% Thresholds->Aggregator
+% Thresholds->Aggregator
+gsave
+3 setlinewidth
+dashed
+0.57843 0.136 0.4902 edgecolor
+newpath 1272.526 553.938 moveto
+1365.352 553.938 1465.73 553.938 1552.117 553.938 curveto
+stroke
+0.57843 0.136 0.4902 edgecolor
+newpath 1551.928 559.188 moveto
+1566.928 553.938 lineto
+1551.928 548.688 lineto
+closepath fill
+3 setlinewidth
+solid
+0.57843 0.136 0.4902 edgecolor
+newpath 1551.928 559.188 moveto
+1566.928 553.938 lineto
+1551.928 548.688 lineto
+closepath stroke
+0 0 0 edgecolor
+36 /CMU Serif set_font
+1314.25 565.487 moveto 215.25 ( Select Mode ) alignedtext
+grestore
+% PhoGPTBase
+gsave
+0 0.20472 0.99608 nodecolor
+newpath 1296.7 186.625 moveto
+1296.7 196.04 1186.573 203.688 1051 203.688 curveto
+915.427 203.688 805.3 196.04 805.3 186.625 curveto
+805.3 186.625 805.3 33.062 805.3 33.062 curveto
+805.3 23.648 915.427 16 1051 16 curveto
+1186.573 16 1296.7 23.648 1296.7 33.062 curveto
+1296.7 33.062 1296.7 186.625 1296.7 186.625 curveto
+closepath fill
+2 setlinewidth
+filled
+0 0.82727 0.86275 nodecolor
+newpath 1296.7 186.625 moveto
+1296.7 196.04 1186.573 203.688 1051 203.688 curveto
+915.427 203.688 805.3 196.04 805.3 186.625 curveto
+805.3 186.625 805.3 33.062 805.3 33.062 curveto
+805.3 23.648 915.427 16 1051 16 curveto
+1186.573 16 1296.7 23.648 1296.7 33.062 curveto
+1296.7 33.062 1296.7 186.625 1296.7 186.625 curveto
+stroke
+2 setlinewidth
+filled
+0 0.82727 0.86275 nodecolor
+newpath 1296.7 186.625 moveto
+1296.7 177.21 1186.573 169.562 1051 169.562 curveto
+915.427 169.562 805.3 177.21 805.3 186.625 curveto
+stroke
+0 0 0 nodecolor
+42 /CMU Serif set_font
+830.5 120.194 moveto 441 (PhoGPT-4B \(Observer\)) alignedtext
+0 0 0 nodecolor
+42 /CMU Serif set_font
+910 69.944 moveto 282 (Computes PPL) alignedtext
+grestore
+% Thresholds->PhoGPTBase
+% Aggregator->PDFGen
+gsave
+3 setlinewidth
+solid
+0.57843 0.136 0.4902 edgecolor
+newpath 1675.238 622.984 moveto
+1585.864 680.969 1448.204 759.402 1315 791.875 curveto
+1023.104 863.035 927.914 874.312 639 791.875 curveto
+531.828 761.295 425.402 691.136 352.039 634.879 curveto
+stroke
+0.57843 0.136 0.4902 edgecolor
+newpath 355.547 630.955 moveto
+340.483 625.892 lineto
+349.101 639.244 lineto
+closepath fill
+3 setlinewidth
+solid
+0.57843 0.136 0.4902 edgecolor
+newpath 355.547 630.955 moveto
+340.483 625.892 lineto
+349.101 639.244 lineto
+closepath stroke
+0 0 0 edgecolor
+36 /CMU Serif set_font
+1113.875 826.987 moveto 278.25 (Detection Results) alignedtext
+grestore
+% Aggregator->UI
+gsave
+3 setlinewidth
+solid
+0.57843 0.136 0.4902 edgecolor
+newpath 1835.626 622.931 moveto
+1896.923 685.121 1997.174 772.96 2105 810.438 curveto
+2123.027 816.703 2778.584 804.864 2792 818.438 curveto
+2907.939 935.734 2825.396 1068.146 2703 1178.688 curveto
+2610.2 1262.499 2297.273 1303.617 2060.022 1323.149 curveto
+stroke
+0.57843 0.136 0.4902 edgecolor
+newpath 2059.615 1317.914 moveto
+2045.085 1324.352 lineto
+2060.459 1328.381 lineto
+closepath fill
+3 setlinewidth
+solid
+0.57843 0.136 0.4902 edgecolor
+newpath 2059.615 1317.914 moveto
+2045.085 1324.352 lineto
+2060.459 1328.381 lineto
+closepath stroke
+0 0 0 edgecolor
+36 /CMU Serif set_font
+2847.653 959.612 moveto 228.75 ( Results Data ) alignedtext
+grestore
+% Aggregator->Chunker
+% Aggregator->Scorer
+% PhoGPTBase->Scorer
+% Scorer->Aggregator
+gsave
+3 setlinewidth
+solid
+0.57843 0.136 0.4902 edgecolor
+newpath 1626.361 179.085 moveto
+1535.682 231.198 1445.466 308.207 1494.25 392.438 curveto
+1513.603 425.853 1542.832 452.913 1575.21 474.616 curveto
+stroke
+0.57843 0.136 0.4902 edgecolor
+newpath 1572.016 478.808 moveto
+1587.494 482.412 lineto
+1577.642 469.942 lineto
+closepath fill
+3 setlinewidth
+solid
+0.57843 0.136 0.4902 edgecolor
+newpath 1572.016 478.808 moveto
+1587.494 482.412 lineto
+1577.642 469.942 lineto
+closepath stroke
+0 0 0 edgecolor
+36 /CMU Serif set_font
+1494.25 358.238 moveto 258.75 ( Scored Chunks ) alignedtext
+grestore
+% Scorer->PhoGPTBase
+gsave
+3 setlinewidth
+solid
+0.57843 0.136 0.4902 edgecolor
+newpath 1568.439 109.844 moveto
+1490.205 109.844 1399.917 109.844 1316.881 109.844 curveto
+stroke
+0.57843 0.136 0.4902 edgecolor
+newpath 1567.994 115.094 moveto
+1582.994 109.844 lineto
+1567.994 104.594 lineto
+closepath fill
+3 setlinewidth
+solid
+0.57843 0.136 0.4902 edgecolor
+newpath 1567.994 115.094 moveto
+1582.994 109.844 lineto
+1567.994 104.594 lineto
+closepath stroke
+0.57843 0.136 0.4902 edgecolor
+newpath 1317.082 104.594 moveto
+1302.082 109.844 lineto
+1317.082 115.094 lineto
+closepath fill
+3 setlinewidth
+solid
+0.57843 0.136 0.4902 edgecolor
+newpath 1317.082 104.594 moveto
+1302.082 109.844 lineto
+1317.082 115.094 lineto
+closepath stroke
+0 0 0 edgecolor
+36 /CMU Serif set_font
+1339.375 121.394 moveto 206.25 ( PPL Scores ) alignedtext
+grestore
+% Scorer->PhoGPTChat
+% Scorer->PhoGPTChat
+gsave
+3 setlinewidth
+solid
+0.57843 0.136 0.4902 edgecolor
+newpath 1979.821 109.844 moveto
+2067.523 109.844 2172.018 109.844 2269.913 109.844 curveto
+stroke
+0.57843 0.136 0.4902 edgecolor
+newpath 1980.004 104.594 moveto
+1965.004 109.844 lineto
+1980.004 115.094 lineto
+closepath fill
+3 setlinewidth
+solid
+0.57843 0.136 0.4902 edgecolor
+newpath 1980.004 104.594 moveto
+1965.004 109.844 lineto
+1980.004 115.094 lineto
+closepath stroke
+0.57843 0.136 0.4902 edgecolor
+newpath 2269.856 115.094 moveto
+2284.856 109.844 lineto
+2269.856 104.594 lineto
+closepath fill
+3 setlinewidth
+solid
+0.57843 0.136 0.4902 edgecolor
+newpath 2269.856 115.094 moveto
+2284.856 109.844 lineto
+2269.856 104.594 lineto
+closepath stroke
+0 0 0 edgecolor
+36 /CMU Serif set_font
+2002.25 121.394 moveto 245.25 ( X-PPL Scores ) alignedtext
+grestore
+% User->UI
+gsave
+3 setlinewidth
+solid
+0.57843 0.136 0.4902 edgecolor
+newpath 1774 1639.778 moveto
+1774 1582.038 1774 1494.662 1774 1429.416 curveto
+stroke
+0.57843 0.136 0.4902 edgecolor
+newpath 1779.25 1429.475 moveto
+1774 1414.475 lineto
+1768.75 1429.475 lineto
+closepath fill
+3 setlinewidth
+solid
+0.57843 0.136 0.4902 edgecolor
+newpath 1779.25 1429.475 moveto
+1774 1414.475 lineto
+1768.75 1429.475 lineto
+closepath stroke
+0 0 0 edgecolor
+36 /CMU Serif set_font
+1774 1563.487 moveto 321.75 ( Upload File / Text ) alignedtext
+grestore
+endpage
+showpage
+grestore
+%%PageTrailer
+%%EndPage: 1
+%%Trailer
+end
+restore
+%%EOF

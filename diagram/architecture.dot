@@ -1,0 +1,140 @@
+digraph VietAIDetectorArchitecture {
+    fontname="CMU Serif";
+    node [fontname="CMU Serif", shape=box, style="rounded,filled", fillcolor="#f8f9fa", color="#ced4da", penwidth=2, fontsize=42, margin="0.35,0.25"];
+    edge [fontname="CMU Serif", color="#6c757d", penwidth=3.0, arrowsize=1.5, fontsize=36];
+    rankdir=TB;
+    newrank=true;
+    splines=spline;
+    nodesep=1.2;
+    ranksep=1.2;
+
+    // Title
+    labelloc="t";
+    //label="VietAIDetector System Architecture";
+    fontsize=66;
+    fontweight=bold;
+
+    // Moved from below to claim the far-left column
+    subgraph cluster_report {
+        label = "5. Reporting Layer";
+        style = "rounded,filled";
+        fillcolor = "#ede9fe";
+        color = "#7c3aed";
+        fontcolor = "#6d28d9";
+        fontsize = 48;
+
+        PDFGen [label="PDF Report Generator\n(fpdf2)", fillcolor="#ddd6fe", color="#7c3aed"];
+    }
+
+    subgraph cluster_frontend {
+        label = "1. Presentation Layer";
+        style = "rounded,filled";
+        fillcolor = "#e0f2fe";
+        color = "#0284c7";
+        fontcolor = "#0369a1";
+        fontsize = 48;
+        
+        UI [label="Gradio Web Interface\n(frontend/gradio_app.py)", fillcolor="#bae6fd", color="#0284c7"];
+    }
+
+    subgraph cluster_preproc {
+        label = "2. Data Ingestion & Preprocessing Layer";
+        style = "rounded,filled";
+        fillcolor = "#d1fae5";
+        color = "#059669";
+        fontcolor = "#047857";
+        fontsize = 48;
+
+        DocReader [label="Document Reader\n(txt, docx, pdf)", fillcolor="#a7f3d0", color="#059669"];
+        OCR [label="OCR Engine\n(Vintern-1B-v2 VLM)", fillcolor="#a7f3d0", color="#059669"];
+        Normalizer [label="Text Normalizer", fillcolor="#a7f3d0", color="#059669"];
+        
+        {rank=same; DocReader; OCR; Normalizer;}
+        // Invisible edges to enforce left-to-right ordering within rank
+        DocReader -> OCR -> Normalizer [style=invis, weight=100];
+    }
+
+
+    subgraph cluster_processing {
+        label = "3. Processing Layer";
+        style = "rounded,filled";
+        fillcolor = "#fef3c7";
+        color = "#d97706";
+        fontcolor = "#b45309";
+        fontsize = 48;
+
+        Chunker [label="Sliding Window Chunker\n(Dynamic Length & Overlap)", fillcolor="#fde68a", color="#d97706"];
+        
+        Thresholds [label="Detection Thresholds\n- Youden (Balanced F1)\n- Closest Point (Near-Perfect)\n- Low FPR", shape=folder, fillcolor="#fde68a", color="#d97706"];
+        
+        Aggregator [label="Result Aggregator\n(Threshold Voting)", fillcolor="#fde68a", color="#d97706"];
+        
+        {rank=same; Thresholds; Aggregator; Chunker;}
+        // Enforce order: Thresholds (Left), Aggregator (Center), Chunker (Right)
+        Thresholds -> Aggregator -> Chunker [style=invis, weight=100];
+    }
+
+    subgraph cluster_core {
+        label = "4. Core Detection Layer (VietBinoculars)";
+        style = "rounded,filled";
+        fillcolor = "#fee2e2";
+        color = "#dc2626";
+        fontcolor = "#b91c1c";
+        fontsize = 48;
+
+        PhoGPTBase [label="PhoGPT-4B (Observer)\nComputes PPL", fillcolor="#fecaca", color="#dc2626", shape=cylinder];
+        Scorer [label="Scorer Engine\n(Batch Inference)", fillcolor="#fecaca", color="#dc2626"];
+        PhoGPTChat [label="PhoGPT-4B-Chat (Performer)\nComputes X-PPL", fillcolor="#fecaca", color="#dc2626", shape=cylinder];
+
+        {rank=same; PhoGPTBase; Scorer; PhoGPTChat;}
+        // Invisible edges to enforce left-to-right ordering within rank
+        PhoGPTBase -> Scorer -> PhoGPTChat [style=invis, weight=10];
+    }
+
+
+    // External User
+    User [label="User", shape=ellipse, style=filled, fillcolor="#f3f4f6", color="#9ca3af"];
+
+    // INVISIBLE SPINES FOR PERFECT 3x3 GRID ALIGNMENT
+    
+    // Center Spine (Main Axis)
+    UI -> OCR -> Aggregator -> Scorer [style=invis, weight=1000];
+    
+    // Left Spine
+    DocReader -> Thresholds -> PhoGPTBase [style=invis, weight=100];
+    
+    // Right Spine
+    Normalizer -> Chunker -> PhoGPTChat [style=invis, weight=100];
+
+    // Align Layer 5 (PDFGen) horizontally with Layer 3 (Left side)
+    {rank=same; PDFGen; Thresholds;}
+    PDFGen -> Thresholds [style=invis, weight=100];
+
+    // DATA FLOW EDGES (Forward - constraint=true but low weight)
+    edge [style=solid, weight=1, constraint=true];
+    User -> UI [label=" Upload File / Text "];
+    
+    UI -> DocReader [label=" Process input                              "];
+    DocReader -> OCR [label=" Scanned PDF "];
+    DocReader -> Normalizer [label=" Native Text "];
+    OCR -> Normalizer [label=" OCR Output "];
+
+    Normalizer -> Chunker [label=" Normalized Text ", weight=100];
+    Chunker -> Scorer [label=" Text Chunks"];
+    
+    Scorer -> PhoGPTBase [dir=both, label=" PPL Scores "];
+    Scorer -> PhoGPTChat [dir=both, label=" X-PPL Scores "];
+    
+    Scorer -> Aggregator [label=" Scored Chunks "];
+    Thresholds -> Aggregator [label=" Select Mode ", style=dashed, constraint=false];
+    
+    Aggregator -> PDFGen [label="Detection Results", constraint=false];
+    
+    // DATA FLOW EDGES (Backward - constraint=false)
+    edge [style=solid, constraint=false, weight=0];
+    Aggregator -> UI [label=" Results Data "];
+    //PDFGen -> UI [label=" Downloadable PDF ", constraint=false, weight=100];
+    UI -> User [label=" Display Dashboards "];
+    //PDFGen -> UI [taillabel=" Downloadable PDF ", labeldistance=36.0, labelangle=-7];
+    PDFGen -> UI [label=" Downloadable PDF "]
+}

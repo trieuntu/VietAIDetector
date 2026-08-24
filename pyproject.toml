@@ -1,0 +1,16 @@
+[build-system]
+requires = ["setuptools>=68.0", "wheel"]
+build-backend = "setuptools.backends._legacy:_Backend"
+
+[project]
+name = "VietAIDetector"
+version = "1.1.0"
+description = "Vietnamese AI text detection using VietBinoculars algorithm"
+requires-python = ">=3.10"
+
+[tool.setuptools.packages.find]
+include = ["config*", "core*", "preprocessing*", "processing*", "reporting*", "frontend*", "schemas*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]

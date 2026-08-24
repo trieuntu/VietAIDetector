@@ -1,0 +1,27 @@
+# Deep Learning & NLP
+torch>=2.2.0
+transformers==4.39.3
+accelerate>=0.29.0
+einops>=0.7.0
+sentencepiece
+
+# Document Processing
+python-docx>=1.1.0
+PyMuPDF>=1.24.0
+Pillow>=10.0.0
+torchvision>=0.17.0
+timm>=0.9.0
+
+# PDF Report Generation
+fpdf2>=2.7.9
+
+# Gradio Frontend
+gradio>=4.0.0,<5.0.0
+starlette<0.40.0
+
+# Scientific Computing
+numpy>=1.26.0
+scikit-learn>=1.4.0
+
+# Testing
+pytest>=8.0.0
