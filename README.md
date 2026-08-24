@@ -304,3 +304,4 @@ This software is released under the [MIT License](LICENSE).
 > - `5CD-AI/Vintern-1B-v2`: see [5CD-AI model card](https://huggingface.co/5CD-AI/Vintern-1B-v2)
 >
 > Users are responsible for complying with the applicable model license terms.
+
