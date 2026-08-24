@@ -287,7 +287,7 @@ If you use VietAIDetector in your research, please cite both the algorithm paper
 ```bibtex
 @software{nguyen2025vietaidetector,
   author    = {Trieu Hai Nguyen and Sivaswamy Akilesh},
-  title     = {{VietAIDetector}: Vietnamese AI-Generated Text Detection Software},
+  title     = {{ VietAIDetector }: Vietnamese AI-Generated Text Detection Software},
   year      = {2025},
   version   = {1.1.0},
   url       = {https://github.com/trieuntu/VietAIDetector},
