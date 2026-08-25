@@ -240,6 +240,8 @@ For the full directory tree, module descriptions, and data-flow pipeline, see [S
 
 ## Documentation
 
+📖 **Full documentation site:** [https://trieuntu.github.io/VietAIDetector/](https://trieuntu.github.io/VietAIDetector/)
+
 | Document | Description |
 |----------|-------------|
 | [DEVELOPER_MANUAL.md](docs/DEVELOPER_MANUAL.md) | Full developer reference: API docs, mathematical foundations, programmatic usage, extensibility guide |

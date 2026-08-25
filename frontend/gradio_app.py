@@ -1,5 +1,8 @@
-"""VietAIDetector — Gradio Frontend"""
+"""
+VietAIDetector — Gradio Frontend
+"""
 
+import html
 import os
 import time
 import uuid
@@ -91,12 +94,22 @@ def _run_detection(
     overlap: int,
     progress=gr.Progress(),
 ) -> tuple[str, Optional[pd.DataFrame], Optional[str]]:
-    """Execute the full detection pipeline."""
+    """Execute the full detection pipeline.
+
+    Args:
+        text: Raw text input from the textbox.
+        file_obj: Uploaded file object (gradio UploadFile) or None.
+        mode: Detection mode name (key in THRESHOLD_MODES).
+        progress: Gradio progress tracker for loading animation.
+
+    Returns:
+        Tuple of (summary_html, chunks_dataframe, pdf_file_path).
+    """
     start_time = time.time()
     document_name = "Direct Text Input"
 
     try:
-        # Step 1: Get input text
+        # ── Step 1: Get input text ──────────────────────────────
         progress(0.05, desc="Reading input data...")
 
         if file_obj is not None:
@@ -132,7 +145,7 @@ def _run_detection(
             gr.Warning("Could not extract text from the uploaded file.")
             return "", None, None
 
-        # Step 2: Chunk text
+        # ── Step 2: Chunk text ──────────────────────────────────
         progress(0.15, desc="Chunking text...")
 
         scorer = _get_scorer()
@@ -159,12 +172,12 @@ def _run_detection(
             gr.Warning("No segments remained after text processing.")
             return "", None, None
 
-        # Step 3: Score chunks
+        # ── Step 3: Score chunks ────────────────────────────────
         progress(0.30, desc=f"Analyzing {chunk_output.total_chunks} text segments...")
 
         scored_chunks = scorer.score_chunks(chunk_output.chunks)
 
-        # Step 4: Aggregate scores
+        # ── Step 4: Aggregate scores ────────────────────────────
         progress(0.85, desc="Aggregating results...")
 
         threshold = THRESHOLD_MODES.get(mode, THRESHOLD_MODES[DEFAULT_MODE])
@@ -188,7 +201,7 @@ def _run_detection(
             chunk_overlap=overlap,
         )
 
-        # Step 5: Generate outputs
+        # ── Step 5: Generate outputs ───────────────────────────
         progress(0.92, desc="Generating report...")
 
         summary_html = _build_summary_html(detection_result, source_format)
@@ -196,29 +209,37 @@ def _run_detection(
 
         # Generate PDF report
         pdf_bytes = _report_gen.generate_pdf(detection_result)
-        with tempfile.NamedTemporaryFile(
-            delete=False, 
-            prefix="VietAIDetector_Report_", 
-            suffix=".pdf"
-        ) as tmp_pdf:
-            tmp_pdf.write(pdf_bytes)
-            pdf_path = tmp_pdf.name
+        pdf_path = os.path.join(
+            tempfile.gettempdir(),
+            f"VietAIDetector_Report_{doc_id}.pdf",
+        )
+        with open(pdf_path, "wb") as f:
+            f.write(pdf_bytes)
 
         progress(1.0, desc="Complete!")
         return summary_html, chunks_df, pdf_path
 
     except Exception as exc:
         elapsed = round(time.time() - start_time, 2)
-        import html
         safe_exc = html.escape(str(exc))
-        error_html = f"""<div style="padding: 20px; background: #fee; border-left: 4px solid #e74c3c;"""
+        error_html = f"""
+        <div style="padding: 20px; background: #fee; border-left: 4px solid #e74c3c;
+                    border-radius: 8px; margin: 10px 0;">
+            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
+                {SVG_WARNING}
+                <h3 style="color: #c0392b; margin: 0;">Processing Error</h3>
+            </div>
+            <p style="margin: 0; color: #333;">{safe_exc}</p>
+            <p style="margin: 8px 0 0 0; color: #888; font-size: 0.85em;">
+                Time elapsed: {elapsed}s
+            </p>
+        </div>
+        """
         gr.Error(f"Error: {str(exc)}")
         return error_html, None, None
 
 
 # HTML & DataFrame Builders
-
-import html
 
 def _build_summary_html(result: DetectionResult, source_format: str = "") -> str:
     """Build the HTML summary card for detection results."""
@@ -248,7 +269,70 @@ def _build_summary_html(result: DetectionResult, source_format: str = "") -> str
         else "#f39c12"
     )
 
-    return f"""<div style="padding: 24px; background: {bg}; border-left: 5px solid {color};"""
+    return f"""
+    <div style="padding: 24px; background: {bg}; border-left: 5px solid {color};
+                border-radius: 12px; margin: 8px 0; font-family: 'Inter', sans-serif;">
+        <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px;">
+            <span style="display: flex; align-items: center;">{icon_svg}</span>
+            <div>
+                <h2 style="margin: 0; color: {color}; font-size: 1.4em;">
+                    {result.final_decision}
+                </h2>
+                <p style="margin: 4px 0 0 0; color: #555; font-size: 0.95em;">
+                    {safe_document_name}
+                </p>
+            </div>
+        </div>
+
+        <div style="background: #eee; border-radius: 8px; height: 28px; margin: 12px 0;
+                    overflow: hidden; position: relative;">
+            <div style="background: {bar_color}; height: 100%; width: {pct}%;
+                        border-radius: 8px; transition: width 0.8s ease;
+                        display: flex; align-items: center; justify-content: center;
+                        min-width: 60px;">
+                <span style="color: white; font-weight: bold; font-size: 0.85em;
+                            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);">
+                    {pct}% AI
+                </span>
+            </div>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+                    gap: 12px; margin-top: 16px;">
+            <div style="background: white; padding: 12px; border-radius: 8px; text-align: center;">
+                <div style="font-size: 1.5em; font-weight: bold; color: {color};">
+                    {result.ai_percentage}%
+                </div>
+                <div style="font-size: 0.8em; color: #888;">AI Ratio</div>
+            </div>
+            <div style="background: white; padding: 12px; border-radius: 8px; text-align: center;">
+                <div style="font-size: 1.5em; font-weight: bold; color: #333;">
+                    {result.total_chunks}
+                </div>
+                <div style="font-size: 0.8em; color: #888;">Total Chunks</div>
+            </div>
+            <div style="background: white; padding: 12px; border-radius: 8px; text-align: center;">
+                <div style="font-size: 1.5em; font-weight: bold; color: #e74c3c;">
+                    {result.ai_chunk_count}
+                </div>
+                <div style="font-size: 0.8em; color: #888;">AI Chunks</div>
+            </div>
+            <div style="background: white; padding: 12px; border-radius: 8px; text-align: center;">
+                <div style="font-size: 1.5em; font-weight: bold; color: #27ae60;">
+                    {result.total_chunks - result.ai_chunk_count}
+                </div>
+                <div style="font-size: 0.8em; color: #888;">Human Chunks</div>
+            </div>
+        </div>
+
+        <div style="margin-top: 12px; padding: 8px 12px; background: white;
+                    border-radius: 8px; font-size: 0.85em; color: #666;">
+            Threshold: <b>{result.applied_threshold:.4f}</b> ({result.applied_mode})
+            &nbsp;|&nbsp; Processing time: <b>{result.processing_time_seconds:.2f}s</b>
+            {f'&nbsp;|&nbsp; Source: <b>{safe_source_format}</b>' if safe_source_format else ''}
+        </div>
+    </div>
+    """
 
 
 def _build_chunks_dataframe(chunks: list[ChunkDetail]) -> pd.DataFrame:
@@ -271,7 +355,46 @@ def _build_chunks_dataframe(chunks: list[ChunkDetail]) -> pd.DataFrame:
 # Gradio App Builder
 
 # Custom CSS for enhanced visual appearance
-_CSS = """.main-header {"""
+_CSS = """
+.main-header {
+    text-align: center;
+    padding: 20px 0;
+}
+.main-header h1 {
+    font-size: 2em;
+    background: linear-gradient(135deg, #e74c3c, #3498db);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 4px;
+}
+.main-header p {
+    color: #888;
+    font-size: 0.95em;
+}
+.disclaimer {
+    font-size: 0.85em;
+    color: #888;
+}
+.chunks-table-container {
+    max-height: 420px;
+    overflow-y: auto !important;
+}
+.chunks-table-container .table-wrap {
+    max-height: 400px;
+    overflow-y: auto !important;
+}
+/* Ensure the summary output has enough initial height so the progress bar is immediately visible */
+#summary-output {
+    min-height: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+/* Hide duplicate progress trackers on secondary output components */
+.hide-progress > div:has(.progress-text) {
+    display: none !important;
+}
+"""
 
 # Vietnamese sample text for demonstration
 _SAMPLE_TEXT = (
@@ -286,7 +409,11 @@ _SAMPLE_TEXT = (
 
 
 def create_app() -> gr.Blocks:
-    """Build and return the Gradio Blocks application."""
+    """Build and return the Gradio Blocks application.
+
+    Returns:
+        gr.Blocks application ready to launch.
+    """
     theme = gr.themes.Soft(
         primary_hue=gr.themes.colors.blue,
         secondary_hue=gr.themes.colors.red,
@@ -296,7 +423,16 @@ def create_app() -> gr.Blocks:
     with gr.Blocks(css=_CSS, theme=theme, title=APP_NAME) as app:
 
         # Header
-        gr.HTML(f"""<div class="main-header">""")
+        gr.HTML(f"""
+        <div class="main-header">
+            <div style="display: flex; justify-content: center; align-items: center; gap: 10px;">
+                {SVG_SEARCH}
+                <h1>{APP_NAME}</h1>
+            </div>
+            <p>{APP_DESCRIPTION}</p>
+            <p style="font-size: 0.8em; color: #aaa;"><a href="mailto:trieunh@ntu.edu.vn" style="color: inherit; text-decoration: none; hover: underline;">Developed by Trieu N.H.</a> - v{APP_VERSION}</p>
+        </div>
+        """)
 
         # Input Section
         with gr.Row():
@@ -367,17 +503,39 @@ def create_app() -> gr.Blocks:
                 elem_classes="hide-progress",
             )
 
-        # Disclaimers
+        # Notes & Explanation
         with gr.Accordion("Notes & Explanation", open=False):
-            gr.Markdown(f"""- **Algorithm:** VietBinoculars uses the Perplexity / Cross-Perplexity ratio""", elem_classes="disclaimer")
+            gr.Markdown("""
+            - **Algorithm:** VietBinoculars uses the Perplexity / Cross-Perplexity ratio
+              between PhoGPT-4B (base) and PhoGPT-4B-Chat (chat) to detect AI-generated text.
+            - **Detection Thresholds:**
+                - *Youden (0.8607)*: Optimizes F1-score, balancing true positives and false positives.
+                - *Closest Point (0.8729)*: Closest point to perfect classification on the ROC curve.
+                - *Low FPR (0.7023)*: Prioritizes reducing false positives — suitable when avoiding false accusations.
+            - **Recommendation:** Use 200-500 words for best accuracy.
+            - **Limitations:** Very short text (<64 tokens) or text with many tables/formulas
+              may affect results.
+            - **Disclaimer:** Results are for reference only and do not replace expert judgment.
+              We assume no liability for any decisions based on these results.
+            """, elem_classes="disclaimer")
 
         with gr.Accordion("Cite Our Work", open=False):
-            gr.Markdown("""```bibtex""")
+            gr.Markdown("""
+            ```bibtex
+            @misc{nguyen2025vietbinocularszeroshotapproachdetecting,
+                  title={VietBinoculars: A Zero-Shot Approach for Detecting
+                         Vietnamese LLM-Generated Text},
+                  author={Trieu Hai Nguyen and Sivaswamy Akilesh},
+                  year={2025},
+                  eprint={2509.26189},
+                  archivePrefix={arXiv},
+                  primaryClass={cs.CL},
+                  url={https://arxiv.org/abs/2509.26189},
+            }
+            ```
+            """)
 
         # Event Handlers
-        # Re-enable show_progress="full" so the custom gr.Progress() text is visible.
-        # The duplicate progress trackers on chunks_table and pdf_download 
-        # are hidden via the .hide-progress CSS class.
         submit_btn.click(
             fn=_run_detection,
             inputs=[input_text, input_file, mode_dropdown, window_slider, overlap_slider],
