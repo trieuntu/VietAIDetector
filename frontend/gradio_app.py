@@ -522,15 +522,15 @@ def create_app() -> gr.Blocks:
         with gr.Accordion("Cite Our Work", open=False):
             gr.Markdown("""
             ```bibtex
-            @misc{nguyen2025vietbinocularszeroshotapproachdetecting,
-                  title={VietBinoculars: A Zero-Shot Approach for Detecting
-                         Vietnamese LLM-Generated Text},
-                  author={Trieu Hai Nguyen and Sivaswamy Akilesh},
-                  year={2025},
-                  eprint={2509.26189},
+            @misc{nguyen2026vietaidetector,
+                  title={VietAIDetector: An Open-Source Zero-Shot Detector
+                         for Vietnamese AI-Generated Text},
+                  author={Trieu Hai Nguyen and Van-Dung Hoang},
+                  year={2026},
+                  eprint={2608.25478},
                   archivePrefix={arXiv},
                   primaryClass={cs.CL},
-                  url={https://arxiv.org/abs/2509.26189},
+                  url={https://arxiv.org/abs/2608.25478},
             }
             ```
             """)
