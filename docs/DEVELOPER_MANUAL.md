@@ -1,6 +1,6 @@
 # VietAIDetector — Developer Manual
 
-**Version:** 1.1.0  
+**Version:** 1.1.1  
 **Language:** Python 3.10+  
 **License:** MIT  
 **Contact:** trieunh@ntu.edu.vn
@@ -184,7 +184,7 @@ All constants and tunable parameters are centralized in this file. No magic numb
 | `FONT_PATH` | `str` | `/tmp/NotoSans-Regular.ttf` | Path to Vietnamese TTF font |
 | `FONT_URL` | `str` | `"https://github.com/..."` | URL to download NotoSans font if missing |
 | `APP_NAME` | `str` | `"VietAIDetector"` | Application name |
-| `APP_VERSION` | `str` | `"1.1.0"` | Software version string |
+| `APP_VERSION` | `str` | `"1.1.1"` | Software version string |
 
 All of these can be overridden via environment variables (for `HF_TOKEN`, `FONT_PATH`) or by editing the file directly.
 
@@ -1088,28 +1088,30 @@ def analyze(filename: str, content: bytes) -> dict:
 
 ### Algorithm
 
-[1] Nguyen, T. H., & Akilesh, S. (2025). *VietBinoculars: A Zero-Shot Approach for Detecting Vietnamese LLM-Generated Text*. arXiv:2509.26189 [cs.CL]. https://arxiv.org/abs/2509.26189
+[1] Nguyen, T. H., & Hoang, V.-D. (2026). *VietAIDetector: An Open-Source Zero-Shot Detector for Vietnamese AI-Generated Text*. arXiv:2608.25478 [cs.CL]. https://arxiv.org/abs/2608.25478
 
-[2] Hans, A., Schwarzschild, A., Cherepanova, V., Kazemi, H., Saha, A., Goldblum, M., Geiping, J., & Goldstein, T. (2024). *Spotting LLMs With Binoculars: Zero-Shot Detection of Machine-Generated Text*. arXiv:2401.12070 [cs.CL]. https://arxiv.org/abs/2401.12070
+[2] Nguyen, T. H., & Akilesh, S. (2025). *VietBinoculars: A Zero-Shot Approach for Detecting Vietnamese LLM-Generated Text*. arXiv:2509.26189 [cs.CL]. https://arxiv.org/abs/2509.26189
+
+[3] Hans, A., Schwarzschild, A., Cherepanova, V., Kazemi, H., Saha, A., Goldblum, M., Geiping, J., & Goldstein, T. (2024). *Spotting LLMs With Binoculars: Zero-Shot Detection of Machine-Generated Text*. arXiv:2401.12070 [cs.CL]. https://arxiv.org/abs/2401.12070
 
 ### Pre-trained Models
 
-[3] VinAI Research. (2024). *PhoGPT: Generative Pre-training for Vietnamese*. HuggingFace: `vinai/PhoGPT-4B`, `vinai/PhoGPT-4B-Chat`.
+[4] VinAI Research. (2024). *PhoGPT: Generative Pre-training for Vietnamese*. HuggingFace: `vinai/PhoGPT-4B`, `vinai/PhoGPT-4B-Chat`.
 
-[4] 5CD-AI. (2024). *Vintern-1B: An Efficient Multimodal Small Language Model for Vietnamese*. HuggingFace: `5CD-AI/Vintern-1B-v2`.
+[5] 5CD-AI. (2024). *Vintern-1B: An Efficient Multimodal Small Language Model for Vietnamese*. HuggingFace: `5CD-AI/Vintern-1B-v2`.
 
 
 ### Libraries
 
-[5] Abid, A., et al. (2019). *Gradio: Hassle-Free Sharing and Testing of ML Models in the Wild*. https://gradio.app
+[6] Abid, A., et al. (2019). *Gradio: Hassle-Free Sharing and Testing of ML Models in the Wild*. https://gradio.app
 
-[6] Wolf, T., et al. (2020). *Transformers: State-of-the-Art Natural Language Processing*. EMNLP 2020 (System Demonstrations). https://github.com/huggingface/transformers
+[7] Wolf, T., et al. (2020). *Transformers: State-of-the-Art Natural Language Processing*. EMNLP 2020 (System Demonstrations). https://github.com/huggingface/transformers
 
-[7] Artifex Software. *PyMuPDF — Python Bindings for MuPDF*. https://pymupdf.readthedocs.io
+[8] Artifex Software. *PyMuPDF — Python Bindings for MuPDF*. https://pymupdf.readthedocs.io
 
-[8] Léon Dica et al. *fpdf2 — PDF generation library for Python*. https://pyfpdf.github.io/fpdf2/
+[9] Léon Dica et al. *fpdf2 — PDF generation library for Python*. https://pyfpdf.github.io/fpdf2/
 
 ---
 
-*VietAIDetector v1.1.0 — Developer Manual*  
+*VietAIDetector v1.1.1 — Developer Manual*  
 *For bug reports and contributions, please open an issue or pull request on the project repository.*

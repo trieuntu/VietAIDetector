@@ -73,7 +73,7 @@ OCR_MIN_PAGE_CHARS: int = 10
 # Application Metadata
 
 APP_NAME: str = "VietAIDetector"
-APP_VERSION: str = "1.1.0"
+APP_VERSION: str = "1.1.1"
 APP_DESCRIPTION: str = (
     "Vietnamese AI-generated text detection software, "
     "powered by the VietBinoculars algorithm with PhoGPT-4B model pair."

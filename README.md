@@ -2,9 +2,9 @@
 
 [![Python](https://img.shields.io/badge/Python-3.10%2B-3776ab?logo=python&logoColor=white)](https://www.python.org/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-22c55e)](LICENSE)
-[![arXiv](https://img.shields.io/badge/arXiv-2509.26189-b31b1b?logo=arxiv&logoColor=white)](https://arxiv.org/abs/2509.26189)
+[![arXiv](https://img.shields.io/badge/arXiv-2608.25478-b31b1b?logo=arxiv&logoColor=white)](https://arxiv.org/abs/2608.25478)
 [![Platform](https://img.shields.io/badge/Platform-Kaggle%20T4%C3%972-f9ab00?logo=kaggle&logoColor=white)](https://www.kaggle.com/)
-[![Version](https://img.shields.io/badge/Version-1.1.0-6366f1)](docs/DEVELOPER_MANUAL.md)
+[![Version](https://img.shields.io/badge/Version-1.1.1-6366f1)](docs/DEVELOPER_MANUAL.md)
 
 **Vietnamese AI-generated text detection software** — a zero-shot, end-to-end system based on the *VietBinoculars* algorithm with the PhoGPT-4B model pair.
 
@@ -66,7 +66,7 @@ The software accepts direct text input and file uploads (DOCX, native PDF, TXT).
 
 ## Detection Algorithm
 
-VietAIDetector implements the **VietBinoculars** scoring algorithm ([Nguyen & Akilesh, 2025](https://arxiv.org/abs/2509.26189)), adapted from the Binoculars method ([Hans et al., 2024](https://arxiv.org/abs/2401.12070)):
+VietAIDetector implements the **VietBinoculars** scoring algorithm ([Nguyen & Akilesh, 2025](https://arxiv.org/abs/2509.26189); [Nguyen & Hoang, 2026](https://arxiv.org/abs/2608.25478)), adapted from the Binoculars method ([Hans et al., 2024](https://arxiv.org/abs/2401.12070)):
 
 **Step 1 — Per-chunk scoring:**
 
@@ -268,19 +268,19 @@ Test configuration is defined in `pyproject.toml`. See [DEVELOPER_MANUAL.md § 7
 
 ## Citation
 
-If you use VietAIDetector in your research, please cite both the algorithm paper and the software:
+If you use VietAIDetector in your research, please cite:
 
-**Algorithm paper (VietBinoculars):**
+**Software paper (VietAIDetector):**
 
 ```bibtex
-@misc{nguyen2025vietbinoculars,
-  title     = {VietBinoculars: A Zero-Shot Approach for Detecting Vietnamese LLM-Generated Text},
-  author    = {Trieu Hai Nguyen and Sivaswamy Akilesh},
-  year      = {2025},
-  eprint    = {2509.26189},
+@misc{nguyen2026vietaidetector,
+  title     = {VietAIDetector: An Open-Source Zero-Shot Detector for Vietnamese AI-Generated Text},
+  author    = {Trieu Hai Nguyen and Van-Dung Hoang},
+  year      = {2026},
+  eprint    = {2608.25478},
   archivePrefix = {arXiv},
   primaryClass  = {cs.CL},
-  url       = {https://arxiv.org/abs/2509.26189}
+  url       = {https://arxiv.org/abs/2608.25478}
 }
 ```
 

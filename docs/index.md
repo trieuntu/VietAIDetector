@@ -13,7 +13,7 @@ This documentation site contains the complete technical reference for developers
 ## Quick Links
 
 - [GitHub Repository](https://github.com/trieuntu/VietAIDetector)
-- [arXiv Paper: VietBinoculars](https://arxiv.org/abs/2509.26189)
+- [arXiv Paper: VietAIDetector](https://arxiv.org/abs/2608.25478)
 
 ---
 
