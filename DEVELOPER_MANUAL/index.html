@@ -1,0 +1,3579 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Zero-shot Vietnamese AI-generated text detection software">
+      
+      
+        <meta name="author" content="Trieu Hai Nguyen, Dung Hoang-Van">
+      
+      
+      
+        <link rel="prev" href="..">
+      
+      
+        <link rel="next" href="../ARCHITECTURE/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Developer Manual - VietAIDetector Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#vietaidetector-developer-manual" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="VietAIDetector Documentation" class="md-header__button md-logo" aria-label="VietAIDetector Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            VietAIDetector Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Developer Manual
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/trieuntu/VietAIDetector" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    VietAIDetector
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    <li class="md-tabs__item md-tabs__item--active">
+      <a href="./" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Developer Manual
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../ARCHITECTURE/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Architecture
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../STRUCTURE/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Structure
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="VietAIDetector Documentation" class="md-nav__button md-logo" aria-label="VietAIDetector Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    VietAIDetector Documentation
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/trieuntu/VietAIDetector" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    VietAIDetector
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Developer Manual
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Developer Manual
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#table-of-contents" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Table of Contents
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-abstract" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Abstract
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-motivation-and-problem-statement" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Motivation and Problem Statement
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Motivation and Problem Statement">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-limitations-of-existing-approaches" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 Limitations of Existing Approaches
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-core-contributions-and-design-principles" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2 Core Contributions and Design Principles
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-software-description" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Software Description
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Software Description">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-architecture-overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 Architecture Overview
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-module-by-module-reference" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 Module-by-Module Reference
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.2 Module-by-Module Reference">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#configsettingspy-application-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        config/settings.py — Application Configuration
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#schemasmodelspy-data-models" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        schemas/models.py — Data Models
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#coremetricspy-binoculars-metric-functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        core/metrics.py — Binoculars Metric Functions
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#corescorerpy-vietbinocularsscorer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        core/scorer.py — VietBinocularsScorer
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#preprocessingtext_utilspy-vietnamese-text-utilities" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        preprocessing/text_utils.py — Vietnamese Text Utilities
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#preprocessingdocument_readerpy-document-reader" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        preprocessing/document_reader.py — Document Reader
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#preprocessingnormalizerpy-text-normalizer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        preprocessing/normalizer.py — Text Normalizer
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#preprocessingocr_enginepy-vintern-ocr-engine" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        preprocessing/ocr_engine.py — Vintern OCR Engine
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#processingchunkerpy-text-chunker" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        processing/chunker.py — Text Chunker
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#processingaggregatorpy-score-aggregator" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        processing/aggregator.py — Score Aggregator
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reportingpdf_reportpy-pdf-report-generator" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        reporting/pdf_report.py — PDF Report Generator
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#frontendgradio_apppy-gradio-web-application" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        frontend/gradio_app.py — Gradio Web Application
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-mathematical-foundations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Mathematical Foundations
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Mathematical Foundations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-vietbinoculars-score" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 VietBinoculars Score
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-perplexity-performer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 Perplexity (Performer)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-cross-perplexity-observer-performer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3 Cross-Perplexity (Observer → Performer)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#44-sliding-window-chunking" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.4 Sliding Window Chunking
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#45-majority-voting-aggregation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.5 Majority Voting Aggregation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#46-detection-thresholds" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.6 Detection Thresholds
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-installation-and-deployment" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Installation and Deployment
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Installation and Deployment">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1 Prerequisites
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-local-installation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2 Local Installation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53-kaggle-notebook-deployment" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.3 Kaggle Notebook Deployment
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#54-environment-variables-reference" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.4 Environment Variables Reference
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#55-first-run-behavior" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.5 First-Run Behavior
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-usage-guide" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Usage Guide
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Usage Guide">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61-web-user-interface" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1 Web User Interface
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62-programmatic-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2 Programmatic API
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#63-classification-decision-reference" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.3 Classification Decision Reference
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#64-source-format-labels" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.4 Source Format Labels
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-testing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Testing
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. Testing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#71-test-suite-overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.1 Test Suite Overview
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#72-running-tests" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.2 Running Tests
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#73-test-design-notes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.3 Test Design Notes
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-benchmark-evaluation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Benchmark Evaluation
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8. Benchmark Evaluation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#81-directory-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.1 Directory Structure
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#82-dataset-format" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.2 Dataset Format
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#83-running-evaluations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.3 Running Evaluations
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-performance-and-hardware-notes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Performance and Hardware Notes
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="9. Performance and Hardware Notes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#91-vram-budget" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.1 VRAM Budget
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#92-single-gpu-fallback" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.2 Single GPU Fallback
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#93-processing-time-estimates-kaggle-t4x2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.3 Processing Time Estimates (Kaggle T4x2)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#94-batch-size-tuning" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.4 Batch Size Tuning
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-known-limitations-and-responsible-use" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. Known Limitations and Responsible Use
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="10. Known Limitations and Responsible Use">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#101-minimum-text-length" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.1 Minimum Text Length
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#102-ocr-accuracy-caveats" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.2 OCR Accuracy Caveats
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#103-zero-shot-detection-limitations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.3 Zero-Shot Detection Limitations
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#104-ethical-disclaimer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.4 Ethical Disclaimer
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-reuse-and-extensibility" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11. Reuse and Extensibility
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="11. Reuse and Extensibility">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#111-swapping-language-models" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.1 Swapping Language Models
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#112-adding-a-new-document-format" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.2 Adding a New Document Format
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#113-adding-a-new-threshold-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.3 Adding a New Threshold Mode
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#114-integrating-into-a-larger-system" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.4 Integrating into a Larger System
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-related-work-and-references" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12. Related Work and References
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="12. Related Work and References">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#algorithm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Algorithm
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pre-trained-models" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pre-trained Models
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#libraries" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Libraries
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ARCHITECTURE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Architecture
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../STRUCTURE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Structure
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#table-of-contents" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Table of Contents
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-abstract" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Abstract
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-motivation-and-problem-statement" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Motivation and Problem Statement
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Motivation and Problem Statement">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-limitations-of-existing-approaches" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 Limitations of Existing Approaches
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-core-contributions-and-design-principles" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2 Core Contributions and Design Principles
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-software-description" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Software Description
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Software Description">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-architecture-overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 Architecture Overview
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-module-by-module-reference" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 Module-by-Module Reference
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.2 Module-by-Module Reference">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#configsettingspy-application-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        config/settings.py — Application Configuration
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#schemasmodelspy-data-models" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        schemas/models.py — Data Models
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#coremetricspy-binoculars-metric-functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        core/metrics.py — Binoculars Metric Functions
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#corescorerpy-vietbinocularsscorer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        core/scorer.py — VietBinocularsScorer
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#preprocessingtext_utilspy-vietnamese-text-utilities" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        preprocessing/text_utils.py — Vietnamese Text Utilities
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#preprocessingdocument_readerpy-document-reader" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        preprocessing/document_reader.py — Document Reader
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#preprocessingnormalizerpy-text-normalizer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        preprocessing/normalizer.py — Text Normalizer
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#preprocessingocr_enginepy-vintern-ocr-engine" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        preprocessing/ocr_engine.py — Vintern OCR Engine
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#processingchunkerpy-text-chunker" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        processing/chunker.py — Text Chunker
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#processingaggregatorpy-score-aggregator" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        processing/aggregator.py — Score Aggregator
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reportingpdf_reportpy-pdf-report-generator" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        reporting/pdf_report.py — PDF Report Generator
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#frontendgradio_apppy-gradio-web-application" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        frontend/gradio_app.py — Gradio Web Application
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-mathematical-foundations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Mathematical Foundations
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Mathematical Foundations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-vietbinoculars-score" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 VietBinoculars Score
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-perplexity-performer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 Perplexity (Performer)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-cross-perplexity-observer-performer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3 Cross-Perplexity (Observer → Performer)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#44-sliding-window-chunking" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.4 Sliding Window Chunking
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#45-majority-voting-aggregation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.5 Majority Voting Aggregation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#46-detection-thresholds" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.6 Detection Thresholds
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-installation-and-deployment" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Installation and Deployment
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Installation and Deployment">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1 Prerequisites
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-local-installation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2 Local Installation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53-kaggle-notebook-deployment" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.3 Kaggle Notebook Deployment
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#54-environment-variables-reference" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.4 Environment Variables Reference
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#55-first-run-behavior" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.5 First-Run Behavior
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-usage-guide" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Usage Guide
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Usage Guide">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61-web-user-interface" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1 Web User Interface
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62-programmatic-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2 Programmatic API
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#63-classification-decision-reference" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.3 Classification Decision Reference
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#64-source-format-labels" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.4 Source Format Labels
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-testing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Testing
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. Testing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#71-test-suite-overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.1 Test Suite Overview
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#72-running-tests" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.2 Running Tests
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#73-test-design-notes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.3 Test Design Notes
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-benchmark-evaluation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Benchmark Evaluation
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8. Benchmark Evaluation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#81-directory-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.1 Directory Structure
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#82-dataset-format" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.2 Dataset Format
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#83-running-evaluations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.3 Running Evaluations
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-performance-and-hardware-notes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Performance and Hardware Notes
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="9. Performance and Hardware Notes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#91-vram-budget" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.1 VRAM Budget
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#92-single-gpu-fallback" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.2 Single GPU Fallback
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#93-processing-time-estimates-kaggle-t4x2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.3 Processing Time Estimates (Kaggle T4x2)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#94-batch-size-tuning" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.4 Batch Size Tuning
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-known-limitations-and-responsible-use" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. Known Limitations and Responsible Use
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="10. Known Limitations and Responsible Use">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#101-minimum-text-length" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.1 Minimum Text Length
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#102-ocr-accuracy-caveats" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.2 OCR Accuracy Caveats
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#103-zero-shot-detection-limitations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.3 Zero-Shot Detection Limitations
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#104-ethical-disclaimer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.4 Ethical Disclaimer
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-reuse-and-extensibility" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11. Reuse and Extensibility
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="11. Reuse and Extensibility">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#111-swapping-language-models" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.1 Swapping Language Models
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#112-adding-a-new-document-format" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.2 Adding a New Document Format
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#113-adding-a-new-threshold-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.3 Adding a New Threshold Mode
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#114-integrating-into-a-larger-system" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.4 Integrating into a Larger System
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-related-work-and-references" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12. Related Work and References
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="12. Related Work and References">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#algorithm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Algorithm
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pre-trained-models" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pre-trained Models
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#libraries" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Libraries
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="vietaidetector-developer-manual">VietAIDetector — Developer Manual</h1>
+<p><strong>Version:</strong> 1.1.1<br />
+<strong>Language:</strong> Python 3.10+<br />
+<strong>License:</strong> MIT<br />
+<strong>Contact:</strong> trieunh@ntu.edu.vn</p>
+<hr />
+<h2 id="table-of-contents">Table of Contents</h2>
+<ul>
+<li><a href="#1-abstract">1. Abstract</a></li>
+<li><a href="#2-motivation-and-problem-statement">2. Motivation and Problem Statement</a></li>
+<li><a href="#21-limitations-of-existing-approaches">2.1 Limitations of Existing Approaches</a></li>
+<li><a href="#22-core-contributions-and-design-principles">2.2 Core Contributions and Design Principles</a></li>
+<li><a href="#3-software-description">3. Software Description</a></li>
+<li><a href="#31-architecture-overview">3.1 Architecture Overview</a></li>
+<li><a href="#32-module-by-module-reference">3.2 Module-by-Module Reference</a></li>
+<li><a href="#4-mathematical-foundations">4. Mathematical Foundations</a></li>
+<li><a href="#5-installation-and-deployment">5. Installation and Deployment</a></li>
+<li><a href="#6-usage-guide">6. Usage Guide</a></li>
+<li><a href="#7-testing">7. Testing</a></li>
+<li><a href="#8-benchmark-evaluation">8. Benchmark Evaluation</a></li>
+<li><a href="#9-performance-and-hardware-notes">9. Performance and Hardware Notes</a></li>
+<li><a href="#10-known-limitations-and-responsible-use">10. Known Limitations and Responsible Use</a></li>
+<li><a href="#11-reuse-and-extensibility">11. Reuse and Extensibility</a></li>
+<li><a href="#12-related-work-and-references">12. Related Work and References</a></li>
+</ul>
+<hr />
+<h2 id="1-abstract">1. Abstract</h2>
+<p><strong>VietAIDetector</strong> is an open-source software tool designed specifically for detecting AI-generated Vietnamese text using a zero-shot scoring approach. The system builds upon the <em>VietBinoculars</em> and <em>Binoculars</em> algorithmic frameworks, computing the ratio of <em>Perplexity</em> (PPL) to <em>Cross-Perplexity</em> (X-PPL) between two PhoGPT-4B language models — a base model acting as the observer and a chat-tuned model acting as the performer. A low PPL/X-PPL score indicates machine-generated content, whereas a higher score signifies human authorship.</p>
+<p>The software provides a production-ready Gradio web interface that accepts inputs ranging from raw text to common document formats (<code>.docx</code>, <code>.pdf</code>, <code>.txt</code>), including scanned (image-based) documents processed via an integrated OCR pipeline powered by the Vintern-1B-v2 Vision-Language Model (VLM). To overcome the context size limitations of the underlying language models, VietAIDetector implements a configurable sliding-window chunking mechanism with short-trailing-chunk post-processing, enabling full-length analysis of exceptionally long documents without sequence truncation or feature dilution. Chunk-level scores are aggregated into a document-level verdict using a majority-voting strategy (<span class="arithmatex">\(P_{\text{AI}}\)</span>) alongside transparent, color-coded chunk highlights.</p>
+<p>Users can select optimal detection thresholds calibrated for balanced F1-score (Youden's <span class="arithmatex">\(J\)</span>), high precision (Closest Point on ROC), or minimized false alarms (<span class="arithmatex">\(\text{TPR@0.05FPR}\)</span>), which is critical for high-stakes academic and legal contexts. Upon completion, the system generates a downloadable, color-coded PDF report embedding full configuration metadata for auditability and provides structured JSON serialization for downstream NLP pipelines. The system is optimized for dual-GPU environments (e.g., Kaggle T4×2, 32 GB VRAM total) and includes comprehensive unit test coverage for all non-GPU components.</p>
+<hr />
+<h2 id="2-motivation-and-problem-statement">2. Motivation and Problem Statement</h2>
+<p>The rapid advancement and widespread adoption of Large Language Models (LLMs) — including OpenAI's GPT series, Google Gemini, and Anthropic Claude — have led to a surge in AI-generated text across academic, journalistic, and professional domains. This widespread adoption presents pressing challenges in distinguishing between machine-generated content and human-written text:</p>
+<ul>
+<li><strong>Academic Integrity</strong>: In higher education, students may misuse generative AI tools to complete assignments and essays without attribution, undermining critical thinking and authentic learning.</li>
+<li><strong>Information Authenticity</strong>: Malicious actors can exploit LLMs on digital platforms to generate synthetic disinformation, fake news, and manipulated content at scale, influencing public perception and discourse.</li>
+</ul>
+<h3 id="21-limitations-of-existing-approaches">2.1 Limitations of Existing Approaches</h3>
+<p>Considerable research has produced open-source and commercial detection tools, including Binoculars, DetectGPT, GLTR, Radar, Ghostbuster, GPTZero, and Turnitin. However, existing solutions exhibit several critical limitations when applied to Vietnamese:</p>
+<ol>
+<li><strong>English-Centric Bias</strong>: The vast majority of detection tools are developed and calibrated for high-resource languages (primarily English). Vietnamese, despite having approximately 100 million speakers, remains significantly underserved with no dedicated open-source detection tools.</li>
+<li><strong>Impracticality of Supervised Classifiers</strong>: Supervised detection methods rely on large-scale labeled datasets that are costly and difficult to curate for Vietnamese. Moreover, with frequent updates and releases of new LLMs, supervised models suffer from rapid domain obsolescence and risk overfitting to specific generator styles or artifacts.</li>
+<li><strong>Inability to Handle Long Documents</strong>: Standard zero-shot algorithms typically truncate input texts exceeding the model's maximum context length (<span class="arithmatex">\(L_{\text{max}}\)</span>) or suffer from statistical feature dilution and attention degradation on long sequences. Existing zero-shot tools lack automated sliding-window tokenization and document-level aggregation for long essays or multi-page reports.</li>
+<li><strong>Lack of Multi-Format and Scanned Document Support</strong>: Real-world educational workflows involve diverse document formats (<code>.docx</code>, native <code>.pdf</code>, scanned <code>.pdf</code>). Most research implementations only accept short, plain-text strings and fail on scanned documents containing diacritics and complex Vietnamese typography.</li>
+</ol>
+<h3 id="22-core-contributions-and-design-principles">2.2 Core Contributions and Design Principles</h3>
+<p><strong>VietAIDetector</strong> bridges the gap between theoretical zero-shot detection research and real-world deployment through six core design decisions:</p>
+<ol>
+<li><strong>Zero-Shot Scoring Mechanism</strong>: Eliminates the need for labeled training data or periodic model retraining by computing the perplexity-to-cross-perplexity ratio across an observer-performer model pair, adapting the VietBinoculars formulation.</li>
+<li><strong>Sliding-Window Chunking for Long Documents</strong>: Employs a dynamic sliding window (<span class="arithmatex">\(W\)</span>) and stride (<span class="arithmatex">\(D = W - O\)</span>) tokenization with an admissible minimum chunk constraint (<span class="arithmatex">\(m\)</span>) to eliminate high-variance trailing artifacts while ensuring 100% document coverage without sequence truncation.</li>
+<li><strong>Vietnamese-First Dual-Model Architecture &amp; VLM OCR</strong>: Integrates PhoGPT-4B and PhoGPT-4B-Chat natively pre-trained on Vietnamese text, paired with on-demand Vintern-1B-v2 OCR using deterministic decoding and anti-hallucination prompt engineering for scanned documents.</li>
+<li><strong>Calibrated Threshold Selection &amp; False-Alarm Minimization</strong>: Supports flexible threshold modes, notably <span class="arithmatex">\(\text{TPR@0.05FPR}\)</span> to constrain false accusations below 5%, which is essential when misclassifying student work carries severe ethical or disciplinary consequences.</li>
+<li><strong>End-to-End Operational Usability &amp; Auditable Reporting</strong>: Features an interactive Gradio web interface, dynamic parameter tuning, auditable PDF reports with color-coded chunk visualization and embedded run metadata, and hierarchical JSON outputs for automated downstream integration.</li>
+<li><strong>Accessible and Reproducible Deployment</strong>: Provides a turnkey shell script (<code>run_kaggle.sh</code>) optimized for free-tier dual NVIDIA T4 GPUs on Kaggle, lowering the computational barrier for educational institutions and researchers.</li>
+</ol>
+<hr />
+<h2 id="3-software-description">3. Software Description</h2>
+<h3 id="31-architecture-overview">3.1 Architecture Overview</h3>
+<p>VietAIDetector is organized into <strong>five distinct layers</strong>, each responsible for a specific stage of the pipeline. This separation of concerns enables independent testing, model swapping, and modular extension.</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>+----------------------------------------------------------+
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>|  Layer 1 -- Presentation (frontend/gradio_app.py)        |
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>|  Gradio UI: input, settings, results, PDF download       |
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>+------------------+---------------------------------------+
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>                   |  filename + bytes / raw text
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>+------------------v---------------------------------------+
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>|  Layer 2 -- Data Ingestion &amp; Preprocessing               |
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>|  document_reader.py -&gt; normalizer.py -&gt; [ocr_engine.py]  |
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>|  Supported: .docx, .pdf (native + scanned), .txt         |
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>+------------------+---------------------------------------+
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>                   |  cleaned normalized text
+</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>+------------------v---------------------------------------+
+</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>|  Layer 3 -- Processing Layer                             |
+</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>|  chunker.py    (sliding window tokenization)             |
+</span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>|  aggregator.py (majority voting verdict)                 |
+</span><span id="__span-0-16"><a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>+------------------+---------------------------------------+
+</span><span id="__span-0-17"><a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>                   |  chunks
+</span><span id="__span-0-18"><a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>+------------------v---------------------------------------+
+</span><span id="__span-0-19"><a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a>|  Layer 4 -- Core Detection Layer (VietBinoculars)        |
+</span><span id="__span-0-20"><a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a>|  scorer.py     (VietBinoculars dual-GPU scoring)         |
+</span><span id="__span-0-21"><a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a>|  metrics.py    (PPL / X-PPL functions)                   |
+</span><span id="__span-0-22"><a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a>+------------------+---------------------------------------+
+</span><span id="__span-0-23"><a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a>                   |  DetectionResult
+</span><span id="__span-0-24"><a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a>+------------------v---------------------------------------+
+</span><span id="__span-0-25"><a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a>|  Layer 5 -- Reporting (reporting/pdf_report.py)          |
+</span><span id="__span-0-26"><a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a>|  Downloadable PDF with color-coded highlights            |
+</span><span id="__span-0-27"><a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a>+----------------------------------------------------------+
+</span></code></pre></div>
+<blockquote>
+<p><strong>Note:</strong> The execution order crosses Layer 3 and Layer 4: <code>chunker</code> (Layer 3) → <code>scorer</code> (Layer 4) → <code>aggregator</code> (Layer 3). The chunker splits text into overlapping windows <em>before</em> scoring; the aggregator applies majority voting <em>after</em> all chunks are scored.</p>
+</blockquote>
+<p><strong>Data flow (pipeline sequence):</strong></p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>User Input (text / file)
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>        |
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>        v
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>[DocumentReader] --&gt; detect format (docx / pdf / txt)
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>        |
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>        +--[pdf_native]--&gt; extract text blocks, remove header/footer
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>        |
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>        +--[pdf_scanned]--&gt; [VinternOCR] --&gt; 300 DPI render --&gt; tiled VLM inference
+</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>        |
+</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>        +--[docx]---------&gt; extract paragraphs via python-docx
+</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>        |
+</span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a>        v
+</span><span id="__span-1-13"><a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a>[TextNormalizer] --&gt; de-hyphenate, filter short paragraphs, collapse whitespace
+</span><span id="__span-1-14"><a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a>        |
+</span><span id="__span-1-15"><a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a>        v
+</span><span id="__span-1-16"><a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a>[TextChunker] --&gt; sliding window (W=450, O=100, D=350) --&gt; List[ChunkDetail]
+</span><span id="__span-1-17"><a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a>        |
+</span><span id="__span-1-18"><a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a>        v
+</span><span id="__span-1-19"><a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a>[VietBinocularsScorer]
+</span><span id="__span-1-20"><a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a>    |                   |
+</span><span id="__span-1-21"><a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a>    v                   v
+</span><span id="__span-1-22"><a id="__codelineno-1-22" name="__codelineno-1-22" href="#__codelineno-1-22"></a>PhoGPT-4B          PhoGPT-4B-Chat
+</span><span id="__span-1-23"><a id="__codelineno-1-23" name="__codelineno-1-23" href="#__codelineno-1-23"></a>(cuda:0, PPL)      (cuda:1, X-PPL)
+</span><span id="__span-1-24"><a id="__codelineno-1-24" name="__codelineno-1-24" href="#__codelineno-1-24"></a>    |                   |
+</span><span id="__span-1-25"><a id="__codelineno-1-25" name="__codelineno-1-25" href="#__codelineno-1-25"></a>    +-------------------+
+</span><span id="__span-1-26"><a id="__codelineno-1-26" name="__codelineno-1-26" href="#__codelineno-1-26"></a>            |
+</span><span id="__span-1-27"><a id="__codelineno-1-27" name="__codelineno-1-27" href="#__codelineno-1-27"></a>            v
+</span><span id="__span-1-28"><a id="__codelineno-1-28" name="__codelineno-1-28" href="#__codelineno-1-28"></a>    score = PPL / X-PPL  (per chunk)
+</span><span id="__span-1-29"><a id="__codelineno-1-29" name="__codelineno-1-29" href="#__codelineno-1-29"></a>            |
+</span><span id="__span-1-30"><a id="__codelineno-1-30" name="__codelineno-1-30" href="#__codelineno-1-30"></a>            v
+</span><span id="__span-1-31"><a id="__codelineno-1-31" name="__codelineno-1-31" href="#__codelineno-1-31"></a>[ScoreAggregator] --&gt; majority vote --&gt; final_decision + ai_percentage
+</span><span id="__span-1-32"><a id="__codelineno-1-32" name="__codelineno-1-32" href="#__codelineno-1-32"></a>            |
+</span><span id="__span-1-33"><a id="__codelineno-1-33" name="__codelineno-1-33" href="#__codelineno-1-33"></a>            v
+</span><span id="__span-1-34"><a id="__codelineno-1-34" name="__codelineno-1-34" href="#__codelineno-1-34"></a>[PDFReportGenerator] --&gt; color-highlighted PDF bytes
+</span><span id="__span-1-35"><a id="__codelineno-1-35" name="__codelineno-1-35" href="#__codelineno-1-35"></a>            |
+</span><span id="__span-1-36"><a id="__codelineno-1-36" name="__codelineno-1-36" href="#__codelineno-1-36"></a>            v
+</span><span id="__span-1-37"><a id="__codelineno-1-37" name="__codelineno-1-37" href="#__codelineno-1-37"></a>     Gradio UI (summary card + chunks table + PDF download)
+</span></code></pre></div>
+<hr />
+<h3 id="32-module-by-module-reference">3.2 Module-by-Module Reference</h3>
+<h4 id="configsettingspy-application-configuration"><code>config/settings.py</code> — Application Configuration</h4>
+<p>All constants and tunable parameters are centralized in this file. No magic numbers appear elsewhere in the codebase.</p>
+<table>
+<thead>
+<tr>
+<th>Constant</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>OBSERVER_MODEL</code></td>
+<td><code>str</code></td>
+<td><code>"vinai/PhoGPT-4B"</code></td>
+<td>HuggingFace model ID for the base observer</td>
+</tr>
+<tr>
+<td><code>PERFORMER_MODEL</code></td>
+<td><code>str</code></td>
+<td><code>"vinai/PhoGPT-4B-Chat"</code></td>
+<td>HuggingFace model ID for the chat performer</td>
+</tr>
+<tr>
+<td><code>HF_TOKEN</code></td>
+<td><code>str \| None</code></td>
+<td><code>env:HF_TOKEN</code></td>
+<td>HuggingFace API token (for gated models)</td>
+</tr>
+<tr>
+<td><code>YOUDEN_THRESHOLD</code></td>
+<td><code>float</code></td>
+<td><code>0.9280</code></td>
+<td>Default detection threshold (Youden's J)</td>
+</tr>
+<tr>
+<td><code>CLOSEST_POINT_THRESHOLD</code></td>
+<td><code>float</code></td>
+<td><code>0.9251</code></td>
+<td>ROC closest-to-(0,1) threshold</td>
+</tr>
+<tr>
+<td><code>FPR_THRESHOLD</code></td>
+<td><code>float</code></td>
+<td><code>0.8993</code></td>
+<td>Low False Positive Rate threshold</td>
+</tr>
+<tr>
+<td><code>THRESHOLD_MODES</code></td>
+<td><code>dict</code></td>
+<td>(3 modes)</td>
+<td>UI-friendly names mapped to threshold values</td>
+</tr>
+<tr>
+<td><code>DEFAULT_MODE</code></td>
+<td><code>str</code></td>
+<td><code>"Youden..."</code></td>
+<td>Default detection mode in Gradio</td>
+</tr>
+<tr>
+<td><code>CHUNK_WINDOW</code></td>
+<td><code>int</code></td>
+<td><code>450</code></td>
+<td>Max tokens per chunk (W)</td>
+</tr>
+<tr>
+<td><code>CHUNK_OVERLAP</code></td>
+<td><code>int</code></td>
+<td><code>100</code></td>
+<td>Token overlap between chunks (O)</td>
+</tr>
+<tr>
+<td><code>CHUNK_STRIDE</code></td>
+<td><code>int</code></td>
+<td><code>350</code></td>
+<td>Stride = W - O</td>
+</tr>
+<tr>
+<td><code>CHUNK_MIN_TOKENS</code></td>
+<td><code>int</code></td>
+<td><code>50</code></td>
+<td>Min tokens; shorter chunks are merged</td>
+</tr>
+<tr>
+<td><code>DEVICE_1</code></td>
+<td><code>str</code></td>
+<td><code>"cuda:0"</code></td>
+<td>GPU for observer model</td>
+</tr>
+<tr>
+<td><code>DEVICE_2</code></td>
+<td><code>str</code></td>
+<td><code>"cuda:1"</code></td>
+<td>GPU for performer model (falls back to <code>cuda:0</code>)</td>
+</tr>
+<tr>
+<td><code>USE_BFLOAT16</code></td>
+<td><code>bool</code></td>
+<td><code>True</code></td>
+<td>bfloat16 precision (saves VRAM)</td>
+</tr>
+<tr>
+<td><code>MAX_MODEL_TOKENS</code></td>
+<td><code>int</code></td>
+<td><code>768</code></td>
+<td>Hard token limit for model forward pass</td>
+</tr>
+<tr>
+<td><code>SCORER_BATCH_SIZE</code></td>
+<td><code>int</code></td>
+<td><code>8</code></td>
+<td>Chunks per inference batch</td>
+</tr>
+<tr>
+<td><code>MINIMUM_TOKENS</code></td>
+<td><code>int</code></td>
+<td><code>64</code></td>
+<td>Min tokens for a valid analysis</td>
+</tr>
+<tr>
+<td><code>OCR_MODEL</code></td>
+<td><code>str</code></td>
+<td><code>"5CD-AI/Vintern-1B-v2"</code></td>
+<td>VLM for scanned PDF OCR</td>
+</tr>
+<tr>
+<td><code>OCR_DEVICE</code></td>
+<td><code>str</code></td>
+<td><code>DEVICE_2</code></td>
+<td>GPU device for OCR model (shares cuda:1 with performer)</td>
+</tr>
+<tr>
+<td><code>OCR_MAX_NEW_TOKENS</code></td>
+<td><code>int</code></td>
+<td><code>2048</code></td>
+<td>Max OCR output tokens per page</td>
+</tr>
+<tr>
+<td><code>OCR_MAX_IMAGE_TILES</code></td>
+<td><code>int</code></td>
+<td><code>12</code></td>
+<td>Max tiles for dynamic high-res tiling</td>
+</tr>
+<tr>
+<td><code>OCR_PROMPT</code></td>
+<td><code>str</code></td>
+<td><code>"Trích xuất chính xác..."</code></td>
+<td>Vietnamese OCR prompt (anti-hallucination design)</td>
+</tr>
+<tr>
+<td><code>OCR_MIN_PAGE_CHARS</code></td>
+<td><code>int</code></td>
+<td><code>10</code></td>
+<td>Skip pages with fewer characters</td>
+</tr>
+<tr>
+<td><code>FONT_PATH</code></td>
+<td><code>str</code></td>
+<td><code>/tmp/NotoSans-Regular.ttf</code></td>
+<td>Path to Vietnamese TTF font</td>
+</tr>
+<tr>
+<td><code>FONT_URL</code></td>
+<td><code>str</code></td>
+<td><code>"https://github.com/..."</code></td>
+<td>URL to download NotoSans font if missing</td>
+</tr>
+<tr>
+<td><code>APP_NAME</code></td>
+<td><code>str</code></td>
+<td><code>"VietAIDetector"</code></td>
+<td>Application name</td>
+</tr>
+<tr>
+<td><code>APP_VERSION</code></td>
+<td><code>str</code></td>
+<td><code>"1.1.1"</code></td>
+<td>Software version string</td>
+</tr>
+</tbody>
+</table>
+<p>All of these can be overridden via environment variables (for <code>HF_TOKEN</code>, <code>FONT_PATH</code>) or by editing the file directly.</p>
+<hr />
+<h4 id="schemasmodelspy-data-models"><code>schemas/models.py</code> — Data Models</h4>
+<p>Three Python <code>dataclass</code> objects serve as the typed data contracts exchanged between modules. These replace Pydantic to minimize dependencies.</p>
+<p><strong><code>ChunkDetail</code></strong> — Represents a single text chunk with its detection result.</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nd">@dataclass</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="k">class</span><span class="w"> </span><span class="nc">ChunkDetail</span><span class="p">:</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>    <span class="n">chunk_index</span><span class="p">:</span> <span class="nb">int</span>        <span class="c1"># 1-based position in the document</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>    <span class="n">text</span><span class="p">:</span> <span class="nb">str</span>               <span class="c1"># decoded Vietnamese text of this chunk</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>    <span class="n">token_count</span><span class="p">:</span> <span class="nb">int</span>        <span class="c1"># number of BPE tokens</span>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>    <span class="n">score</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.0</span>      <span class="c1"># VietBinoculars score (PPL / X-PPL); lower -&gt; AI</span>
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>    <span class="n">label</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">""</span>         <span class="c1"># "AI" or "Human" (set by ScoreAggregator)</span>
+</span></code></pre></div>
+<p><strong><code>PreprocessResult</code></strong> — Carries the output of the preprocessing pipeline.</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nd">@dataclass</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="k">class</span><span class="w"> </span><span class="nc">PreprocessResult</span><span class="p">:</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>    <span class="n">document_name</span><span class="p">:</span> <span class="nb">str</span>      <span class="c1"># original filename</span>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>    <span class="n">source_format</span><span class="p">:</span> <span class="nb">str</span>      <span class="c1"># "plain" | "docx" | "pdf_native" | "pdf_scanned"</span>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>    <span class="n">extraction_status</span><span class="p">:</span> <span class="nb">str</span>  <span class="c1"># "success" | "error"</span>
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>    <span class="n">cleaned_text</span><span class="p">:</span> <span class="nb">str</span>       <span class="c1"># normalized text ready for chunking</span>
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>    <span class="n">error_message</span><span class="p">:</span> <span class="nb">str</span>      <span class="c1"># populated if extraction_status == "error"</span>
+</span></code></pre></div>
+<p><strong><code>DetectionResult</code></strong> — The final, fully-populated result object passed to the UI and PDF generator.</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="nd">@dataclass</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="k">class</span><span class="w"> </span><span class="nc">DetectionResult</span><span class="p">:</span>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>    <span class="n">document_id</span><span class="p">:</span> <span class="nb">str</span>               <span class="c1"># short UUID for this run</span>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>    <span class="n">document_name</span><span class="p">:</span> <span class="nb">str</span>
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>    <span class="n">total_chunks</span><span class="p">:</span> <span class="nb">int</span>
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>    <span class="n">ai_chunk_count</span><span class="p">:</span> <span class="nb">int</span>
+</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>    <span class="n">ai_percentage</span><span class="p">:</span> <span class="nb">float</span>           <span class="c1"># (ai_chunk_count / total_chunks) * 100</span>
+</span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>    <span class="n">applied_threshold</span><span class="p">:</span> <span class="nb">float</span>       <span class="c1"># threshold value used</span>
+</span><span id="__span-4-9"><a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a>    <span class="n">applied_mode</span><span class="p">:</span> <span class="nb">str</span>              <span class="c1"># threshold mode name</span>
+</span><span id="__span-4-10"><a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a>    <span class="n">final_decision</span><span class="p">:</span> <span class="nb">str</span>            <span class="c1"># "AI-generated" | "Human-written" |</span>
+</span><span id="__span-4-11"><a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a>                                   <span class="c1"># "Human-written but contains AI-generated parts"</span>
+</span><span id="__span-4-12"><a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a>    <span class="n">chunk_details</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">ChunkDetail</span><span class="p">]</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">default_factory</span><span class="o">=</span><span class="nb">list</span><span class="p">)</span>
+</span><span id="__span-4-13"><a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a>    <span class="n">processing_time_seconds</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.0</span>
+</span><span id="__span-4-14"><a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a>    <span class="n">chunk_window</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">CHUNK_WINDOW</span>    <span class="c1"># default: 450</span>
+</span><span id="__span-4-15"><a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a>    <span class="n">chunk_overlap</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">CHUNK_OVERLAP</span>  <span class="c1"># default: 100</span>
+</span></code></pre></div>
+<hr />
+<h4 id="coremetricspy-binoculars-metric-functions"><code>core/metrics.py</code> — Binoculars Metric Functions</h4>
+<p>Implements the two fundamental mathematical operations of the Binoculars algorithm. These functions are stateless and operate directly on PyTorch tensors; they contain no model loading logic.</p>
+<p><strong><code>perplexity(encoding, logits, median, temperature)</code></strong></p>
+<p>Computes per-sample perplexity from the <strong>performer</strong> model's output logits. Internally, it uses <code>CrossEntropyLoss(reduction="none")</code>, shifts logits and labels by one position (standard language modeling), and masks padded positions via <code>attention_mask</code>. Aggregation is mean by default; set <code>median=True</code> for robustness to outliers.</p>
+<p><strong><code>entropy(p_logits, q_logits, encoding, pad_token_id, ...)</code></strong></p>
+<p>Computes per-sample cross-perplexity. The observer's logits (<code>p_logits</code>) are converted to a probability distribution via softmax, and then the cross-entropy from that distribution to the performer's logits (<code>q_logits</code>) is computed. This captures how much the chat-tuned model diverges from the base model's next-token predictions.</p>
+<hr />
+<h4 id="corescorerpy-vietbinocularsscorer"><code>core/scorer.py</code> — VietBinocularsScorer</h4>
+<p>The central inference class that orchestrates dual-model loading and chunk scoring.</p>
+<p><strong>Class: <code>VietBinocularsScorer</code></strong></p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="k">class</span><span class="w"> </span><span class="nc">VietBinocularsScorer</span><span class="p">:</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>    <span class="n">observer</span><span class="p">:</span>   <span class="n">AutoModelForCausalLM</span>   <span class="c1"># PhoGPT-4B on cuda:0</span>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>    <span class="n">performer</span><span class="p">:</span>  <span class="n">AutoModelForCausalLM</span>   <span class="c1"># PhoGPT-4B-Chat on cuda:1</span>
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>    <span class="n">tokenizer</span><span class="p">:</span>  <span class="n">AutoTokenizer</span>          <span class="c1"># shared; loaded from observer</span>
+</span></code></pre></div>
+<p><strong><code>__init__(observer_name, performer_name, device1, device2, use_bf16, max_tokens)</code></strong></p>
+<p>Loads both models from HuggingFace Hub onto their respective GPU devices using <code>device_map={"": device}</code> for explicit single-device placement (avoiding <code>accelerate</code> auto-sharding, which is incompatible with cross-device tensor operations). Both models are set to <code>.eval()</code> and gradient computation is globally disabled via <code>torch.set_grad_enabled(False)</code>.</p>
+<p><strong><code>compute_score(text) -&gt; float | list[float]</code></strong></p>
+<p>Accepts a single string or a list of strings. Tokenizes the batch, runs a forward pass through both models, calls <code>perplexity()</code> and <code>entropy()</code>, and returns <code>PPL / X-PPL</code> per sample.</p>
+<p><strong><code>score_chunks(chunks) -&gt; list[ChunkDetail]</code></strong></p>
+<p>Processes a list of <code>ChunkDetail</code> objects in batches of <code>SCORER_BATCH_SIZE</code> (default: 8) to avoid OOM on T4 GPUs. Populates the <code>score</code> field of each <code>ChunkDetail</code> in-place and rounds to 6 decimal places.</p>
+<hr />
+<h4 id="preprocessingtext_utilspy-vietnamese-text-utilities"><code>preprocessing/text_utils.py</code> — Vietnamese Text Utilities</h4>
+<p>Defines compiled regex patterns and helper functions used throughout the preprocessing pipeline.</p>
+<table>
+<thead>
+<tr>
+<th>Symbol</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>DEHYPHEN_RE</code></td>
+<td>Fix hyphenated line-breaks from PDF text extraction ("phát tri-\nển" -&gt; "phát triển")</td>
+</tr>
+<tr>
+<td><code>LINEBREAK_RE</code></td>
+<td>Remove mid-sentence line breaks; preserve only after sentence-ending punctuation (<code>.!?…</code>)</td>
+</tr>
+<tr>
+<td><code>WHITESPACE_RE</code></td>
+<td>Collapse spaces, tabs, NBSP (<code>\u00a0</code>), and BOM (<code>\ufeff</code>) into a single space</td>
+</tr>
+<tr>
+<td><code>NON_SEMANTIC_RE</code></td>
+<td>Detect non-semantic characters for noise ratio calculation</td>
+</tr>
+</tbody>
+</table>
+<p>The <code>À-ỹ</code> Unicode range (U+00C0–U+1EF9) in the patterns covers all Vietnamese diacritics and tones, ensuring Vietnamese text is not incorrectly classified as special characters.</p>
+<p>Helper functions:
+- <code>count_words(text) -&gt; int</code> — whitespace-split word count
+- <code>special_char_ratio(text) -&gt; float</code> — ratio of non-semantic characters; values &gt; 0.5 indicate non-prose content (tables, formulas, code)</p>
+<hr />
+<h4 id="preprocessingdocument_readerpy-document-reader"><code>preprocessing/document_reader.py</code> — Document Reader</h4>
+<p>Handles text extraction from multiple document formats. Format detection is based on file extension.</p>
+<p><strong>Class: <code>DocumentReader</code></strong></p>
+<p><strong><code>detect_format(filename) -&gt; str</code></strong><br />
+Returns <code>"docx"</code>, <code>"pdf"</code>, or <code>"plain"</code> based on the lowercase file extension.</p>
+<p><strong><code>extract_from_docx(content: bytes) -&gt; str</code></strong><br />
+Uses <code>python-docx</code> to traverse the document paragraph tree and join non-empty paragraphs with newlines. Only <code>doc.paragraphs</code> is traversed; images, charts, tables, headers, and footers from Word's XML schema are not included.</p>
+<p><strong><code>extract_from_pdf(content: bytes) -&gt; tuple[str, str]</code></strong><br />
+Uses PyMuPDF (<code>fitz</code>) to extract text blocks page-by-page. Header and footer regions are excluded by filtering blocks whose bounding box lies in the top 10% or bottom 10% of the page height:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="k">if</span> <span class="n">y1</span> <span class="o">&lt;</span> <span class="n">page_height</span> <span class="o">*</span> <span class="mf">0.10</span> <span class="ow">or</span> <span class="n">y0</span> <span class="o">&gt;</span> <span class="n">page_height</span> <span class="o">*</span> <span class="mf">0.90</span><span class="p">:</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>    <span class="k">continue</span>  <span class="c1"># skip header / footer block</span>
+</span></code></pre></div>
+<p>Returns <code>("", "pdf_scanned")</code> if no text layer is found, triggering OCR fallback.</p>
+<p><strong><code>read(filename, content, ocr_engine) -&gt; tuple[str, str]</code></strong><br />
+The main entry point. Routes to the appropriate extraction method and delegates scanned PDFs to the provided <code>VinternOCR</code> instance. Raises <code>UnsupportedFormatError</code> if a scanned PDF is detected but no OCR engine is provided.</p>
+<hr />
+<h4 id="preprocessingnormalizerpy-text-normalizer"><code>preprocessing/normalizer.py</code> — Text Normalizer</h4>
+<p>Orchestrates the complete preprocessing pipeline: document reading → de-hyphenation → paragraph filtering → per-paragraph normalization.</p>
+<p><strong>Class: <code>TextNormalizer</code></strong></p>
+<p>Holds a <code>DocumentReader</code> instance and a lazily-initialized <code>VinternOCR</code> engine. The OCR engine is not loaded until the first scanned PDF is encountered.</p>
+<p><strong><code>normalize(text) -&gt; str</code></strong><br />
+Applies three normalization rules in sequence:
+1. De-hyphenation (<code>DEHYPHEN_RE</code>)
+2. Mid-sentence linebreak removal (<code>LINEBREAK_RE</code>)
+3. Whitespace collapsing (<code>WHITESPACE_RE</code>)</p>
+<p><strong><code>filter_paragraphs(text) -&gt; list[str]</code></strong><br />
+Splits text on <code>\n</code>, then discards any paragraph that:
+- Has fewer than <strong>5 words</strong> (page numbers, figure captions, short labels)
+- Has <code>special_char_ratio &gt; 0.50</code> (tables, code blocks, formula-heavy content)</p>
+<p>This step is crucial: table data and code snippets produce anomalously low perplexity values that would distort the detection score if not removed.</p>
+<p><strong><code>preprocess(filename, content) -&gt; PreprocessResult</code></strong><br />
+Top-level pipeline method:
+1. <code>DocumentReader.read()</code> → raw text + source format
+2. <code>DEHYPHEN_RE</code> on the full text
+3. <code>filter_paragraphs()</code> → list of valid paragraphs
+4. <code>normalize()</code> on each surviving paragraph
+5. <code>"\n".join(paragraphs)</code> → cleaned text</p>
+<p>Returns a <code>PreprocessResult</code> dataclass. On any exception, returns with <code>extraction_status="error"</code> and a descriptive <code>error_message</code>.</p>
+<hr />
+<h4 id="preprocessingocr_enginepy-vintern-ocr-engine"><code>preprocessing/ocr_engine.py</code> — Vintern OCR Engine</h4>
+<p>Extracts Vietnamese text from scanned (image-based) PDFs using the Vintern-1B-v2 Vision-Language Model.</p>
+<p><strong>Image preprocessing pipeline (from InternVL2/Vintern architecture):</strong></p>
+<ol>
+<li><code>_build_transform(input_size=448)</code> — torchvision pipeline: RGB conversion → bicubic resize to 448×448 → tensor → ImageNet normalization</li>
+<li><code>_find_closest_aspect_ratio(...)</code> — selects the best tile layout <code>(w_tiles, h_tiles)</code> from a candidate set</li>
+<li><code>_dynamic_preprocess(image, max_num=12)</code> — splits the image into up to 12 tiles of 448×448 pixels, optionally appending a global thumbnail tile for global context</li>
+<li><code>load_image(image) -&gt; Tensor</code> — returns a <code>(num_tiles, 3, 448, 448)</code> tensor</li>
+</ol>
+<p><strong>Class: <code>VinternOCR</code></strong></p>
+<p><strong><code>__init__(device)</code></strong><br />
+Initializes with <code>model = None</code>; model is not loaded until <code>_ensure_loaded()</code> is first called.</p>
+<p><strong><code>_ensure_loaded()</code></strong><br />
+Lazy-loads Vintern-1B-v2 using <code>AutoModel</code> with <code>attn_implementation="eager"</code> (avoids the optional <code>flash_attn</code> dependency). Includes a monkey-patch on <code>transformers.dynamic_module_utils.check_imports</code> to bypass the flash_attn import check in the remote model code without modifying the HuggingFace source.</p>
+<p><strong><code>extract_page(image: PIL.Image) -&gt; str</code></strong><br />
+Runs VLM inference on a single page image. The generation configuration is <strong>hard-coded</strong> and cannot be overridden by the caller:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="n">generation_config</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>    <span class="n">max_new_tokens</span><span class="o">=</span><span class="mi">2048</span><span class="p">,</span>
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>    <span class="n">do_sample</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>       <span class="c1"># greedy decoding -- no randomness</span>
+</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>    <span class="n">temperature</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span>       <span class="c1"># eliminates sampling variability</span>
+</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>    <span class="n">num_beams</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>           <span class="c1"># no beam search</span>
+</span><span id="__span-7-6"><a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a>    <span class="n">repetition_penalty</span><span class="o">=</span><span class="mf">1.0</span> <span class="c1"># no penalty (preserves naturally repeated source text)</span>
+</span><span id="__span-7-7"><a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="p">)</span>
+</span></code></pre></div>
+<p>Before each inference call, <code>torch.cuda.set_device(self.device)</code> is called explicitly. This is required because the Vintern-1B-v2 remote modeling code contains hardcoded <code>.cuda()</code> calls that would otherwise target the wrong device in a multi-GPU environment.</p>
+<p>Output validation: if the extracted text is fewer than <code>OCR_MIN_PAGE_CHARS</code> (default: 10) characters, the page is considered blank and skipped with a warning log.</p>
+<p><strong><code>extract_from_pdf(pdf_bytes: bytes) -&gt; str</code></strong><br />
+Iterates over all PDF pages, renders each at <strong>300 DPI</strong> using <code>fitz.Matrix(300/72, 300/72)</code>, converts to PIL Images, and calls <code>extract_page()</code> on each. Returns the concatenated text of all non-blank pages.</p>
+<p><strong>Anti-Hallucination Design:</strong></p>
+<p>The OCR prompt (<code>OCR_PROMPT</code> in <code>config/settings.py</code>) is written in <strong>Vietnamese</strong>, not English, because Vintern-1B-v2 is fine-tuned on Vietnamese instruction datasets (<code>Viet-OCR-VQA</code>, <code>Viet-Doc-VQA</code>). Vietnamese prompts are in-distribution for this model and produce more faithful extraction. English prompts are out-of-distribution and increase hallucination risk.</p>
+<p>The prompt instructs the model to: extract all text exactly as-is, preserve paragraph structure, punctuation, and any spelling errors present in the original, and add no explanations, reformatting, or additional content.</p>
+<hr />
+<h4 id="processingchunkerpy-text-chunker"><code>processing/chunker.py</code> — Text Chunker</h4>
+<p>Splits normalized Vietnamese text into overlapping chunks for processing by the language models.</p>
+<p><strong><code>ChunkOutput</code></strong> (dataclass)</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="nd">@dataclass</span>
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="k">class</span><span class="w"> </span><span class="nc">ChunkOutput</span><span class="p">:</span>
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>    <span class="n">document_id</span><span class="p">:</span> <span class="nb">str</span>
+</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>    <span class="n">total_tokens</span><span class="p">:</span> <span class="nb">int</span>
+</span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>    <span class="n">total_chunks</span><span class="p">:</span> <span class="nb">int</span>
+</span><span id="__span-8-6"><a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a>    <span class="n">chunks</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">ChunkDetail</span><span class="p">]</span>
+</span></code></pre></div>
+<p><strong>Class: <code>TextChunker</code></strong></p>
+<p><strong><code>__init__(tokenizer_name_or_obj, window, overlap, stride, min_chunk)</code></strong><br />
+Accepts either a HuggingFace model ID string (auto-loads tokenizer) or a pre-built tokenizer object. The latter is used in production to reuse the tokenizer already loaded by <code>VietBinocularsScorer</code>, avoiding a redundant download.</p>
+<p><strong><code>chunk(text, document_id, window=None, overlap=None) -&gt; ChunkOutput</code></strong><br />
+Implements the sliding window algorithm:</p>
+<ol>
+<li>Tokenize: <code>ids = tokenizer.encode(text, add_special_tokens=False)</code> → token ID list of length <code>N</code></li>
+<li>If <code>N == 0</code>: return empty <code>ChunkOutput</code></li>
+<li>If <code>N &lt;= W</code>: single chunk spanning <code>(0, N)</code></li>
+<li>If <code>N &gt; W</code>: generate spans with stride <code>D</code>:</li>
+<li><code>start = 0</code>; <code>end = min(start + W, N)</code>; append <code>(start, end)</code>; advance <code>start += D</code>; stop when <code>end == N</code></li>
+<li><strong>Short chunk merging</strong>: if the final span has fewer than <code>min_chunk</code> tokens, pop it and extend the previous span's end to <code>N</code></li>
+<li>Decode each span: <code>tokenizer.decode(ids[s:e], skip_special_tokens=True)</code></li>
+<li>Wrap in <code>ChunkDetail(chunk_index=idx, text=decoded, token_count=e-s)</code></li>
+</ol>
+<p>Per-call <code>window</code> and <code>overlap</code> overrides are supported (used by the UI's Advanced Settings sliders); the stride is recomputed as <code>window - overlap</code> for that specific call.</p>
+<hr />
+<h4 id="processingaggregatorpy-score-aggregator"><code>processing/aggregator.py</code> — Score Aggregator</h4>
+<p><strong><code>AggregationResult</code></strong> (dataclass)</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="nd">@dataclass</span>
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="k">class</span><span class="w"> </span><span class="nc">AggregationResult</span><span class="p">:</span>
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>    <span class="n">total_chunks</span><span class="p">:</span> <span class="nb">int</span>
+</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>    <span class="n">ai_chunk_count</span><span class="p">:</span> <span class="nb">int</span>
+</span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a>    <span class="n">ai_percentage</span><span class="p">:</span> <span class="nb">float</span>      <span class="c1"># (ai_chunk_count / total_chunks) * 100</span>
+</span><span id="__span-9-6"><a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a>    <span class="n">applied_threshold</span><span class="p">:</span> <span class="nb">float</span>
+</span><span id="__span-9-7"><a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a>    <span class="n">final_decision</span><span class="p">:</span> <span class="nb">str</span>
+</span><span id="__span-9-8"><a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a>    <span class="n">chunk_details</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">ChunkDetail</span><span class="p">]</span>
+</span></code></pre></div>
+<p><strong>Class: <code>ScoreAggregator</code></strong></p>
+<p><strong><code>aggregate(chunks, threshold=YOUDEN_THRESHOLD) -&gt; AggregationResult</code></strong></p>
+<ol>
+<li>For each <code>ChunkDetail</code>: if <code>chunk.score &lt; threshold</code> → <code>chunk.label = "AI"</code>, increment <code>ai_count</code>; otherwise <code>chunk.label = "Human"</code></li>
+<li>Compute <code>ai_pct = round((ai_count / total) * 100, 2)</code></li>
+<li>Apply three-class decision:</li>
+<li><code>ai_pct &gt; 50.0</code> → <code>"AI-generated"</code></li>
+<li><code>0 &lt; ai_pct &lt;= 50.0</code> → <code>"Human-written but contains AI-generated parts"</code></li>
+<li><code>ai_pct == 0.0</code> → <code>"Human-written"</code></li>
+</ol>
+<p>Raises <code>ValueError</code> if the input list is empty.</p>
+<hr />
+<h4 id="reportingpdf_reportpy-pdf-report-generator"><code>reporting/pdf_report.py</code> — PDF Report Generator</h4>
+<p><strong>Class: <code>PDFReportGenerator</code></strong></p>
+<p>Uses <code>fpdf2</code> for lightweight PDF generation without heavy dependencies. Requires a Vietnamese-capable TTF font (NotoSans-Regular.ttf) for correct diacritic rendering.</p>
+<p><strong><code>_ensure_font(font_path) -&gt; str</code></strong><br />
+Validates the font at <code>font_path</code> using TrueType/OpenType magic bytes (<code>_is_valid_ttf</code>). If the file is missing or corrupted (e.g. an HTML 404 response), it automatically cleans up and re-downloads <code>NotoSans-Regular.ttf</code> from GitHub (<code>notofonts/noto-fonts</code>) with multiple fallback URLs.</p>
+<p><strong><code>generate_pdf(result: DetectionResult) -&gt; bytes</code></strong><br />
+Builds and returns the complete PDF as bytes. The PDF contains:</p>
+<ol>
+<li><strong>Header</strong>: Application name + timestamp (GMT+7)</li>
+<li><strong>Summary table</strong>: document name, AI ratio, decision, threshold mode/value, chunk window/overlap, total/AI/human chunk counts, processing time</li>
+<li><strong>Chunk-Level Details</strong>: for each chunk, a color-coded header bar followed by the full chunk text (no truncation):</li>
+<li>AI chunk: background <code>(255, 200, 200)</code> (light red)</li>
+<li>Human chunk: background <code>(210, 245, 210)</code> (light green)</li>
+</ol>
+<hr />
+<h4 id="frontendgradio_apppy-gradio-web-application"><code>frontend/gradio_app.py</code> — Gradio Web Application</h4>
+<p><strong>Module-level state (lazy initialization):</strong></p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="n">_scorer</span>     <span class="o">=</span> <span class="kc">None</span>              <span class="c1"># VietBinocularsScorer (heavy GPU load)</span>
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="n">_chunker</span>    <span class="o">=</span> <span class="kc">None</span>              <span class="c1"># TextChunker (reuses scorer tokenizer)</span>
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="n">_normalizer</span> <span class="o">=</span> <span class="n">TextNormalizer</span><span class="p">()</span>  <span class="c1"># lightweight, initialized at import</span>
+</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="n">_aggregator</span> <span class="o">=</span> <span class="n">ScoreAggregator</span><span class="p">()</span>
+</span><span id="__span-10-5"><a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a><span class="n">_report_gen</span> <span class="o">=</span> <span class="n">PDFReportGenerator</span><span class="p">()</span>
+</span></code></pre></div>
+<p>Models are <strong>not</strong> initialized at import time, avoiding GPU memory allocation during testing or CPU-only environments.</p>
+<p><strong><code>_run_detection(text, file_obj, mode, window, overlap, progress)</code></strong><br />
+Main backend handler triggered on form submission:</p>
+<table>
+<thead>
+<tr>
+<th>Step</th>
+<th>Progress</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>5%</td>
+<td>Read input (text or file). Call <code>TextNormalizer.preprocess()</code>. Emit <code>gr.Warning()</code> for scanned PDFs.</td>
+</tr>
+<tr>
+<td>2</td>
+<td>15%</td>
+<td>Tokenize and chunk via <code>TextChunker.chunk()</code> with UI-specified window/overlap. Enforce <code>MINIMUM_TOKENS</code> (64).</td>
+</tr>
+<tr>
+<td>3</td>
+<td>30%</td>
+<td>Score all chunks via <code>VietBinocularsScorer.score_chunks()</code>.</td>
+</tr>
+<tr>
+<td>4</td>
+<td>85%</td>
+<td>Aggregate via <code>ScoreAggregator.aggregate()</code>. Build <code>DetectionResult</code>.</td>
+</tr>
+<tr>
+<td>5</td>
+<td>92%→100%</td>
+<td>Build HTML summary, chunks DataFrame, generate PDF to temp file.</td>
+</tr>
+</tbody>
+</table>
+<p>Returns <code>(summary_html, chunks_dataframe, pdf_file_path)</code>.</p>
+<p><strong><code>create_app() -&gt; gr.Blocks</code></strong><br />
+Builds the Gradio UI using the <code>Soft</code> theme with <code>Inter</code> (Google Font). Key UI components:</p>
+<ul>
+<li><code>gr.Textbox</code> — direct text input (pre-loaded with a Vietnamese sample text)</li>
+<li><code>gr.File</code> — file upload (<code>.docx</code>, <code>.pdf</code>, <code>.txt</code>)</li>
+<li><code>gr.Dropdown</code> — detection mode selector (Youden / Closest Point / Low FPR)</li>
+<li><code>gr.Accordion("Advanced Settings")</code> — Chunk Window (100–1024) and Overlap (0–500) sliders</li>
+<li><code>gr.Button("Analyze")</code> / <code>gr.ClearButton("Clear")</code></li>
+<li><code>gr.HTML</code> — summary result card with progress bar and metrics grid</li>
+<li><code>gr.Dataframe</code> — chunk-level detail table (scrollable, 420px max height)</li>
+<li><code>gr.File</code> — PDF report download</li>
+</ul>
+<hr />
+<h2 id="4-mathematical-foundations">4. Mathematical Foundations</h2>
+<h3 id="41-vietbinoculars-score">4.1 VietBinoculars Score</h3>
+<p>For a text chunk <span class="arithmatex">\(C_k\)</span>, the VietBinoculars score is:</p>
+<div class="arithmatex">\[\text{score}(C_k) = \frac{\text{PPL}(C_k)}{\text{X-PPL}(C_k)}\]</div>
+<p>where <span class="arithmatex">\(\text{PPL}(C_k)\)</span> is the cross-entropy loss of the <strong>performer</strong> model on <span class="arithmatex">\(C_k\)</span>, and <span class="arithmatex">\(\text{X-PPL}(C_k)\)</span> is the cross-entropy from the <strong>observer</strong> distribution to the <strong>performer</strong> logits. A <strong>low score</strong> indicates AI-generated text; a <strong>high score</strong> indicates human-written text.</p>
+<h3 id="42-perplexity-performer">4.2 Perplexity (Performer)</h3>
+<p>Let <span class="arithmatex">\(C_k = (x_1, x_2, \ldots, x_n)\)</span> be a sequence of <span class="arithmatex">\(n\)</span> tokens. Let <span class="arithmatex">\(q_\theta\)</span> be the performer model. The cross-entropy loss (used as PPL proxy) shifts the logits to predict the next token:</p>
+<div class="arithmatex">\[\text{PPL}(C_k) = \frac{1}{\sum_{t=2}^{n} m_t} \sum_{t=2}^{n} \ell\!\left(q_\theta(x_{&lt;t}),\; x_t\right) \cdot m_t\]</div>
+<p>where <span class="arithmatex">\(\ell(\cdot)\)</span> is cross-entropy loss and <span class="arithmatex">\(m_t\)</span> is the attention mask (1 for real tokens, 0 for padding). Note that the summation is over <span class="arithmatex">\(n-1\)</span> shifted positions.</p>
+<h3 id="43-cross-perplexity-observer-performer">4.3 Cross-Perplexity (Observer → Performer)</h3>
+<p>Let <span class="arithmatex">\(p_\phi\)</span> be the observer model. Unlike standard perplexity, the cross-perplexity evaluates the divergence between the two models' next-token probability distributions at <em>every</em> position <span class="arithmatex">\(t = 1 \dots n\)</span> (including the prediction for the unseen <span class="arithmatex">\((n+1)\)</span>-th token):</p>
+<div class="arithmatex">\[\text{X-PPL}(C_k) = \frac{1}{\sum_{t=1}^{n} m_t} \sum_{t=1}^{n} \text{CE}\!\left(q_\theta(x_{\le t}),\; \text{softmax}(p_\phi(x_{\le t}))\right) \cdot m_t\]</div>
+<p>Here, <span class="arithmatex">\(\text{softmax}(p_\phi(x_{\le t}))\)</span> converts the observer's target logits into a probability distribution, and <span class="arithmatex">\(\text{CE}\)</span> computes the cross-entropy from that target distribution to the performer's predicted logits <span class="arithmatex">\(q_\theta(x_{\le t})\)</span>.</p>
+<p><strong>Intuition:</strong> For AI-generated text (produced by a model from the same family as the performer), both <span class="arithmatex">\(p_\phi\)</span> and <span class="arithmatex">\(q_\theta\)</span> assign high confidence to the same tokens, so the ratio <span class="arithmatex">\(\text{PPL} / \text{X-PPL} \approx 1\)</span> is low. For human text, the performer's per-token uncertainty is higher (larger PPL), while the observer-performer divergence increases proportionally less — yielding a higher score.</p>
+<h3 id="44-sliding-window-chunking">4.4 Sliding Window Chunking</h3>
+<p>Let the full text tokenize to <span class="arithmatex">\(S = (x_1, \ldots, x_N)\)</span> with parameters:
+- <span class="arithmatex">\(W\)</span> = window size (default: 450)
+- <span class="arithmatex">\(O\)</span> = overlap (default: 100)
+- <span class="arithmatex">\(D = W - O\)</span> = stride (default: 350)
+- <span class="arithmatex">\(M\)</span> = minimum chunk size (default: 50)</p>
+<p><strong>Chunk generation:</strong></p>
+<div class="arithmatex">\[C_k = \bigl(x_{(k-1)D+1},\; \ldots,\; x_{\min((k-1)D+W,\; N)}\bigr), \quad k = 1, 2, \ldots, K\]</div>
+<p><strong>Short chunk merging:</strong> If <span class="arithmatex">\(|C_K| &lt; M\)</span> (last chunk too short):</p>
+<div class="arithmatex">\[C_{K-1}^* = (x_{(K-2)D+1}, \ldots, x_N), \quad C_K \text{ removed}\]</div>
+<h3 id="45-majority-voting-aggregation">4.5 Majority Voting Aggregation</h3>
+<p>Let <span class="arithmatex">\(t^*\)</span> be the selected threshold. For each chunk <span class="arithmatex">\(C_k\)</span>, define the indicator:</p>
+<div class="arithmatex">\[I(C_k) = \begin{cases} 1 &amp; \text{if } \text{score}(C_k) &lt; t^* \quad (\text{"AI"}) \\ 0 &amp; \text{otherwise} \quad (\text{"Human"}) \end{cases}\]</div>
+<p>AI vote count and percentage:</p>
+<div class="arithmatex">\[\text{Vote}(S) = \sum_{k=1}^{K} I(C_k), \qquad P_\text{AI} = \frac{\text{Vote}(S)}{K} \times 100\%\]</div>
+<p><strong>Three-class decision rule:</strong></p>
+<div class="arithmatex">\[\text{Decision}(S) = \begin{cases} \textit{AI-generated} &amp; \text{if } P_\text{AI} &gt; 50\% \\ \textit{Human-written but contains AI-generated parts} &amp; \text{if } 0\% &lt; P_\text{AI} \leq 50\% \\ \textit{Human-written} &amp; \text{if } P_\text{AI} = 0\% \end{cases}\]</div>
+<h3 id="46-detection-thresholds">4.6 Detection Thresholds</h3>
+<p>Detection thresholds are centralized in <a href="../config/settings.py"><code>config/settings.py</code></a> and derived from VietBinoculars benchmark experiments:</p>
+<ul>
+<li><strong>Classification rule</strong>:
+  $<span class="arithmatex">\(\text{Label}(\text{chunk}) = \begin{cases} \text{AI-generated} &amp; \text{if } \text{score} &lt; \text{threshold} \\ \text{Human-written} &amp; \text{if } \text{score} \ge \text{threshold} \end{cases}\)</span>$</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Mode (<code>THRESHOLD_MODES</code>)</th>
+<th>Constant</th>
+<th>Threshold <span class="arithmatex">\(t^*\)</span></th>
+<th>Derivation / Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Youden (Balanced F1)</strong> <em>(Default)</em></td>
+<td><code>YOUDEN_THRESHOLD</code></td>
+<td><span class="arithmatex">\(\approx 0.9280\)</span></td>
+<td>Maximizes Youden's J (<span class="arithmatex">\(J = \text{TPR} - \text{FPR}\)</span>, optimal balanced F1)</td>
+</tr>
+<tr>
+<td><strong>Closest Point (Near-Perfect)</strong></td>
+<td><code>CLOSEST_POINT_THRESHOLD</code></td>
+<td><span class="arithmatex">\(\approx 0.9251\)</span></td>
+<td>Minimizes Euclidean distance from ROC curve to ideal point <span class="arithmatex">\((0, 1)\)</span></td>
+</tr>
+<tr>
+<td><strong>Low FPR (Fewer False Alarms)</strong></td>
+<td><code>FPR_THRESHOLD</code></td>
+<td><span class="arithmatex">\(\approx 0.8993\)</span></td>
+<td>Low False Positive Rate threshold (<span class="arithmatex">\(\text{TPR@0.05FPR}\)</span>, minimizes false alarms)</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="5-installation-and-deployment">5. Installation and Deployment</h2>
+<h3 id="51-prerequisites">5.1 Prerequisites</h3>
+<table>
+<thead>
+<tr>
+<th>Requirement</th>
+<th>Specification</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Python</td>
+<td>&gt;= 3.10</td>
+</tr>
+<tr>
+<td>CUDA</td>
+<td>&gt;= 11.8</td>
+</tr>
+<tr>
+<td>GPU VRAM</td>
+<td>&gt;= 24 GB total (recommended: 2x NVIDIA T4, 32 GB)</td>
+</tr>
+<tr>
+<td>Disk space</td>
+<td>~20 GB (model weights: ~9 GB + ~9 GB + ~2.5 GB)</td>
+</tr>
+<tr>
+<td>Internet</td>
+<td>Required for HuggingFace model download on first run</td>
+</tr>
+</tbody>
+</table>
+<h3 id="52-local-installation">5.2 Local Installation</h3>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="c1"># Step 1: Clone the repository</span>
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/trieuntu/VietAIDetector.git
+</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="nb">cd</span><span class="w"> </span>VietAIDetector
+</span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a>
+</span><span id="__span-11-5"><a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a><span class="c1"># Step 2: Create a virtual environment</span>
+</span><span id="__span-11-6"><a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a>python3.10<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>.venv
+</span><span id="__span-11-7"><a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a><span class="nb">source</span><span class="w"> </span>.venv/bin/activate<span class="w">   </span><span class="c1"># Linux / macOS</span>
+</span><span id="__span-11-8"><a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a>
+</span><span id="__span-11-9"><a id="__codelineno-11-9" name="__codelineno-11-9" href="#__codelineno-11-9"></a><span class="c1"># Step 3: Install dependencies</span>
+</span><span id="__span-11-10"><a id="__codelineno-11-10" name="__codelineno-11-10" href="#__codelineno-11-10"></a>pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>requirements.txt
+</span><span id="__span-11-11"><a id="__codelineno-11-11" name="__codelineno-11-11" href="#__codelineno-11-11"></a>
+</span><span id="__span-11-12"><a id="__codelineno-11-12" name="__codelineno-11-12" href="#__codelineno-11-12"></a><span class="c1"># Step 4: Set environment variables (optional)</span>
+</span><span id="__span-11-13"><a id="__codelineno-11-13" name="__codelineno-11-13" href="#__codelineno-11-13"></a><span class="nb">export</span><span class="w"> </span><span class="nv">HF_TOKEN</span><span class="o">=</span><span class="s2">"hf_your_token_here"</span><span class="w">       </span><span class="c1"># for gated models</span>
+</span><span id="__span-11-14"><a id="__codelineno-11-14" name="__codelineno-11-14" href="#__codelineno-11-14"></a><span class="nb">export</span><span class="w"> </span><span class="nv">FONT_PATH</span><span class="o">=</span><span class="s2">"/tmp/NotoSans-Regular.ttf"</span><span class="w">  </span><span class="c1"># auto-downloaded if missing</span>
+</span><span id="__span-11-15"><a id="__codelineno-11-15" name="__codelineno-11-15" href="#__codelineno-11-15"></a>
+</span><span id="__span-11-16"><a id="__codelineno-11-16" name="__codelineno-11-16" href="#__codelineno-11-16"></a><span class="c1"># Step 5: Launch</span>
+</span><span id="__span-11-17"><a id="__codelineno-11-17" name="__codelineno-11-17" href="#__codelineno-11-17"></a>python<span class="w"> </span>app.py
+</span></code></pre></div>
+<p>The application is accessible at <code>http://localhost:7860</code>. With <code>share=True</code> in <code>app.py</code>, a temporary public URL is also printed to the console.</p>
+<h3 id="53-kaggle-notebook-deployment">5.3 Kaggle Notebook Deployment</h3>
+<p>VietAIDetector is optimized for Kaggle T4x2 (2x NVIDIA T4, 15 GB VRAM each).</p>
+<p><strong>Steps:</strong>
+1. Create a new Kaggle Notebook
+2. <strong>Settings → Accelerator</strong>: select <code>GPU T4 x2</code>
+3. <strong>Settings → Internet</strong>: enable
+4. Upload <code>VietAIDetector/</code> folder to <code>/kaggle/working/</code>
+5. In the first code cell, run:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>!bash<span class="w"> </span>/kaggle/working/VietAIDetector/run_kaggle.sh
+</span></code></pre></div>
+<p>The <code>run_kaggle.sh</code> script performs five actions automatically:
+1. Sets performance environment variables (<code>TORCHDYNAMO_DISABLE</code>, <code>TOKENIZERS_PARALLELISM</code>, <code>TRANSFORMERS_NO_ADVISORY_WARNINGS</code>)
+2. Installs all dependencies: <code>pip install -q -r requirements.txt</code>
+3. Downloads NotoSans font to <code>/tmp/NotoSans-Regular.ttf</code>
+4. Verifies GPU count and VRAM
+5. Launches <code>python3 app.py</code></p>
+<h3 id="54-environment-variables-reference">5.4 Environment Variables Reference</h3>
+<table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Required</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>HF_TOKEN</code></td>
+<td>Optional</td>
+<td><code>None</code></td>
+<td>HuggingFace API token. Required if PhoGPT models are gated.</td>
+</tr>
+<tr>
+<td><code>FONT_PATH</code></td>
+<td>Optional</td>
+<td><code>/tmp/NotoSans-Regular.ttf</code></td>
+<td>Path to NotoSans TTF font. Auto-downloaded if not present.</td>
+</tr>
+<tr>
+<td><code>TORCHDYNAMO_DISABLE</code></td>
+<td>Optional</td>
+<td>unset</td>
+<td>Set to <code>1</code> to disable TorchDynamo compilation (improves stability).</td>
+</tr>
+<tr>
+<td><code>TOKENIZERS_PARALLELISM</code></td>
+<td>Optional</td>
+<td>unset</td>
+<td>Set to <code>false</code> to prevent tokenizer deadlocks in multi-threaded environments.</td>
+</tr>
+<tr>
+<td><code>TRANSFORMERS_NO_ADVISORY_WARNINGS</code></td>
+<td>Optional</td>
+<td>unset</td>
+<td>Set to <code>1</code> to suppress HuggingFace Transformers advisory warnings.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="55-first-run-behavior">5.5 First-Run Behavior</h3>
+<p>On first launch, HuggingFace models are downloaded and cached to <code>~/.cache/huggingface/</code>:
+- PhoGPT-4B (~9 GB) and PhoGPT-4B-Chat (~9 GB): approximately <strong>3–5 minutes</strong>
+- Vintern-1B-v2 (~2.5 GB): downloaded only on first scanned PDF submission (lazy loading)</p>
+<hr />
+<h2 id="6-usage-guide">6. Usage Guide</h2>
+<h3 id="61-web-user-interface">6.1 Web User Interface</h3>
+<p>Navigate to <code>http://localhost:7860</code> after launching.</p>
+<p><strong>Input methods:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Direct text</td>
+<td>Paste Vietnamese text into the textbox (file upload takes priority if both are provided)</td>
+</tr>
+<tr>
+<td>File upload</td>
+<td>Upload <code>.docx</code>, <code>.pdf</code>, or <code>.txt</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Detection modes:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Mode</th>
+<th>Threshold</th>
+<th>Recommended use case</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Youden (Balanced F1)</td>
+<td><code>YOUDEN_THRESHOLD</code> <span class="arithmatex">\(\approx 0.9280\)</span></td>
+<td>General-purpose — balanced accuracy</td>
+</tr>
+<tr>
+<td>Closest Point (Near-Perfect)</td>
+<td><code>CLOSEST_POINT_THRESHOLD</code> <span class="arithmatex">\(\approx 0.9251\)</span></td>
+<td>High-precision applications</td>
+</tr>
+<tr>
+<td>Low FPR (Fewer False Alarms)</td>
+<td><code>FPR_THRESHOLD</code> <span class="arithmatex">\(\approx 0.8993\)</span></td>
+<td>When false accusations are costly (e.g., academic proceedings)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Advanced Settings:</strong>
+- <strong>Chunk Window Size</strong> (100–768 tokens, default: 450): Maximum tokens per analysis window. While PhoGPT-4B supports up to 8192 tokens, this parameter is hard-capped at <code>MAX_MODEL_TOKENS</code> (768) to prevent OOM errors on Kaggle T4 GPUs (15GB VRAM) given the <span class="arithmatex">\(O(N^2)\)</span> attention mechanism. Larger windows provide more context but increase processing time.
+- <strong>Chunk Overlap</strong> (0–500 tokens, default: 100): Token overlap between consecutive windows. Higher overlap reduces boundary artifacts.</p>
+<p><strong>Interpreting results:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Verdict</th>
+<th>Condition</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>AI-generated</td>
+<td>&gt; 50% of chunks scored below threshold</td>
+</tr>
+<tr>
+<td>Human-written but contains AI-generated parts</td>
+<td>1–50% of chunks below threshold</td>
+</tr>
+<tr>
+<td>Human-written</td>
+<td>0% of chunks below threshold</td>
+</tr>
+</tbody>
+</table>
+<p>The summary card displays: verdict icon, AI ratio progress bar, chunk statistics (AI / Human / Total), applied threshold, processing time, and detected source format.</p>
+<h3 id="62-programmatic-api">6.2 Programmatic API</h3>
+<p><strong>End-to-end detection pipeline:</strong></p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">preprocessing.normalizer</span><span class="w"> </span><span class="kn">import</span> <span class="n">TextNormalizer</span>
+</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">processing.chunker</span><span class="w"> </span><span class="kn">import</span> <span class="n">TextChunker</span>
+</span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a><span class="kn">from</span><span class="w"> </span><span class="nn">processing.aggregator</span><span class="w"> </span><span class="kn">import</span> <span class="n">ScoreAggregator</span>
+</span><span id="__span-13-4"><a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a><span class="kn">from</span><span class="w"> </span><span class="nn">core.scorer</span><span class="w"> </span><span class="kn">import</span> <span class="n">VietBinocularsScorer</span>
+</span><span id="__span-13-5"><a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a><span class="kn">from</span><span class="w"> </span><span class="nn">config.settings</span><span class="w"> </span><span class="kn">import</span> <span class="n">OBSERVER_MODEL</span><span class="p">,</span> <span class="n">PERFORMER_MODEL</span><span class="p">,</span> <span class="n">YOUDEN_THRESHOLD</span>
+</span><span id="__span-13-6"><a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a><span class="kn">import</span><span class="w"> </span><span class="nn">uuid</span>
+</span><span id="__span-13-7"><a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a>
+</span><span id="__span-13-8"><a id="__codelineno-13-8" name="__codelineno-13-8" href="#__codelineno-13-8"></a><span class="c1"># Initialize once at startup</span>
+</span><span id="__span-13-9"><a id="__codelineno-13-9" name="__codelineno-13-9" href="#__codelineno-13-9"></a><span class="n">scorer</span>     <span class="o">=</span> <span class="n">VietBinocularsScorer</span><span class="p">(</span><span class="n">OBSERVER_MODEL</span><span class="p">,</span> <span class="n">PERFORMER_MODEL</span><span class="p">)</span>
+</span><span id="__span-13-10"><a id="__codelineno-13-10" name="__codelineno-13-10" href="#__codelineno-13-10"></a><span class="n">normalizer</span> <span class="o">=</span> <span class="n">TextNormalizer</span><span class="p">()</span>
+</span><span id="__span-13-11"><a id="__codelineno-13-11" name="__codelineno-13-11" href="#__codelineno-13-11"></a><span class="n">chunker</span>    <span class="o">=</span> <span class="n">TextChunker</span><span class="p">(</span><span class="n">tokenizer_name_or_obj</span><span class="o">=</span><span class="n">scorer</span><span class="o">.</span><span class="n">tokenizer</span><span class="p">)</span>  <span class="c1"># reuse tokenizer (can set window=600, overlap=200 globally here)</span>
+</span><span id="__span-13-12"><a id="__codelineno-13-12" name="__codelineno-13-12" href="#__codelineno-13-12"></a><span class="n">aggregator</span> <span class="o">=</span> <span class="n">ScoreAggregator</span><span class="p">()</span>
+</span><span id="__span-13-13"><a id="__codelineno-13-13" name="__codelineno-13-13" href="#__codelineno-13-13"></a>
+</span><span id="__span-13-14"><a id="__codelineno-13-14" name="__codelineno-13-14" href="#__codelineno-13-14"></a><span class="c1"># Run pipeline on a text string</span>
+</span><span id="__span-13-15"><a id="__codelineno-13-15" name="__codelineno-13-15" href="#__codelineno-13-15"></a><span class="n">result</span> <span class="o">=</span> <span class="n">normalizer</span><span class="o">.</span><span class="n">preprocess</span><span class="p">(</span><span class="s2">"sample.txt"</span><span class="p">,</span> <span class="s2">"Văn bản tiếng Việt cần kiểm tra..."</span><span class="p">)</span>
+</span><span id="__span-13-16"><a id="__codelineno-13-16" name="__codelineno-13-16" href="#__codelineno-13-16"></a><span class="c1"># You can override chunking parameters per document here:</span>
+</span><span id="__span-13-17"><a id="__codelineno-13-17" name="__codelineno-13-17" href="#__codelineno-13-17"></a><span class="n">chunk_output</span> <span class="o">=</span> <span class="n">chunker</span><span class="o">.</span><span class="n">chunk</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">cleaned_text</span><span class="p">,</span> <span class="n">document_id</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">uuid</span><span class="o">.</span><span class="n">uuid4</span><span class="p">())[:</span><span class="mi">8</span><span class="p">],</span> <span class="n">window</span><span class="o">=</span><span class="mi">600</span><span class="p">,</span> <span class="n">overlap</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span>
+</span><span id="__span-13-18"><a id="__codelineno-13-18" name="__codelineno-13-18" href="#__codelineno-13-18"></a><span class="n">scored_chunks</span> <span class="o">=</span> <span class="n">scorer</span><span class="o">.</span><span class="n">score_chunks</span><span class="p">(</span><span class="n">chunk_output</span><span class="o">.</span><span class="n">chunks</span><span class="p">)</span>
+</span><span id="__span-13-19"><a id="__codelineno-13-19" name="__codelineno-13-19" href="#__codelineno-13-19"></a><span class="n">agg</span> <span class="o">=</span> <span class="n">aggregator</span><span class="o">.</span><span class="n">aggregate</span><span class="p">(</span><span class="n">scored_chunks</span><span class="p">,</span> <span class="n">threshold</span><span class="o">=</span><span class="n">YOUDEN_THRESHOLD</span><span class="p">)</span>
+</span><span id="__span-13-20"><a id="__codelineno-13-20" name="__codelineno-13-20" href="#__codelineno-13-20"></a>
+</span><span id="__span-13-21"><a id="__codelineno-13-21" name="__codelineno-13-21" href="#__codelineno-13-21"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Decision : </span><span class="si">{</span><span class="n">agg</span><span class="o">.</span><span class="n">final_decision</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+</span><span id="__span-13-22"><a id="__codelineno-13-22" name="__codelineno-13-22" href="#__codelineno-13-22"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"AI ratio : </span><span class="si">{</span><span class="n">agg</span><span class="o">.</span><span class="n">ai_percentage</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">%"</span><span class="p">)</span>
+</span><span id="__span-13-23"><a id="__codelineno-13-23" name="__codelineno-13-23" href="#__codelineno-13-23"></a><span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">agg</span><span class="o">.</span><span class="n">chunk_details</span><span class="p">:</span>
+</span><span id="__span-13-24"><a id="__codelineno-13-24" name="__codelineno-13-24" href="#__codelineno-13-24"></a>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"  Chunk </span><span class="si">{</span><span class="n">c</span><span class="o">.</span><span class="n">chunk_index</span><span class="si">}</span><span class="s2">: score=</span><span class="si">{</span><span class="n">c</span><span class="o">.</span><span class="n">score</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">  label=</span><span class="si">{</span><span class="n">c</span><span class="o">.</span><span class="n">label</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+</span></code></pre></div>
+<p><strong>Score a single string:</strong></p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="n">score</span> <span class="o">=</span> <span class="n">scorer</span><span class="o">.</span><span class="n">compute_score</span><span class="p">(</span><span class="s2">"Trí tuệ nhân tạo đang phát triển mạnh mẽ."</span><span class="p">)</span>
+</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Score: </span><span class="si">{</span><span class="n">score</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>  <span class="c1"># &lt; YOUDEN_THRESHOLD -&gt; likely AI; &gt; YOUDEN_THRESHOLD -&gt; likely human</span>
+</span></code></pre></div>
+<p><strong>Score a batch:</strong></p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="n">scores</span> <span class="o">=</span> <span class="n">scorer</span><span class="o">.</span><span class="n">compute_score</span><span class="p">([</span><span class="s2">"Text 1..."</span><span class="p">,</span> <span class="s2">"Text 2..."</span><span class="p">,</span> <span class="s2">"Text 3..."</span><span class="p">])</span>
+</span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="c1"># returns list[float]</span>
+</span></code></pre></div>
+<p><strong>Process a PDF file:</strong></p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">"document.pdf"</span><span class="p">,</span> <span class="s2">"rb"</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+</span><span id="__span-16-2"><a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>    <span class="n">result</span> <span class="o">=</span> <span class="n">normalizer</span><span class="o">.</span><span class="n">preprocess</span><span class="p">(</span><span class="s2">"document.pdf"</span><span class="p">,</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
+</span><span id="__span-16-3"><a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a><span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">source_format</span><span class="p">)</span>    <span class="c1"># "pdf_native" or "pdf_scanned"</span>
+</span><span id="__span-16-4"><a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a><span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">cleaned_text</span><span class="p">[:</span><span class="mi">500</span><span class="p">])</span>
+</span></code></pre></div>
+<p><strong>Generate a PDF report:</strong></p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">reporting.pdf_report</span><span class="w"> </span><span class="kn">import</span> <span class="n">PDFReportGenerator</span>
+</span><span id="__span-17-2"><a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">schemas.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">DetectionResult</span>
+</span><span id="__span-17-3"><a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a>
+</span><span id="__span-17-4"><a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a><span class="n">gen</span> <span class="o">=</span> <span class="n">PDFReportGenerator</span><span class="p">()</span>
+</span><span id="__span-17-5"><a id="__codelineno-17-5" name="__codelineno-17-5" href="#__codelineno-17-5"></a><span class="n">pdf_bytes</span> <span class="o">=</span> <span class="n">gen</span><span class="o">.</span><span class="n">generate_pdf</span><span class="p">(</span><span class="n">detection_result</span><span class="p">)</span>  <span class="c1"># a DetectionResult object</span>
+</span><span id="__span-17-6"><a id="__codelineno-17-6" name="__codelineno-17-6" href="#__codelineno-17-6"></a><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">"report.pdf"</span><span class="p">,</span> <span class="s2">"wb"</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+</span><span id="__span-17-7"><a id="__codelineno-17-7" name="__codelineno-17-7" href="#__codelineno-17-7"></a>    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">pdf_bytes</span><span class="p">)</span>
+</span></code></pre></div>
+<h3 id="63-classification-decision-reference">6.3 Classification Decision Reference</h3>
+<p>Chunk-level classification is binary based on the active threshold <span class="arithmatex">\(t^*\)</span>:
+- <span class="arithmatex">\(\text{score} &lt; t^* \implies \textbf{AI-generated}\)</span>
+- <span class="arithmatex">\(\text{score} \ge t^* \implies \textbf{Human-written}\)</span></p>
+<p>The overall document verdict is determined by the percentage of AI chunks (<span class="arithmatex">\(P_{\text{AI}}\)</span>) via majority voting:</p>
+<table>
+<thead>
+<tr>
+<th>Overall Verdict</th>
+<th>Condition</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>AI-generated</strong></td>
+<td><span class="arithmatex">\(P_{\text{AI}} &gt; 50\%\)</span></td>
+<td>More than half of the text chunks are classified as AI</td>
+</tr>
+<tr>
+<td><strong>Human-written but contains AI-generated parts</strong></td>
+<td><span class="arithmatex">\(0\% &lt; P_{\text{AI}} \leq 50\%\)</span></td>
+<td>Mixed authorship — document contains both AI and human segments</td>
+</tr>
+<tr>
+<td><strong>Human-written</strong></td>
+<td><span class="arithmatex">\(P_{\text{AI}} = 0\%\)</span></td>
+<td>All analyzed text chunks are classified as human-written</td>
+</tr>
+</tbody>
+</table>
+<h3 id="64-source-format-labels">6.4 Source Format Labels</h3>
+<table>
+<thead>
+<tr>
+<th><code>source_format</code></th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>plain</code></td>
+<td>Input was a raw text string</td>
+</tr>
+<tr>
+<td><code>docx</code></td>
+<td>Extracted from Microsoft Word (.docx)</td>
+</tr>
+<tr>
+<td><code>pdf_native</code></td>
+<td>PDF with an embedded text layer</td>
+</tr>
+<tr>
+<td><code>pdf_scanned</code></td>
+<td>Image-based PDF processed via Vintern-1B-v2 OCR</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="7-testing">7. Testing</h2>
+<h3 id="71-test-suite-overview">7.1 Test Suite Overview</h3>
+<p>The <code>tests/</code> directory contains <strong>6 test modules</strong> covering all non-GPU-dependent components. GPU-dependent components (the scorer) are excluded to allow CI execution without hardware requirements.</p>
+<table>
+<thead>
+<tr>
+<th>Test file</th>
+<th>Component under test</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>test_text_utils.py</code></td>
+<td><code>DEHYPHEN_RE</code>, <code>LINEBREAK_RE</code>, <code>WHITESPACE_RE</code>, <code>count_words()</code>, <code>special_char_ratio()</code></td>
+</tr>
+<tr>
+<td><code>test_normalizer.py</code></td>
+<td><code>TextNormalizer.normalize()</code>, <code>filter_paragraphs()</code>, <code>preprocess()</code></td>
+</tr>
+<tr>
+<td><code>test_chunker.py</code></td>
+<td><code>TextChunker.chunk()</code> — single chunk, multi-chunk, boundary merging, empty input, stride override</td>
+</tr>
+<tr>
+<td><code>test_aggregator.py</code></td>
+<td><code>ScoreAggregator.aggregate()</code> — all three decisions, threshold boundaries, empty input error</td>
+</tr>
+<tr>
+<td><code>test_report_generator.py</code></td>
+<td><code>PDFReportGenerator.generate_pdf()</code> — output validity, color scheme correctness</td>
+</tr>
+<tr>
+<td><code>test_ocr_engine.py</code></td>
+<td><code>VinternOCR</code> with mock models, <code>_dynamic_preprocess()</code>, <code>load_image()</code>, output validation</td>
+</tr>
+</tbody>
+</table>
+<p><code>tests/conftest.py</code> inserts the project root into <code>sys.path</code>, enabling absolute package imports without installation.</p>
+<h3 id="72-running-tests">7.2 Running Tests</h3>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="c1"># Run all tests</span>
+</span><span id="__span-18-2"><a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a>pytest
+</span><span id="__span-18-3"><a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a>
+</span><span id="__span-18-4"><a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a><span class="c1"># Verbose output</span>
+</span><span id="__span-18-5"><a id="__codelineno-18-5" name="__codelineno-18-5" href="#__codelineno-18-5"></a>pytest<span class="w"> </span>-v
+</span><span id="__span-18-6"><a id="__codelineno-18-6" name="__codelineno-18-6" href="#__codelineno-18-6"></a>
+</span><span id="__span-18-7"><a id="__codelineno-18-7" name="__codelineno-18-7" href="#__codelineno-18-7"></a><span class="c1"># Specific file</span>
+</span><span id="__span-18-8"><a id="__codelineno-18-8" name="__codelineno-18-8" href="#__codelineno-18-8"></a>pytest<span class="w"> </span>tests/test_chunker.py<span class="w"> </span>-v
+</span><span id="__span-18-9"><a id="__codelineno-18-9" name="__codelineno-18-9" href="#__codelineno-18-9"></a>
+</span><span id="__span-18-10"><a id="__codelineno-18-10" name="__codelineno-18-10" href="#__codelineno-18-10"></a><span class="c1"># Keyword filter</span>
+</span><span id="__span-18-11"><a id="__codelineno-18-11" name="__codelineno-18-11" href="#__codelineno-18-11"></a>pytest<span class="w"> </span>-k<span class="w"> </span><span class="s2">"normalizer"</span><span class="w"> </span>-v
+</span></code></pre></div>
+<p><strong>Test configuration</strong> (<code>pyproject.toml</code>):
+<div class="language-toml highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="k">[tool.pytest.ini_options]</span>
+</span><span id="__span-19-2"><a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a><span class="n">testpaths</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">"tests"</span><span class="p">]</span>
+</span><span id="__span-19-3"><a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a><span class="n">pythonpath</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">"."</span><span class="p">]</span>
+</span></code></pre></div></p>
+<h3 id="73-test-design-notes">7.3 Test Design Notes</h3>
+<ul>
+<li><strong><code>TextChunker</code> tests</strong> use a whitespace-tokenizing mock tokenizer for fast, deterministic execution without loading PhoGPT-4B.</li>
+<li><strong><code>VinternOCR</code> tests</strong> mock <code>AutoModel</code> and <code>AutoTokenizer</code> to isolate image preprocessing and output validation logic from actual VLM inference.</li>
+<li><strong><code>PDFReportGenerator</code> tests</strong> verify that the output is non-empty bytes and that the correct RGB fill colors are applied to AI vs. Human chunks.</li>
+</ul>
+<hr />
+<h2 id="8-benchmark-evaluation">8. Benchmark Evaluation</h2>
+<p>The <code>benchmarks/</code> directory contains datasets and a CLI evaluation script for measuring detection accuracy across different LLM-generated corpora.</p>
+<h3 id="81-directory-structure">8.1 Directory Structure</h3>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>benchmarks/
+</span><span id="__span-20-2"><a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a>├── run_eval.py                              ← CLI evaluation script
+</span><span id="__span-20-3"><a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a>├── datasets/
+</span><span id="__span-20-4"><a id="__codelineno-20-4" name="__codelineno-20-4" href="#__codelineno-20-4"></a>│   ├── claude-sonnet-4.6.json               ← 20 AI-generated documents
+</span><span id="__span-20-5"><a id="__codelineno-20-5" name="__codelineno-20-5" href="#__codelineno-20-5"></a>│   ├── gemini-3.7-flash.json                ← 20 AI-generated documents
+</span><span id="__span-20-6"><a id="__codelineno-20-6" name="__codelineno-20-6" href="#__codelineno-20-6"></a>│   └── gpt-5.6-luna.json                    ← 20 AI-generated documents
+</span><span id="__span-20-7"><a id="__codelineno-20-7" name="__codelineno-20-7" href="#__codelineno-20-7"></a>└── train_datasets/
+</span><span id="__span-20-8"><a id="__codelineno-20-8" name="__codelineno-20-8" href="#__codelineno-20-8"></a>    ├── final_updated_dataset_20000.csv
+</span><span id="__span-20-9"><a id="__codelineno-20-9" name="__codelineno-20-9" href="#__codelineno-20-9"></a>    ├── train_dataset_from_VietBinoculars.csv
+</span><span id="__span-20-10"><a id="__codelineno-20-10" name="__codelineno-20-10" href="#__codelineno-20-10"></a>    ├── gemini-3.7-flash-vietnamese_news_ai_dataset_5000.jsonl
+</span><span id="__span-20-11"><a id="__codelineno-20-11" name="__codelineno-20-11" href="#__codelineno-20-11"></a>    └── gpt-5.6-luna-vietnamese_news_ai_dataset_5000.jsonl
+</span></code></pre></div>
+<h3 id="82-dataset-format">8.2 Dataset Format</h3>
+<p>Each JSON file in <code>benchmarks/datasets/</code> is a list of objects with the following fields:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>id</code></td>
+<td><code>str</code></td>
+<td>Unique document identifier</td>
+</tr>
+<tr>
+<td><code>text</code></td>
+<td><code>str</code></td>
+<td>Full document text (Vietnamese)</td>
+</tr>
+<tr>
+<td><code>is_ai_generated</code></td>
+<td><code>bool</code></td>
+<td>Ground-truth label</td>
+</tr>
+<tr>
+<td><code>model</code></td>
+<td><code>str</code></td>
+<td>Generator model name (e.g., <code>"claude-sonnet-4.6"</code>)</td>
+</tr>
+<tr>
+<td><code>topic</code></td>
+<td><code>str</code></td>
+<td>Document topic category</td>
+</tr>
+<tr>
+<td><code>sub_topic</code></td>
+<td><code>str</code></td>
+<td>Document sub-topic category</td>
+</tr>
+<tr>
+<td><code>word_count</code></td>
+<td><code>int</code></td>
+<td>Number of words in the document</td>
+</tr>
+</tbody>
+</table>
+<p>The training datasets in <code>benchmarks/train_datasets/</code> follow JSONL format (one JSON object per line) and were used to derive the detection thresholds reported in the VietBinoculars paper.</p>
+<h3 id="83-running-evaluations">8.3 Running Evaluations</h3>
+<p><code>benchmarks/run_eval.py</code> processes a dataset through the full detection pipeline and outputs per-document results as CSV.</p>
+<p><strong>CLI arguments:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>input</code></td>
+<td><em>(required)</em></td>
+<td>Path to a <code>.json</code> dataset file or directory</td>
+</tr>
+<tr>
+<td><code>-o, --output</code></td>
+<td>auto-generated</td>
+<td>Output CSV path</td>
+</tr>
+<tr>
+<td><code>-m, --mode</code></td>
+<td><code>Youden (Balanced F1)</code></td>
+<td>Detection threshold mode</td>
+</tr>
+<tr>
+<td><code>-w, --window</code></td>
+<td><code>450</code></td>
+<td>Chunk window size (tokens)</td>
+</tr>
+<tr>
+<td><code>--overlap</code></td>
+<td><code>100</code></td>
+<td>Chunk overlap (tokens)</td>
+</tr>
+<tr>
+<td><code>--resume</code></td>
+<td><code>false</code></td>
+<td>Skip documents already present in the output CSV</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Examples:</strong></p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="c1"># Evaluate a single dataset with default parameters</span>
+</span><span id="__span-21-2"><a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a>python<span class="w"> </span>benchmarks/run_eval.py<span class="w"> </span>benchmarks/datasets/claude-sonnet-4.6.json
+</span><span id="__span-21-3"><a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a>
+</span><span id="__span-21-4"><a id="__codelineno-21-4" name="__codelineno-21-4" href="#__codelineno-21-4"></a><span class="c1"># Custom chunking parameters</span>
+</span><span id="__span-21-5"><a id="__codelineno-21-5" name="__codelineno-21-5" href="#__codelineno-21-5"></a>python<span class="w"> </span>benchmarks/run_eval.py<span class="w"> </span>benchmarks/datasets/gpt-5.6-luna.json<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-21-6"><a id="__codelineno-21-6" name="__codelineno-21-6" href="#__codelineno-21-6"></a><span class="w">    </span>--window<span class="w"> </span><span class="m">600</span><span class="w"> </span>--overlap<span class="w"> </span><span class="m">200</span>
+</span><span id="__span-21-7"><a id="__codelineno-21-7" name="__codelineno-21-7" href="#__codelineno-21-7"></a>
+</span><span id="__span-21-8"><a id="__codelineno-21-8" name="__codelineno-21-8" href="#__codelineno-21-8"></a><span class="c1"># Evaluate all datasets in the directory</span>
+</span><span id="__span-21-9"><a id="__codelineno-21-9" name="__codelineno-21-9" href="#__codelineno-21-9"></a>python<span class="w"> </span>benchmarks/run_eval.py<span class="w"> </span>benchmarks/datasets/
+</span><span id="__span-21-10"><a id="__codelineno-21-10" name="__codelineno-21-10" href="#__codelineno-21-10"></a>
+</span><span id="__span-21-11"><a id="__codelineno-21-11" name="__codelineno-21-11" href="#__codelineno-21-11"></a><span class="c1"># Resume an interrupted run</span>
+</span><span id="__span-21-12"><a id="__codelineno-21-12" name="__codelineno-21-12" href="#__codelineno-21-12"></a>python<span class="w"> </span>benchmarks/run_eval.py<span class="w"> </span>benchmarks/datasets/gemini-3.7-flash.json<span class="w"> </span>--resume
+</span></code></pre></div>
+<p><strong>Output CSV Schema (<code>CSV_COLUMNS</code>):</strong></p>
+<table>
+<thead>
+<tr>
+<th>Column</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>document_id</code></td>
+<td><code>str</code></td>
+<td>Unique document identifier from dataset or generated UUID</td>
+</tr>
+<tr>
+<td><code>ai_percentage</code></td>
+<td><code>float</code></td>
+<td>Percentage of chunks classified as AI-generated (<span class="arithmatex">\(0.0 - 100.0\)</span>)</td>
+</tr>
+<tr>
+<td><code>final_decision</code></td>
+<td><code>str</code></td>
+<td>Overall verdict (<code>"AI-generated"</code>, <code>"Human-written"</code>, <code>"Human-written but contains AI-generated parts"</code>)</td>
+</tr>
+<tr>
+<td><code>applied_threshold</code></td>
+<td><code>float</code></td>
+<td>Numeric threshold value used for chunk classification</td>
+</tr>
+<tr>
+<td><code>applied_mode</code></td>
+<td><code>str</code></td>
+<td>Threshold mode name (e.g., <code>"Youden (Balanced F1)"</code>)</td>
+</tr>
+<tr>
+<td><code>chunk_window</code></td>
+<td><code>int</code></td>
+<td>Token window size used (<span class="arithmatex">\(W\)</span>)</td>
+</tr>
+<tr>
+<td><code>chunk_overlap</code></td>
+<td><code>int</code></td>
+<td>Token overlap size used (<span class="arithmatex">\(O\)</span>)</td>
+</tr>
+<tr>
+<td><code>total_chunks</code></td>
+<td><code>int</code></td>
+<td>Total number of chunks evaluated</td>
+</tr>
+<tr>
+<td><code>ai_chunk_count</code></td>
+<td><code>int</code></td>
+<td>Number of chunks classified as AI</td>
+</tr>
+<tr>
+<td><code>is_ai_generated</code></td>
+<td><code>bool / str</code></td>
+<td>Ground-truth label from dataset (if present)</td>
+</tr>
+<tr>
+<td><code>model</code></td>
+<td><code>str</code></td>
+<td>Generator model name from dataset metadata (if present)</td>
+</tr>
+<tr>
+<td><code>topic</code></td>
+<td><code>str</code></td>
+<td>Document topic category from dataset metadata (if present)</td>
+</tr>
+<tr>
+<td><code>processing_time_seconds</code></td>
+<td><code>float</code></td>
+<td>Total pipeline processing time in seconds</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>Note:</strong> Evaluation requires GPU access (dual T4 or equivalent). Results are written to <code>benchmarks/results/</code>, which is excluded from version control.</p>
+</blockquote>
+<hr />
+<h2 id="9-performance-and-hardware-notes">9. Performance and Hardware Notes</h2>
+<h3 id="91-vram-budget">9.1 VRAM Budget</h3>
+<table>
+<thead>
+<tr>
+<th>Model</th>
+<th>Device</th>
+<th>VRAM (bfloat16)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>PhoGPT-4B (observer)</td>
+<td>cuda:0</td>
+<td>~9 GB</td>
+</tr>
+<tr>
+<td>PhoGPT-4B-Chat (performer)</td>
+<td>cuda:1</td>
+<td>~9 GB</td>
+</tr>
+<tr>
+<td>Vintern-1B-v2 (OCR, lazy-loaded)</td>
+<td>cuda:1</td>
+<td>~2.5 GB</td>
+</tr>
+</tbody>
+</table>
+<p><strong>On Kaggle T4x2 (15 GB per GPU):</strong>
+- <code>cuda:0</code>: ~9 / 15 GB (observer only)
+- <code>cuda:1</code>: ~9 / 15 GB → ~11.5 / 15 GB when OCR is active</p>
+<h3 id="92-single-gpu-fallback">9.2 Single GPU Fallback</h3>
+<p><code>DEVICE_2</code> falls back automatically when only one GPU is available:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-22-1"><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a><span class="n">DEVICE_2</span> <span class="o">=</span> <span class="s2">"cuda:1"</span> <span class="k">if</span> <span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">device_count</span><span class="p">()</span> <span class="o">&gt;</span> <span class="mi">1</span> <span class="k">else</span> <span class="n">DEVICE_1</span>
+</span></code></pre></div>
+<p>Both models will share the same GPU, requiring at least <strong>18 GB VRAM</strong> (without OCR).</p>
+<h3 id="93-processing-time-estimates-kaggle-t4x2">9.3 Processing Time Estimates (Kaggle T4x2)</h3>
+<table>
+<thead>
+<tr>
+<th>Input type</th>
+<th>Approx. time</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Short text (&lt; 450 tokens, 1 chunk)</td>
+<td>5–10 seconds</td>
+</tr>
+<tr>
+<td>Medium document (~2,000 tokens, ~6 chunks)</td>
+<td>20–40 seconds</td>
+</tr>
+<tr>
+<td>Long document (~10,000 tokens, ~29 chunks)</td>
+<td>2–4 minutes</td>
+</tr>
+<tr>
+<td>Scanned PDF (5 pages, OCR + detection)</td>
+<td>3–6 minutes</td>
+</tr>
+</tbody>
+</table>
+<p>Estimates exclude first-run model download time.</p>
+<h3 id="94-batch-size-tuning">9.4 Batch Size Tuning</h3>
+<p><code>SCORER_BATCH_SIZE = 8</code> is conservative for T4 GPUs (16 GB each). On GPUs with larger VRAM (e.g., A100 80 GB), increasing this to 16 or 32 will reduce the number of forward-pass iterations proportionally.</p>
+<hr />
+<h2 id="10-known-limitations-and-responsible-use">10. Known Limitations and Responsible Use</h2>
+<h3 id="101-minimum-text-length">10.1 Minimum Text Length</h3>
+<p>The system requires at least <strong>64 tokens</strong> of input text (<code>MINIMUM_TOKENS</code>). Below this threshold, language models have insufficient context to establish reliable perplexity estimates. For best accuracy, inputs of <strong>200–500 words</strong> are recommended.</p>
+<h3 id="102-ocr-accuracy-caveats">10.2 OCR Accuracy Caveats</h3>
+<p>When processing scanned PDFs via Vintern-1B-v2:
+- <strong>Handwritten text</strong> is not supported; the model targets printed documents
+- <strong>Low-resolution scans</strong> (&lt; 150 DPI) may produce garbled or incomplete output
+- <strong>Tables, charts, and diagrams</strong> are typically not extracted correctly
+- Despite anti-hallucination measures, VLMs can still occasionally insert plausible-looking text absent from the source image</p>
+<p>When a scanned PDF is detected, a warning is displayed in the UI advising users to verify results against the source document.</p>
+<h3 id="103-zero-shot-detection-limitations">10.3 Zero-Shot Detection Limitations</h3>
+<p>VietBinoculars is a zero-shot method: no labeled training data is used. This provides broad generalizability but also means:</p>
+<ul>
+<li><strong>Model-dependent performance</strong>: detection accuracy is highest for text generated by models with similar distribution characteristics to PhoGPT-4B-Chat. Text from architecturally distinct models may yield less reliable scores.</li>
+<li><strong>Content sensitivity</strong>: documents with high proportions of tables, formulas, code listings, or mixed-language content may produce atypical scores, even after the paragraph filtering step.</li>
+</ul>
+<h3 id="104-ethical-disclaimer">10.4 Ethical Disclaimer</h3>
+<p>VietAIDetector is a <strong>research and decision-support tool</strong>. Its output is probabilistic and must not be used as sole evidence in any consequential decision, including academic misconduct proceedings, employment decisions, or legal actions. Results must be reviewed by qualified human experts familiar with the limitations of AI-text detection technology. The authors assume no liability for decisions made on the basis of this software's output.</p>
+<hr />
+<h2 id="11-reuse-and-extensibility">11. Reuse and Extensibility</h2>
+<h3 id="111-swapping-language-models">11.1 Swapping Language Models</h3>
+<p>To use a different observer/performer pair, modify <code>config/settings.py</code>:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-23-1"><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="n">OBSERVER_MODEL</span>  <span class="o">=</span> <span class="s2">"your-org/your-base-model"</span>
+</span><span id="__span-23-2"><a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a><span class="n">PERFORMER_MODEL</span> <span class="o">=</span> <span class="s2">"your-org/your-chat-model"</span>
+</span></code></pre></div>
+<p>Both models must be compatible with <code>AutoModelForCausalLM</code> and <code>AutoTokenizer</code>, share the same tokenizer vocabulary, and be available on HuggingFace Hub. No other code changes are required.</p>
+<h3 id="112-adding-a-new-document-format">11.2 Adding a New Document Format</h3>
+<ol>
+<li>Extend <code>detect_format()</code> in <code>preprocessing/document_reader.py</code>:
+   <div class="language-python highlight"><pre><span></span><code><span id="__span-24-1"><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a><span class="k">if</span> <span class="n">lower</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">".odt"</span><span class="p">):</span>
+</span><span id="__span-24-2"><a id="__codelineno-24-2" name="__codelineno-24-2" href="#__codelineno-24-2"></a>    <span class="k">return</span> <span class="s2">"odt"</span>
+</span></code></pre></div></li>
+<li>Add a static extraction method (e.g., <code>extract_from_odt(content: bytes) -&gt; str</code>)</li>
+<li>Add a branch in <code>read()</code>:
+   <div class="language-python highlight"><pre><span></span><code><span id="__span-25-1"><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a><span class="k">elif</span> <span class="n">fmt</span> <span class="o">==</span> <span class="s2">"odt"</span><span class="p">:</span>
+</span><span id="__span-25-2"><a id="__codelineno-25-2" name="__codelineno-25-2" href="#__codelineno-25-2"></a>    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">extract_from_odt</span><span class="p">(</span><span class="n">content</span><span class="p">),</span> <span class="s2">"odt"</span>
+</span></code></pre></div></li>
+<li>Update <code>gr.File(file_types=...)</code> in <code>frontend/gradio_app.py</code></li>
+</ol>
+<h3 id="113-adding-a-new-threshold-mode">11.3 Adding a New Threshold Mode</h3>
+<ol>
+<li>Define the value in <code>config/settings.py</code>:
+   <div class="language-python highlight"><pre><span></span><code><span id="__span-26-1"><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a><span class="n">MY_THRESHOLD</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.8200</span>
+</span></code></pre></div></li>
+<li>Add to <code>THRESHOLD_MODES</code>:
+   <div class="language-python highlight"><pre><span></span><code><span id="__span-27-1"><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a><span class="n">THRESHOLD_MODES</span> <span class="o">=</span> <span class="p">{</span>
+</span><span id="__span-27-2"><a id="__codelineno-27-2" name="__codelineno-27-2" href="#__codelineno-27-2"></a>    <span class="o">...</span>
+</span><span id="__span-27-3"><a id="__codelineno-27-3" name="__codelineno-27-3" href="#__codelineno-27-3"></a>    <span class="s2">"My Custom Mode"</span><span class="p">:</span> <span class="n">MY_THRESHOLD</span><span class="p">,</span>
+</span><span id="__span-27-4"><a id="__codelineno-27-4" name="__codelineno-27-4" href="#__codelineno-27-4"></a><span class="p">}</span>
+</span></code></pre></div>
+The new mode appears automatically in the UI dropdown. No other changes required.</li>
+</ol>
+<h3 id="114-integrating-into-a-larger-system">11.4 Integrating into a Larger System</h3>
+<p>All pipeline components accept and return typed Python dataclasses, making them straightforward to serialize (e.g., via <code>dataclasses.asdict()</code>) for REST APIs or queue-based architectures. Each component is independently instantiable and stateless at the method level (state is limited to loaded model weights in <code>VietBinocularsScorer</code> and <code>VinternOCR</code>).</p>
+<p><strong>Minimal integration pattern:</strong></p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-28-1"><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a><span class="c1"># Initialize once at startup</span>
+</span><span id="__span-28-2"><a id="__codelineno-28-2" name="__codelineno-28-2" href="#__codelineno-28-2"></a><span class="n">scorer</span>     <span class="o">=</span> <span class="n">VietBinocularsScorer</span><span class="p">(</span><span class="n">OBSERVER_MODEL</span><span class="p">,</span> <span class="n">PERFORMER_MODEL</span><span class="p">)</span>
+</span><span id="__span-28-3"><a id="__codelineno-28-3" name="__codelineno-28-3" href="#__codelineno-28-3"></a><span class="n">normalizer</span> <span class="o">=</span> <span class="n">TextNormalizer</span><span class="p">()</span>
+</span><span id="__span-28-4"><a id="__codelineno-28-4" name="__codelineno-28-4" href="#__codelineno-28-4"></a><span class="n">chunker</span>    <span class="o">=</span> <span class="n">TextChunker</span><span class="p">(</span><span class="n">scorer</span><span class="o">.</span><span class="n">tokenizer</span><span class="p">)</span>
+</span><span id="__span-28-5"><a id="__codelineno-28-5" name="__codelineno-28-5" href="#__codelineno-28-5"></a><span class="n">aggregator</span> <span class="o">=</span> <span class="n">ScoreAggregator</span><span class="p">()</span>
+</span><span id="__span-28-6"><a id="__codelineno-28-6" name="__codelineno-28-6" href="#__codelineno-28-6"></a>
+</span><span id="__span-28-7"><a id="__codelineno-28-7" name="__codelineno-28-7" href="#__codelineno-28-7"></a><span class="c1"># Per-request processing</span>
+</span><span id="__span-28-8"><a id="__codelineno-28-8" name="__codelineno-28-8" href="#__codelineno-28-8"></a><span class="k">def</span><span class="w"> </span><span class="nf">analyze</span><span class="p">(</span><span class="n">filename</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">content</span><span class="p">:</span> <span class="nb">bytes</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
+</span><span id="__span-28-9"><a id="__codelineno-28-9" name="__codelineno-28-9" href="#__codelineno-28-9"></a>    <span class="n">prep</span>   <span class="o">=</span> <span class="n">normalizer</span><span class="o">.</span><span class="n">preprocess</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">content</span><span class="p">)</span>
+</span><span id="__span-28-10"><a id="__codelineno-28-10" name="__codelineno-28-10" href="#__codelineno-28-10"></a>    <span class="n">chunks</span> <span class="o">=</span> <span class="n">chunker</span><span class="o">.</span><span class="n">chunk</span><span class="p">(</span><span class="n">prep</span><span class="o">.</span><span class="n">cleaned_text</span><span class="p">,</span> <span class="s2">"run-001"</span><span class="p">)</span>
+</span><span id="__span-28-11"><a id="__codelineno-28-11" name="__codelineno-28-11" href="#__codelineno-28-11"></a>    <span class="n">scored</span> <span class="o">=</span> <span class="n">scorer</span><span class="o">.</span><span class="n">score_chunks</span><span class="p">(</span><span class="n">chunks</span><span class="o">.</span><span class="n">chunks</span><span class="p">)</span>
+</span><span id="__span-28-12"><a id="__codelineno-28-12" name="__codelineno-28-12" href="#__codelineno-28-12"></a>    <span class="n">result</span> <span class="o">=</span> <span class="n">aggregator</span><span class="o">.</span><span class="n">aggregate</span><span class="p">(</span><span class="n">scored</span><span class="p">)</span>
+</span><span id="__span-28-13"><a id="__codelineno-28-13" name="__codelineno-28-13" href="#__codelineno-28-13"></a>    <span class="k">return</span> <span class="n">dataclasses</span><span class="o">.</span><span class="n">asdict</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+</span></code></pre></div>
+<hr />
+<h2 id="12-related-work-and-references">12. Related Work and References</h2>
+<h3 id="algorithm">Algorithm</h3>
+<p>[1] Nguyen, T. H., &amp; Hoang, V.-D. (2026). <em>VietAIDetector: An Open-Source Zero-Shot Detector for Vietnamese AI-Generated Text</em>. arXiv:2608.25478 [cs.CL]. https://arxiv.org/abs/2608.25478</p>
+<p>[2] Nguyen, T. H., &amp; Akilesh, S. (2025). <em>VietBinoculars: A Zero-Shot Approach for Detecting Vietnamese LLM-Generated Text</em>. arXiv:2509.26189 [cs.CL]. https://arxiv.org/abs/2509.26189</p>
+<p>[3] Hans, A., Schwarzschild, A., Cherepanova, V., Kazemi, H., Saha, A., Goldblum, M., Geiping, J., &amp; Goldstein, T. (2024). <em>Spotting LLMs With Binoculars: Zero-Shot Detection of Machine-Generated Text</em>. arXiv:2401.12070 [cs.CL]. https://arxiv.org/abs/2401.12070</p>
+<h3 id="pre-trained-models">Pre-trained Models</h3>
+<p>[4] VinAI Research. (2024). <em>PhoGPT: Generative Pre-training for Vietnamese</em>. HuggingFace: <code>vinai/PhoGPT-4B</code>, <code>vinai/PhoGPT-4B-Chat</code>.</p>
+<p>[5] 5CD-AI. (2024). <em>Vintern-1B: An Efficient Multimodal Small Language Model for Vietnamese</em>. HuggingFace: <code>5CD-AI/Vintern-1B-v2</code>.</p>
+<h3 id="libraries">Libraries</h3>
+<p>[6] Abid, A., et al. (2019). <em>Gradio: Hassle-Free Sharing and Testing of ML Models in the Wild</em>. https://gradio.app</p>
+<p>[7] Wolf, T., et al. (2020). <em>Transformers: State-of-the-Art Natural Language Processing</em>. EMNLP 2020 (System Demonstrations). https://github.com/huggingface/transformers</p>
+<p>[8] Artifex Software. <em>PyMuPDF — Python Bindings for MuPDF</em>. https://pymupdf.readthedocs.io</p>
+<p>[9] Léon Dica et al. <em>fpdf2 — PDF generation library for Python</em>. https://pyfpdf.github.io/fpdf2/</p>
+<hr />
+<p><em>VietAIDetector v1.1.1 — Developer Manual</em><br />
+<em>For bug reports and contributions, please open an issue or pull request on the project repository.</em></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "search.suggest", "search.highlight", "content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../javascripts/mathjax.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>
