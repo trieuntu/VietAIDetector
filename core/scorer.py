@@ -60,22 +60,38 @@ class VietBinocularsScorer:
         self.device2 = device2
         self.max_tokens = max_tokens
 
-    def _tokenize(self, batch: list[str]):
+    def context_token_limit(self) -> int:
+        """Return the conservative context limit declared by both checkpoints."""
+        limits = []
+        for model in (self.observer, self.performer):
+            declared = [getattr(model.config, key, None)
+                        for key in ("max_seq_len", "max_position_embeddings", "n_positions")]
+            declared = [v for v in declared if isinstance(v, int) and v > 0]
+            if not declared:
+                raise ValueError("Cannot verify model context limit for untruncated scoring")
+            limits.append(min(declared))
+        return min(limits)
+
+    def _tokenize(self, batch: list[str], *, truncation: bool = True):
         """Tokenize a batch of text strings for model input."""
-        return self.tokenizer(
+        options = {"max_length": self.max_tokens} if truncation else {}
+        encoding = self.tokenizer(
             batch,
             return_tensors="pt",
             padding="longest" if len(batch) > 1 else False,
-            truncation=True,
-            max_length=self.max_tokens,
+            truncation=truncation,
             return_token_type_ids=False,
-        ).to(self.device1)
+            **options,
+        )
+        if not truncation and encoding.input_ids.shape[-1] > self.context_token_limit():
+            raise ValueError("Full document exceeds model context limit; refusing to truncate")
+        return encoding.to(self.device1)
 
     @torch.inference_mode()
-    def compute_score(self, text: Union[str, list[str]]) -> Union[float, list[float]]:
-        """Compute VietBinoculars score(s) for the given text(s)."""
+    def compute_score(self, text: Union[str, list[str]], *, truncation: bool = True) -> Union[float, list[float]]:
+        """Score text, retaining the default token cap unless explicitly disabled."""
         batch = [text] if isinstance(text, str) else text
-        enc = self._tokenize(batch)
+        enc = self._tokenize(batch, truncation=truncation)
 
         # Forward pass through both models
         obs_logits = self.observer(**enc.to(self.device1)).logits

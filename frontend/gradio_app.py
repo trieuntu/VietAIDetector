@@ -455,7 +455,7 @@ def create_app() -> gr.Blocks:
                     choices=list(THRESHOLD_MODES.keys()),
                     value=DEFAULT_MODE,
                     label="Detection Mode",
-                    info="Youden: balanced | Closest Point: near-perfect | Low FPR: fewer false alarms",
+                    info="Youden's J | Closest Point | Low FPR",
                 )
                 with gr.Accordion("Advanced Settings", open=False):
                     window_slider = gr.Slider(
@@ -505,13 +505,13 @@ def create_app() -> gr.Blocks:
 
         # Notes & Explanation
         with gr.Accordion("Notes & Explanation", open=False):
-            gr.Markdown("""
+            gr.Markdown(f"""
             - **Algorithm:** VietBinoculars uses the Perplexity / Cross-Perplexity ratio
               between PhoGPT-4B (base) and PhoGPT-4B-Chat (chat) to detect AI-generated text.
             - **Detection Thresholds:**
-                - *Youden (0.8607)*: Optimizes F1-score, balancing true positives and false positives.
-                - *Closest Point (0.8729)*: Closest point to perfect classification on the ROC curve.
-                - *Low FPR (0.7023)*: Prioritizes reducing false positives — suitable when avoiding false accusations.
+                - *Youden ({YOUDEN_THRESHOLD:.4f})*: Optimizes F1-score, balancing true positives and false positives.
+                - *Closest Point ({CLOSEST_POINT_THRESHOLD:.4f})*: Closest point to perfect classification on the ROC curve.
+                - *Low FPR ({FPR_THRESHOLD:.4f})*: Prioritizes reducing false positives — suitable when avoiding false accusations.
             - **Recommendation:** Use 200-500 words for best accuracy.
             - **Limitations:** Very short text (<64 tokens) or text with many tables/formulas
               may affect results.

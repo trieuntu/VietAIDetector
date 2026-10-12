@@ -38,7 +38,7 @@ def _make_result() -> DetectionResult:
         ai_chunk_count=2,
         ai_percentage=66.67,
         applied_threshold=YOUDEN_THRESHOLD,
-        applied_mode="Youden (Balanced F1)",
+        applied_mode="Youden's J",
         final_decision="AI-generated",
         chunk_details=chunks,
         processing_time_seconds=5.42,
@@ -69,7 +69,7 @@ class TestPDFReportGenerator:
         assert result.document_name == "test_document.pdf"
         assert result.ai_percentage == 66.67
         assert result.final_decision == "AI-generated"
-        assert result.applied_mode == "Youden (Balanced F1)"
+        assert result.applied_mode == "Youden's J"
         assert len(result.chunk_details) == 3
 
     def test_chunk_labels(self):

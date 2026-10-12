@@ -65,7 +65,7 @@ digraph VietAIDetectorArchitecture {
 
         Chunker [label="Sliding Window Chunker\n(Dynamic Length & Overlap)", fillcolor="#fde68a", color="#d97706"];
         
-        Thresholds [label="Detection Thresholds\n- Youden (Balanced F1)\n- Closest Point (Near-Perfect)\n- Low FPR", shape=folder, fillcolor="#fde68a", color="#d97706"];
+        Thresholds [label="Detection Thresholds\n- Youden's J\n- Closest Point\n- Low FPR", shape=folder, fillcolor="#fde68a", color="#d97706"];
         
         Aggregator [label="Result Aggregator\n(Threshold Voting)", fillcolor="#fde68a", color="#d97706"];
         

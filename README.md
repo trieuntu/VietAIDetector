@@ -48,7 +48,7 @@ The software accepts direct text input and file uploads (DOCX, native PDF, TXT).
 
 **Detection**
 - Zero-shot VietBinoculars scoring — no training data required
-- Three detection modes: Youden (balanced F1), Closest Point, Low FPR
+- Three detection modes: Youden's J, Closest Point, Low FPR
 - Configurable sliding-window chunking (window size and overlap adjustable from the UI)
 - Chunk-level scores and AI/Human labels for full transparency
 
@@ -215,7 +215,7 @@ Detection thresholds and mode mappings are defined in [`config/settings.py`](con
 | Mode (`THRESHOLD_MODES`) | Constant | Value | Description |
 |---|---|---|---|
 | **Youden (Balanced F1)** *(Default)* | `YOUDEN_THRESHOLD` | $\approx 0.9280$ | Maximizes Youden's J statistic (optimal balanced F1-score) |
-| **Closest Point (Near-Perfect)** | `CLOSEST_POINT_THRESHOLD` | $\approx 0.9251$ | Closest-to-$(0,1)$ point on ROC curve |
+| **Closest Point** | `CLOSEST_POINT_THRESHOLD` | $\approx 0.9251$ | Closest-to-$(0,1)$ point on ROC curve |
 | **Low FPR (Fewer False Alarms)** | `FPR_THRESHOLD` | $\approx 0.8993$ | Low False Positive Rate mode ($\text{TPR@0.05FPR}$, minimizes false alarms) |
 
 ---

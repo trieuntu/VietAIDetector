@@ -4,7 +4,7 @@ build-backend = "setuptools.backends._legacy:_Backend"
 
 [project]
 name = "VietAIDetector"
-version = "1.1.1"
+version = "1.1.2"
 description = "Vietnamese AI text detection using VietBinoculars algorithm"
 requires-python = ">=3.10"
 

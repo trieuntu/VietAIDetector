@@ -601,8 +601,8 @@ Detection thresholds are centralized in [`config/settings.py`](../config/setting
 
 | Mode (`THRESHOLD_MODES`) | Constant | Threshold $t^*$ | Derivation / Purpose |
 |---|---|---|---|
-| **Youden (Balanced F1)** *(Default)* | `YOUDEN_THRESHOLD` | $\approx 0.9280$ | Maximizes Youden's J ($J = \text{TPR} - \text{FPR}$, optimal balanced F1) |
-| **Closest Point (Near-Perfect)** | `CLOSEST_POINT_THRESHOLD` | $\approx 0.9251$ | Minimizes Euclidean distance from ROC curve to ideal point $(0, 1)$ |
+| **Youden's J** *(Default)* | `YOUDEN_THRESHOLD` | $\approx 0.9280$ | Maximizes Youden's J ($J = \text{TPR} - \text{FPR}$, optimal balanced F1) |
+| **Closest Point** | `CLOSEST_POINT_THRESHOLD` | $\approx 0.9251$ | Minimizes Euclidean distance from ROC curve to ideal point $(0, 1)$ |
 | **Low FPR (Fewer False Alarms)** | `FPR_THRESHOLD` | $\approx 0.8993$ | Low False Positive Rate threshold ($\text{TPR@0.05FPR}$, minimizes false alarms) |
 
 ---
@@ -700,8 +700,8 @@ Navigate to `http://localhost:7860` after launching.
 
 | Mode | Threshold | Recommended use case |
 |------|-----------|---------------------|
-| Youden (Balanced F1) | `YOUDEN_THRESHOLD` $\approx 0.9280$ | General-purpose — balanced accuracy |
-| Closest Point (Near-Perfect) | `CLOSEST_POINT_THRESHOLD` $\approx 0.9251$ | High-precision applications |
+| Youden's J | `YOUDEN_THRESHOLD` $\approx 0.9280$ | General-purpose — balanced accuracy |
+| Closest Point | `CLOSEST_POINT_THRESHOLD` $\approx 0.9251$ | High-precision applications |
 | Low FPR (Fewer False Alarms) | `FPR_THRESHOLD` $\approx 0.8993$ | When false accusations are costly (e.g., academic proceedings) |
 
 **Advanced Settings:**
@@ -903,7 +903,7 @@ The training datasets in `benchmarks/train_datasets/` follow JSONL format (one J
 |----------|---------|-------------|
 | `input` | *(required)* | Path to a `.json` dataset file or directory |
 | `-o, --output` | auto-generated | Output CSV path |
-| `-m, --mode` | `Youden (Balanced F1)` | Detection threshold mode |
+| `-m, --mode` | `Youden's J` | Detection threshold mode |
 | `-w, --window` | `450` | Chunk window size (tokens) |
 | `--overlap` | `100` | Chunk overlap (tokens) |
 | `--resume` | `false` | Skip documents already present in the output CSV |
@@ -933,7 +933,7 @@ python benchmarks/run_eval.py benchmarks/datasets/gemini-3.7-flash.json --resume
 | `ai_percentage` | `float` | Percentage of chunks classified as AI-generated ($0.0 - 100.0$) |
 | `final_decision` | `str` | Overall verdict (`"AI-generated"`, `"Human-written"`, `"Human-written but contains AI-generated parts"`) |
 | `applied_threshold` | `float` | Numeric threshold value used for chunk classification |
-| `applied_mode` | `str` | Threshold mode name (e.g., `"Youden (Balanced F1)"`) |
+| `applied_mode` | `str` | Threshold mode name (e.g., "Youden's J") |
 | `chunk_window` | `int` | Token window size used ($W$) |
 | `chunk_overlap` | `int` | Token overlap size used ($O$) |
 | `total_chunks` | `int` | Total number of chunks evaluated |

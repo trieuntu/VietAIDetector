@@ -22,12 +22,12 @@ FPR_THRESHOLD: float = 0.8992537260055542         # Low False Positive Rate
 
 # Mapping from user-friendly mode names to threshold values
 THRESHOLD_MODES: dict[str, float] = {
-    "Youden (Balanced F1)": YOUDEN_THRESHOLD,
-    "Closest Point (Near-Perfect)": CLOSEST_POINT_THRESHOLD,
+    "Youden's J": YOUDEN_THRESHOLD,
+    "Closest Point": CLOSEST_POINT_THRESHOLD,
     "Low FPR (Fewer False Alarms)": FPR_THRESHOLD,
 }
 
-DEFAULT_MODE: str = "Youden (Balanced F1)"
+DEFAULT_MODE: str = "Youden's J"
 
 # Text Chunking Parameters
 

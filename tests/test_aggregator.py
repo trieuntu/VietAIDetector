@@ -154,14 +154,14 @@ class TestDynamicThresholdModes:
 
         # 2. Youden Mode (~0.9280)
         # 0.90, 0.92 < 0.9280 (AI). 0.93 >= 0.9280 (Human) -> 2 AI chunks
-        mode_youden = "Youden (Balanced F1)"
+        mode_youden = "Youden's J"
         res_youden = agg.aggregate(chunks, threshold=THRESHOLD_MODES[mode_youden])
         assert res_youden.ai_chunk_count == 2
         assert res_youden.applied_threshold == THRESHOLD_MODES[mode_youden]
 
         # 3. Closest Point Mode (~0.9251)
         # 0.90, 0.92 < 0.9251 (AI). 0.93 >= 0.9251 (Human) -> 2 AI chunks
-        mode_closest = "Closest Point (Near-Perfect)"
+        mode_closest = "Closest Point"
         res_closest = agg.aggregate(chunks, threshold=THRESHOLD_MODES[mode_closest])
         assert res_closest.ai_chunk_count == 2
         assert res_closest.applied_threshold == THRESHOLD_MODES[mode_closest]
