@@ -271,9 +271,16 @@ class VietBinocularsScorer:
 
 Loads both models from HuggingFace Hub onto their respective GPU devices using `device_map={"": device}` for explicit single-device placement (avoiding `accelerate` auto-sharding, which is incompatible with cross-device tensor operations). Both models are set to `.eval()` and gradient computation is globally disabled via `torch.set_grad_enabled(False)`.
 
-**`compute_score(text) -> float | list[float]`**
+**`context_token_limit() -> int`**
+
+Returns the conservative context token limit declared by both checkpoints (`max_seq_len`, `max_position_embeddings`, `n_positions`) to ensure safe untruncated scoring.
+
+**`compute_score(text, *, truncation: bool = True) -> float | list[float]`**
 
 Accepts a single string or a list of strings. Tokenizes the batch, runs a forward pass through both models, calls `perplexity()` and `entropy()`, and returns `PPL / X-PPL` per sample.
+- **`truncation: bool = True`** *(keyword-only)*: Controls sequence length behavior during tokenization:
+  - `True` (default): Truncates the tokenized sequence to `max_tokens` (`MAX_MODEL_TOKENS`) to prevent GPU OOM errors.
+  - `False`: Preserves and scores the complete text without truncation. Validates total length against `context_token_limit()` and raises `ValueError` if the text exceeds the model's physical context limit.
 
 **`score_chunks(chunks) -> list[ChunkDetail]`**
 
@@ -752,8 +759,16 @@ for c in agg.chunk_details:
 **Score a single string:**
 
 ```python
+# Default scoring: truncation=True (capped at max_tokens to prevent OOM)
 score = scorer.compute_score("Trí tuệ nhân tạo đang phát triển mạnh mẽ.")
 print(f"Score: {score:.4f}")  # < YOUDEN_THRESHOLD -> likely AI; > YOUDEN_THRESHOLD -> likely human
+
+# Score full text without truncation (keyword-only argument)
+full_score = scorer.compute_score(
+    "Văn bản dài cần nạp toàn bộ nội dung...",
+    truncation=False
+)
+print(f"Full Score: {full_score:.4f}")
 ```
 
 **Score a batch:**
