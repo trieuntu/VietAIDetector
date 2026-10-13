@@ -1,6 +1,6 @@
 # VietAIDetector — Developer Manual
 
-**Version:** 1.1.1  
+**Version:** 1.1.2  
 **Language:** Python 3.10+  
 **License:** MIT  
 **Contact:** trieunh@ntu.edu.vn
@@ -184,7 +184,7 @@ All constants and tunable parameters are centralized in this file. No magic numb
 | `FONT_PATH` | `str` | `/tmp/NotoSans-Regular.ttf` | Path to Vietnamese TTF font |
 | `FONT_URL` | `str` | `"https://github.com/..."` | URL to download NotoSans font if missing |
 | `APP_NAME` | `str` | `"VietAIDetector"` | Application name |
-| `APP_VERSION` | `str` | `"1.1.1"` | Software version string |
+| `APP_VERSION` | `str` | `"1.1.2"` | Software version string |
 
 All of these can be overridden via environment variables (for `HF_TOKEN`, `FONT_PATH`) or by editing the file directly.
 
@@ -1113,5 +1113,5 @@ def analyze(filename: str, content: bytes) -> dict:
 
 ---
 
-*VietAIDetector v1.1.1 — Developer Manual*  
+*VietAIDetector v1.1.2 — Developer Manual*  
 *For bug reports and contributions, please open an issue or pull request on the project repository.*

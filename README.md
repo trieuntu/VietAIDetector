@@ -4,7 +4,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-22c55e)](LICENSE)
 [![arXiv](https://img.shields.io/badge/arXiv-2608.25478-b31b1b?logo=arxiv&logoColor=white)](https://arxiv.org/abs/2608.25478)
 [![Platform](https://img.shields.io/badge/Platform-Kaggle%20T4%C3%972-f9ab00?logo=kaggle&logoColor=white)](https://www.kaggle.com/)
-[![Version](https://img.shields.io/badge/Version-1.1.1-6366f1)](docs/DEVELOPER_MANUAL.md)
+[![Version](https://img.shields.io/badge/Version-1.1.2-6366f1)](docs/DEVELOPER_MANUAL.md)
 
 **Vietnamese AI-generated text detection software** — a zero-shot, end-to-end system based on the *VietBinoculars* algorithm with the PhoGPT-4B model pair.
 

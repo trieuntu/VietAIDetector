@@ -512,7 +512,7 @@ def create_app() -> gr.Blocks:
                 - *Youden ({YOUDEN_THRESHOLD:.4f})*: Optimizes F1-score, balancing true positives and false positives.
                 - *Closest Point ({CLOSEST_POINT_THRESHOLD:.4f})*: Closest point to perfect classification on the ROC curve.
                 - *Low FPR ({FPR_THRESHOLD:.4f})*: Prioritizes reducing false positives — suitable when avoiding false accusations.
-            - **Recommendation:** Use 200-500 words for best accuracy.
+            - **Recommendation:** Use 200-650 words for best accuracy.
             - **Limitations:** Very short text (<64 tokens) or text with many tables/formulas
               may affect results.
             - **Disclaimer:** Results are for reference only and do not replace expert judgment.
