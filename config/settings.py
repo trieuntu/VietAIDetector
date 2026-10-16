@@ -31,8 +31,8 @@ DEFAULT_MODE: str = "Youden's J"
 
 # Text Chunking Parameters
 
-CHUNK_WINDOW: int = 450
-CHUNK_OVERLAP: int = 100
+CHUNK_WINDOW: int = 650
+CHUNK_OVERLAP: int = 150
 CHUNK_STRIDE: int = CHUNK_WINDOW - CHUNK_OVERLAP
 CHUNK_MIN_TOKENS: int = 50
 

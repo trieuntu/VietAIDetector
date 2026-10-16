@@ -214,7 +214,7 @@ Detection thresholds and mode mappings are defined in [`config/settings.py`](con
 
 | Mode (`THRESHOLD_MODES`) | Constant | Value | Description |
 |---|---|---|---|
-| **Youden (Balanced F1)** *(Default)* | `YOUDEN_THRESHOLD` | $\approx 0.9280$ | Maximizes Youden's J statistic (optimal balanced F1-score) |
+| **Youden' J** *(Default)* | `YOUDEN_THRESHOLD` | $\approx 0.9280$ | Maximizes Youden's J statistic |
 | **Closest Point** | `CLOSEST_POINT_THRESHOLD` | $\approx 0.9251$ | Closest-to-$(0,1)$ point on ROC curve |
 | **Low FPR (Fewer False Alarms)** | `FPR_THRESHOLD` | $\approx 0.8993$ | Low False Positive Rate mode ($\text{TPR@0.05FPR}$, minimizes false alarms) |
 
