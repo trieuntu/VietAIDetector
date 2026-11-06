@@ -1,0 +1,7 @@
+{
+  "audit/document_manifest.csv": "60bbd86d640865430462f425a7de3c404f49fe9705f46b38654dac76e94080d1",
+  "audit/near_duplicate_matches.json": "f860579d094b7adaf6d406bf1bb66048ba34986a708bd4927ca19d8581008d5e",
+  "audit/source_manifest.csv": "fee4e98006625635bfb2011c32043e59034449fa9e6ad8e7bee6ccffc1db9d12",
+  "data/development.json": "47acf82d6f60d091619a53956c99874aec075b2286562325f8d558012f1bfb77",
+  "data/test.json": "3918a9c9815a1dc6280e14748d2a61100431bd52ca0a50170b6e6e18b2b7853b"
+}

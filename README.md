@@ -231,7 +231,7 @@ VietAIDetector follows a modular architecture organized by separation of concern
 - **`processing/`** — Sliding-window token chunking (`TextChunker`) and score aggregation (`ScoreAggregator`).
 - **`reporting/`** — Color-coded PDF report generation (`PDFReportGenerator`).
 - **`frontend/`** — Interactive web interface (`gradio_app.py`).
-- **`benchmarks/`** — Evaluation scripts and benchmark corpora.
+- **`benchmarks/`** — Evaluation scripts and benchmark corpora. The [concatenated news benchmark](benchmarks/concatenated_news/README.md) includes source manifests and scripts to reproduce Gemma-3-12B-News-Concat-Dev and Gemma-3-12B-News-Concat-Test.
 - **`tests/`** — Comprehensive pytest test suite.
 
 For the full directory tree, module descriptions, and data-flow pipeline, see [STRUCTURE.md](docs/STRUCTURE.md).
