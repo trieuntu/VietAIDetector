@@ -1,0 +1,2 @@
+variant,execution_mode,batch_size,ocr_device,ocr_environment_sha256,imported_cache,pages,page_cost_sum_seconds,allocated_batch_seconds,cpu_preprocessing_seconds,timing_note
+clean_scan,legacy_sequential,1,NVIDIA L4,3e47d6784dd38158eabea152ef8b78ee0e4b399f2f6cf589fc92adb1fb6792fb,True,2589,48149.54318618408,0.0,0,"Allocated costs, not wall time. Legacy values include serial page preprocessing. See session logs for measured new-run wall time."

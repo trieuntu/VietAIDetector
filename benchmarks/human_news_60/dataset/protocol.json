@@ -1,0 +1,150 @@
+{
+  "name": "Human-News-60-v1",
+  "seed": 20261108,
+  "human_count": 60,
+  "ai_count": 60,
+  "selection": "Nearest log token length within topic, with hash-seeded tie breaking and distinct Human articles across generator cohorts",
+  "topic_mapping": {
+    "kinh_te": [
+      "kinh tế",
+      "kinh doanh",
+      "tài chính - kinh doanh"
+    ],
+    "van_hoa": [
+      "văn hóa",
+      "văn hoá",
+      "văn hóa - giải trí"
+    ],
+    "chinh_tri": [
+      "chính trị",
+      "ngoại giao"
+    ],
+    "xa_hoi": [
+      "xã hội",
+      "giáo dục",
+      "sức khỏe",
+      "đời sống"
+    ],
+    "the_thao": [
+      "thể thao",
+      "bóng đá",
+      "bóng đá việt nam",
+      "ngoại hạng anh",
+      "bóng đá thế giới",
+      "bóng đá anh",
+      "la liga",
+      "bundesliga",
+      "serie a",
+      "ligue 1",
+      "tennis",
+      "v-league",
+      "world cup 2022",
+      "hậu trường bóng đá",
+      "bóng đá & cuộc sống"
+    ]
+  },
+  "length_bins": [
+    [
+      2048,
+      2560
+    ],
+    [
+      2560,
+      4096
+    ],
+    [
+      4096,
+      8192
+    ]
+  ],
+  "maximum_articles_per_publisher": 10,
+  "human_text": "Original content field, without concatenation or truncation",
+  "preprocessing": "Repository text normalizer methods, without invoking OCR",
+  "ai_prompt_provenance": "Author confirmed on 2026-11-08 that AI prompts used topics only, without Human source articles. Original prompts were not inspected.",
+  "evaluation": "Supplementary unpaired article-disjoint evaluation within the existing news corpus",
+  "threshold": 0.9279661178588868,
+  "configurations": [
+    [
+      650,
+      150
+    ],
+    [
+      600,
+      0
+    ]
+  ],
+  "decision": "AI if strictly more than half of chunks have score < threshold; ties are Human",
+  "auroc": "AI-oriented vote fraction and negative unweighted mean chunk score",
+  "model_training": "No retraining, threshold recalibration or configuration search",
+  "source_independence": "Article exclusions and lexical checks do not establish independence from the historical corpus, publishers, semantic content or pretrained-model exposure.",
+  "inference_status": "Not run",
+  "numerical_precision": "Use the archived benchmark precision; record any change separately",
+  "inputs": [
+    {
+      "name": "news_dataset.json",
+      "sha256": "f518fb0725aaa4c9c48090e8c212b719a42cd46af7b41874955b482c6753e813"
+    },
+    {
+      "name": "train_full.json-Sailor2-8B-Chat.jsonl",
+      "sha256": "490b7c72a3ac89d1b6165be3c6a0daddaa6ee7c4dc52fd87756388e6c5438e0f"
+    },
+    {
+      "name": "val_full.json-Sailor2-8B-Chat.jsonl",
+      "sha256": "332f46a8d115b12cc77060f809e9bd57540bf0b10ab5c17f5a8c272d18048194"
+    },
+    {
+      "name": "test_full_cleaned.json-gemma-3-12b-it.jsonl",
+      "sha256": "87a8636718caf17ff437e81a3e1a54023b3eaea3802cbb08880145a3edfaee8c"
+    },
+    {
+      "name": "benchmarks/train_datasets/gemini-3.7-flash-vietnamese_news_ai_dataset_5000.jsonl",
+      "sha256": "9bf317e8656001ee20752d43d7a4fc775646e5fd92c9151814071833a1e0a0be"
+    },
+    {
+      "name": "benchmarks/train_datasets/gpt-5.6-luna-vietnamese_news_ai_dataset_5000.jsonl",
+      "sha256": "94f62dcf1d35d23646a8079a6e758219a33214afe03a3da1f02333ea68fb3da1"
+    },
+    {
+      "name": "train_news_dataset.json",
+      "sha256": "6c9d1133250420f50eb44788ac23012af9e2e1ceca1b34e6ce1d768eee2e61db"
+    },
+    {
+      "name": "val_news_dataset.json",
+      "sha256": "bcb1436844299c8b1cb96ac6851a792aae08f524e006d04a087a6308297e2a8b"
+    },
+    {
+      "name": "test_news_dataset.json",
+      "sha256": "31893d1d8005f00cf04c7b5bd8239382b63309d8d393c39e8af5be86e5541150"
+    },
+    {
+      "name": "benchmarks/concatenated_news/inputs/calibration_ids.csv",
+      "sha256": "d667a64047ab9df6d12775941adcd922daee016314941c654103555879aa81b1"
+    },
+    {
+      "name": "benchmarks/concatenated_news/inputs/phogpt-tokenizer.json",
+      "sha256": "e5d0981153b0fa9014832a2395bd81f4c6036e9df9ce64ee79241e53e2326130"
+    },
+    {
+      "name": "benchmarks/datasets/claude-sonnet-4.6.json",
+      "sha256": "053a0ca50b7920f911aa335dd2024dbe7a21eb67a95d025599a2dff1b316f83c"
+    },
+    {
+      "name": "benchmarks/datasets/gemini-3.7-flash.json",
+      "sha256": "76b18b11e2a0620b58c188a80958a34321b90a16455c36c72aad8e18749982bc"
+    },
+    {
+      "name": "benchmarks/datasets/gpt-5.6-luna.json",
+      "sha256": "b92ecfa1bd1edfa5550f9a529ecbdac78208eb0d6815ccc129f08cb41a66d283"
+    }
+  ],
+  "repository_code": {
+    "preprocessing/normalizer.py": "502feeaa1fdda9dd6634c58e9732fbc2a620f1d7ea716e0d4408f20e1be97a76",
+    "preprocessing/text_utils.py": "d7e8d3b0019a1a51e03ad9111165c4c58bc8259d3be3002b1c5dad130cd4418e",
+    "processing/chunker.py": "b9e7b0e92ddfb75cac6482ef45efefa89839e11b219d2037fa130b65099ed9d8",
+    "core/scorer.py": "24643fb1d1101f8052fcce2f267f8d5d3622b9164666f6ea5513463e897ab94e",
+    "core/metrics.py": "55fb9e992c13aa588b303167b033593c8855e047b49156f98bc3b03f9a3d00bc"
+  },
+  "tokenizer_sha256": "e5d0981153b0fa9014832a2395bd81f4c6036e9df9ce64ee79241e53e2326130",
+  "evaluation_sha256": "2c1afe535af4b85a253058bc9ac1920a442c07979c0c2e237a8bb9ae42f0736d",
+  "human_manifest_sha256": "08b96bccaf46cccc51915287ccc11856bd94fc5a1505f15406b6433232a19830"
+}

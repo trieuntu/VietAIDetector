@@ -1130,3 +1130,14 @@ def analyze(filename: str, content: bytes) -> dict:
 
 *VietAIDetector v1.1.2 — Developer Manual*  
 *For bug reports and contributions, please open an issue or pull request on the project repository.*
+
+## Supplementary benchmark reproduction
+
+See [Human-News-60](../benchmarks/human_news_60/README.md) for the frozen dataset, source manifest, tested text-scoring environment and archived results. From the repository root, validate inputs and recorded metrics before GPU inference.
+
+```bash
+python -B benchmarks/human_news_60/run_benchmark.py --dataset benchmarks/human_news_60/dataset --repo . --validate-only
+python -B benchmarks/human_news_60/verify_results.py
+```
+
+The benchmark README provides installation, GPU inference and reconstruction commands. Keep new outputs outside the repository. The tested environment covers text scoring, not the web interface, OCR or PDF report generation.

@@ -1,0 +1,22 @@
+{
+  "python": "3.10.12",
+  "platform": "Linux-7.0.0-1013-gcp-x86_64-with-glibc2.35",
+  "packages": {
+    "torch": "2.14.1",
+    "transformers": "4.39.3",
+    "tokenizers": "0.15.2",
+    "numpy": "2.2.6",
+    "scipy": "1.15.3",
+    "scikit-learn": "1.7.2"
+  },
+  "model_commits": {
+    "observer": "e5dd0ad1a5eed58e077c1b799f1d54790b40a507",
+    "performer": "3b11fad96d853b78f2fecc76f13aedb381b02d5a"
+  },
+  "cuda": "13.0",
+  "devices": {
+    "cuda:0": "NVIDIA A100-SXM4-40GB"
+  },
+  "dtype": "torch.bfloat16",
+  "batch_size": 8
+}

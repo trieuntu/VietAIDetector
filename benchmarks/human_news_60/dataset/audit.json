@@ -1,0 +1,2887 @@
+{
+  "counts": {
+    "input_articles": 184539,
+    "unmapped_topic": 129873,
+    "outside_length_range": 26722,
+    "missing_provenance_or_text": 2608,
+    "historical_or_calibration_article": 22550,
+    "page_boilerplate_marker": 2257,
+    "non_article_listing": 207,
+    "eligible_before_text_overlap_checks": 322
+  },
+  "excluded_historical_article_ids": 70869,
+  "candidate_topic_counts": {
+    "van_hoa": 27,
+    "kinh_te": 106,
+    "chinh_tri": 84,
+    "xa_hoi": 92,
+    "the_thao": 13
+  },
+  "overlap_rule": "Five-word Jaccard >= 0.8 OR intersection/min(set sizes) >= 0.8, with at least 25 distinct shingles in the shorter text",
+  "reference_audit_passes": 1,
+  "selection_rounds": 2,
+  "overlap_exclusions": [
+    {
+      "source_id": "44003",
+      "reference": "train_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "5c8dc455c5676a5b",
+      "field": "user_prompt",
+      "jaccard": 0.00911755,
+      "containment": 0.8
+    },
+    {
+      "source_id": "170728",
+      "reference": "train_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "a885a22417b6bebf",
+      "field": "user_prompt",
+      "jaccard": 0.01575689,
+      "containment": 0.82352941
+    },
+    {
+      "source_id": "184433",
+      "reference": "train_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "44e1d859a69f6590",
+      "field": "text",
+      "jaccard": 0.16457341,
+      "containment": 1.0
+    },
+    {
+      "source_id": "184433",
+      "reference": "train_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "44e1d859a69f6590",
+      "field": "user_prompt",
+      "jaccard": 0.01515808,
+      "containment": 1.0
+    },
+    {
+      "source_id": "55755",
+      "reference": "train_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "40b13ddc621bb12f",
+      "field": "text",
+      "jaccard": 0.11274992,
+      "containment": 1.0
+    },
+    {
+      "source_id": "55755",
+      "reference": "train_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "40b13ddc621bb12f",
+      "field": "user_prompt",
+      "jaccard": 0.00950508,
+      "containment": 1.0
+    },
+    {
+      "source_id": "87107",
+      "reference": "train_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "6912d44bb11c7f81",
+      "field": "user_prompt",
+      "jaccard": 0.01099681,
+      "containment": 0.93939394
+    },
+    {
+      "source_id": "87019",
+      "reference": "train_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "6912d44bb11c7f81",
+      "field": "user_prompt",
+      "jaccard": 0.01121563,
+      "containment": 0.93939394
+    },
+    {
+      "source_id": "66336",
+      "reference": "train_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "89da91121cc571d8",
+      "field": "user_prompt",
+      "jaccard": 0.02149254,
+      "containment": 0.92307692
+    },
+    {
+      "source_id": "33929",
+      "reference": "train_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "72d7423b5b2ce2a6",
+      "field": "text",
+      "jaccard": 0.18697993,
+      "containment": 0.85267857
+    },
+    {
+      "source_id": "33885",
+      "reference": "train_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "72d7423b5b2ce2a6",
+      "field": "text",
+      "jaccard": 0.19648241,
+      "containment": 0.87276786
+    },
+    {
+      "source_id": "32347",
+      "reference": "train_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "72d7423b5b2ce2a6",
+      "field": "text",
+      "jaccard": 0.20040384,
+      "containment": 0.88616071
+    },
+    {
+      "source_id": "136031",
+      "reference": "train_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "29c0510cdefe3a5e",
+      "field": "text",
+      "jaccard": 0.1747713,
+      "containment": 0.97580645
+    },
+    {
+      "source_id": "136031",
+      "reference": "train_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "29c0510cdefe3a5e",
+      "field": "user_prompt",
+      "jaccard": 0.01350699,
+      "containment": 0.84848485
+    },
+    {
+      "source_id": "12694",
+      "reference": "train_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "178e2d2844580aa7",
+      "field": "user_prompt",
+      "jaccard": 0.02093945,
+      "containment": 0.94871795
+    },
+    {
+      "source_id": "47997",
+      "reference": "train_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "259da15b1d047084",
+      "field": "text",
+      "jaccard": 0.14623001,
+      "containment": 1.0
+    },
+    {
+      "source_id": "47997",
+      "reference": "train_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "259da15b1d047084",
+      "field": "user_prompt",
+      "jaccard": 0.01294745,
+      "containment": 1.0
+    },
+    {
+      "source_id": "85458",
+      "reference": "train_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "a4714c03bdf10f73",
+      "field": "user_prompt",
+      "jaccard": 0.0188172,
+      "containment": 0.94594595
+    },
+    {
+      "source_id": "144960",
+      "reference": "train_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "70a3330af5305f4b",
+      "field": "text",
+      "jaccard": 0.1391129,
+      "containment": 0.84885764
+    },
+    {
+      "source_id": "144863",
+      "reference": "train_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "70a3330af5305f4b",
+      "field": "text",
+      "jaccard": 0.15177479,
+      "containment": 0.87170475
+    },
+    {
+      "source_id": "144960",
+      "reference": "train_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "70a3330af5305f4b",
+      "field": "user_prompt",
+      "jaccard": 0.00795991,
+      "containment": 0.81818182
+    },
+    {
+      "source_id": "184433",
+      "reference": "train_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "eff968874ef708fb",
+      "field": "text",
+      "jaccard": 0.18929336,
+      "containment": 0.94444444
+    },
+    {
+      "source_id": "53769",
+      "reference": "train_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "8326f68d1d2e0824",
+      "field": "user_prompt",
+      "jaccard": 0.01546698,
+      "containment": 0.96296296
+    },
+    {
+      "source_id": "149928",
+      "reference": "train_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "a89bfc67645f3fc6",
+      "field": "text",
+      "jaccard": 0.2292313,
+      "containment": 0.8938172
+    },
+    {
+      "source_id": "149588",
+      "reference": "train_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "a89bfc67645f3fc6",
+      "field": "text",
+      "jaccard": 0.24331829,
+      "containment": 0.9422043
+    },
+    {
+      "source_id": "149184",
+      "reference": "train_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "a89bfc67645f3fc6",
+      "field": "text",
+      "jaccard": 0.23122392,
+      "containment": 0.8938172
+    },
+    {
+      "source_id": "148867",
+      "reference": "train_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "a89bfc67645f3fc6",
+      "field": "text",
+      "jaccard": 0.25457103,
+      "containment": 0.97311828
+    },
+    {
+      "source_id": "149928",
+      "reference": "train_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "a89bfc67645f3fc6",
+      "field": "user_prompt",
+      "jaccard": 0.01275239,
+      "containment": 0.97297297
+    },
+    {
+      "source_id": "149588",
+      "reference": "train_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "a89bfc67645f3fc6",
+      "field": "user_prompt",
+      "jaccard": 0.01268052,
+      "containment": 0.97297297
+    },
+    {
+      "source_id": "149184",
+      "reference": "train_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "a89bfc67645f3fc6",
+      "field": "user_prompt",
+      "jaccard": 0.01286633,
+      "containment": 0.97297297
+    },
+    {
+      "source_id": "148867",
+      "reference": "train_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "a89bfc67645f3fc6",
+      "field": "user_prompt",
+      "jaccard": 0.01274336,
+      "containment": 0.97297297
+    },
+    {
+      "source_id": "41667",
+      "reference": "train_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "b5994cb5a935c7c9",
+      "field": "user_prompt",
+      "jaccard": 0.02024507,
+      "containment": 1.0
+    },
+    {
+      "source_id": "188405",
+      "reference": "train_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "867dc70831b02897",
+      "field": "text",
+      "jaccard": 0.22650475,
+      "containment": 0.91082803
+    },
+    {
+      "source_id": "117619",
+      "reference": "train_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "041db681765baa48",
+      "field": "text",
+      "jaccard": 0.22295918,
+      "containment": 0.94588745
+    },
+    {
+      "source_id": "117619",
+      "reference": "train_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "041db681765baa48",
+      "field": "user_prompt",
+      "jaccard": 0.01911157,
+      "containment": 0.97368421
+    },
+    {
+      "source_id": "147719",
+      "reference": "train_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "b8a83af5cf69d87d",
+      "field": "text",
+      "jaccard": 0.1062979,
+      "containment": 0.92732558
+    },
+    {
+      "source_id": "147313",
+      "reference": "train_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "b8a83af5cf69d87d",
+      "field": "text",
+      "jaccard": 0.10605053,
+      "containment": 0.92732558
+    },
+    {
+      "source_id": "147719",
+      "reference": "train_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "b8a83af5cf69d87d",
+      "field": "user_prompt",
+      "jaccard": 0.00906344,
+      "containment": 0.9
+    },
+    {
+      "source_id": "147313",
+      "reference": "train_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "b8a83af5cf69d87d",
+      "field": "user_prompt",
+      "jaccard": 0.0090422,
+      "containment": 0.9
+    },
+    {
+      "source_id": "134424",
+      "reference": "train_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "7ce5f41950a981db",
+      "field": "user_prompt",
+      "jaccard": 0.01794258,
+      "containment": 0.83333333
+    },
+    {
+      "source_id": "107654",
+      "reference": "train_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "bb932cebe7cb7b8c",
+      "field": "text",
+      "jaccard": 0.38531646,
+      "containment": 0.94416873
+    },
+    {
+      "source_id": "107654",
+      "reference": "train_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "bb932cebe7cb7b8c",
+      "field": "user_prompt",
+      "jaccard": 0.01865285,
+      "containment": 1.0
+    },
+    {
+      "source_id": "194183",
+      "reference": "train_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "33e6f0e956a8ba02",
+      "field": "text",
+      "jaccard": 0.37890832,
+      "containment": 0.98079561
+    },
+    {
+      "source_id": "147719",
+      "reference": "train_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "01245f170a612324",
+      "field": "text",
+      "jaccard": 0.10288749,
+      "containment": 0.89337176
+    },
+    {
+      "source_id": "147313",
+      "reference": "train_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "01245f170a612324",
+      "field": "text",
+      "jaccard": 0.10264901,
+      "containment": 0.89337176
+    },
+    {
+      "source_id": "147719",
+      "reference": "train_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "01245f170a612324",
+      "field": "user_prompt",
+      "jaccard": 0.00973808,
+      "containment": 0.93548387
+    },
+    {
+      "source_id": "147313",
+      "reference": "train_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "01245f170a612324",
+      "field": "user_prompt",
+      "jaccard": 0.00971524,
+      "containment": 0.93548387
+    },
+    {
+      "source_id": "134424",
+      "reference": "train_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "fc705a0231ae20fb",
+      "field": "text",
+      "jaccard": 0.21347032,
+      "containment": 0.81304348
+    },
+    {
+      "source_id": "134424",
+      "reference": "train_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "fc705a0231ae20fb",
+      "field": "user_prompt",
+      "jaccard": 0.0173445,
+      "containment": 0.82857143
+    },
+    {
+      "source_id": "23836",
+      "reference": "train_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "e5961cee98aa3df4",
+      "field": "text",
+      "jaccard": 0.22342065,
+      "containment": 0.89876033
+    },
+    {
+      "source_id": "40858",
+      "reference": "train_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "d65fa4d611df33fc",
+      "field": "text",
+      "jaccard": 0.19147982,
+      "containment": 0.98842593
+    },
+    {
+      "source_id": "40858",
+      "reference": "train_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "d65fa4d611df33fc",
+      "field": "user_prompt",
+      "jaccard": 0.01076233,
+      "containment": 0.82758621
+    },
+    {
+      "source_id": "92506",
+      "reference": "train_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "c7eb30851c2e1674",
+      "field": "text",
+      "jaccard": 0.10783699,
+      "containment": 0.98567335
+    },
+    {
+      "source_id": "92212",
+      "reference": "train_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "c7eb30851c2e1674",
+      "field": "text",
+      "jaccard": 0.10787081,
+      "containment": 0.98567335
+    },
+    {
+      "source_id": "92506",
+      "reference": "train_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "c7eb30851c2e1674",
+      "field": "user_prompt",
+      "jaccard": 0.00940439,
+      "containment": 0.85714286
+    },
+    {
+      "source_id": "92212",
+      "reference": "train_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "c7eb30851c2e1674",
+      "field": "user_prompt",
+      "jaccard": 0.00940734,
+      "containment": 0.85714286
+    },
+    {
+      "source_id": "40858",
+      "reference": "train_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "6d5317c3c952429d",
+      "field": "text",
+      "jaccard": 0.10247191,
+      "containment": 1.0
+    },
+    {
+      "source_id": "40858",
+      "reference": "train_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "6d5317c3c952429d",
+      "field": "user_prompt",
+      "jaccard": 0.01393258,
+      "containment": 1.0
+    },
+    {
+      "source_id": "202731",
+      "reference": "train_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "67383545efbe5137",
+      "field": "text",
+      "jaccard": 0.19380282,
+      "containment": 0.86215539
+    },
+    {
+      "source_id": "202731",
+      "reference": "train_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "67383545efbe5137",
+      "field": "user_prompt",
+      "jaccard": 0.01681159,
+      "containment": 0.85294118
+    },
+    {
+      "source_id": "55577",
+      "reference": "train_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "c16ec8865745ebb3",
+      "field": "text",
+      "jaccard": 0.38444924,
+      "containment": 0.94555113
+    },
+    {
+      "source_id": "170728",
+      "reference": "train_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "01d1b72e2bfd7e44",
+      "field": "user_prompt",
+      "jaccard": 0.01350591,
+      "containment": 0.8
+    },
+    {
+      "source_id": "144960",
+      "reference": "train_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "5543b518f7a3a003",
+      "field": "text",
+      "jaccard": 0.15573053,
+      "containment": 0.9254766
+    },
+    {
+      "source_id": "144863",
+      "reference": "train_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "5543b518f7a3a003",
+      "field": "text",
+      "jaccard": 0.17691108,
+      "containment": 0.98266898
+    },
+    {
+      "source_id": "144960",
+      "reference": "train_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "5543b518f7a3a003",
+      "field": "user_prompt",
+      "jaccard": 0.00886001,
+      "containment": 1.0
+    },
+    {
+      "source_id": "144863",
+      "reference": "train_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "5543b518f7a3a003",
+      "field": "user_prompt",
+      "jaccard": 0.00938967,
+      "containment": 1.0
+    },
+    {
+      "source_id": "35783",
+      "reference": "train_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "b288a6bdc3460d6a",
+      "field": "text",
+      "jaccard": 0.32591093,
+      "containment": 0.88950276
+    },
+    {
+      "source_id": "53303",
+      "reference": "train_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "1938f77e8d51c02b",
+      "field": "text",
+      "jaccard": 0.28190955,
+      "containment": 0.92421746
+    },
+    {
+      "source_id": "53303",
+      "reference": "train_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "1938f77e8d51c02b",
+      "field": "user_prompt",
+      "jaccard": 0.01800412,
+      "containment": 1.0
+    },
+    {
+      "source_id": "144893",
+      "reference": "train_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "c45a1aa054943158",
+      "field": "text",
+      "jaccard": 0.24760833,
+      "containment": 0.93023256
+    },
+    {
+      "source_id": "121241",
+      "reference": "train_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "dd9b2b68b4f0fa74",
+      "field": "text",
+      "jaccard": 0.16324952,
+      "containment": 0.88842105
+    },
+    {
+      "source_id": "121241",
+      "reference": "train_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "dd9b2b68b4f0fa74",
+      "field": "user_prompt",
+      "jaccard": 0.01342282,
+      "containment": 0.97142857
+    },
+    {
+      "source_id": "91562",
+      "reference": "train_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "a5fdc7e66960b9b4",
+      "field": "user_prompt",
+      "jaccard": 0.01157308,
+      "containment": 0.81818182
+    },
+    {
+      "source_id": "39823",
+      "reference": "train_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "ae1e330cd7982790",
+      "field": "text",
+      "jaccard": 0.30249245,
+      "containment": 1.0
+    },
+    {
+      "source_id": "39823",
+      "reference": "train_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "ae1e330cd7982790",
+      "field": "user_prompt",
+      "jaccard": 0.01396753,
+      "containment": 0.97368421
+    },
+    {
+      "source_id": "78891",
+      "reference": "train_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "1ca28d954b1baea5",
+      "field": "text",
+      "jaccard": 0.09836928,
+      "containment": 0.85388128
+    },
+    {
+      "source_id": "78891",
+      "reference": "train_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "1ca28d954b1baea5",
+      "field": "user_prompt",
+      "jaccard": 0.02086677,
+      "containment": 1.0
+    },
+    {
+      "source_id": "40858",
+      "reference": "train_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "f2e1b389e7c6970e",
+      "field": "text",
+      "jaccard": 0.29961089,
+      "containment": 0.88732394
+    },
+    {
+      "source_id": "33407",
+      "reference": "train_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "7dc7c0e347f6985c",
+      "field": "text",
+      "jaccard": 0.30296128,
+      "containment": 0.96903461
+    },
+    {
+      "source_id": "33407",
+      "reference": "train_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "7dc7c0e347f6985c",
+      "field": "user_prompt",
+      "jaccard": 0.0212766,
+      "containment": 1.0
+    },
+    {
+      "source_id": "55654",
+      "reference": "train_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "aafe0207533fdf76",
+      "field": "text",
+      "jaccard": 0.14921287,
+      "containment": 0.89711934
+    },
+    {
+      "source_id": "134424",
+      "reference": "train_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "ce56530c81b445a1",
+      "field": "user_prompt",
+      "jaccard": 0.0173445,
+      "containment": 0.82857143
+    },
+    {
+      "source_id": "85426",
+      "reference": "train_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "29efcf85006f0b4f",
+      "field": "text",
+      "jaccard": 0.33367191,
+      "containment": 0.88903924
+    },
+    {
+      "source_id": "215556",
+      "reference": "train_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "6b76b3bcbfbfc463",
+      "field": "user_prompt",
+      "jaccard": 0.01565762,
+      "containment": 0.9375
+    },
+    {
+      "source_id": "40412",
+      "reference": "train_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "ba6f3195003586ee",
+      "field": "text",
+      "jaccard": 0.13542074,
+      "containment": 0.865
+    },
+    {
+      "source_id": "44003",
+      "reference": "train_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "d0e975d97e2c7c76",
+      "field": "text",
+      "jaccard": 0.16377649,
+      "containment": 0.91071429
+    },
+    {
+      "source_id": "44003",
+      "reference": "train_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "d0e975d97e2c7c76",
+      "field": "user_prompt",
+      "jaccard": 0.01009772,
+      "containment": 0.83783784
+    },
+    {
+      "source_id": "107654",
+      "reference": "train_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "66e77c8c7737449e",
+      "field": "text",
+      "jaccard": 0.20154639,
+      "containment": 0.97506234
+    },
+    {
+      "source_id": "107654",
+      "reference": "train_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "66e77c8c7737449e",
+      "field": "user_prompt",
+      "jaccard": 0.01865285,
+      "containment": 1.0
+    },
+    {
+      "source_id": "91562",
+      "reference": "train_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "595157bf7635355a",
+      "field": "user_prompt",
+      "jaccard": 0.01243568,
+      "containment": 0.85294118
+    },
+    {
+      "source_id": "164395",
+      "reference": "train_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "ea73a8f8185554f9",
+      "field": "text",
+      "jaccard": 0.19989253,
+      "containment": 1.0
+    },
+    {
+      "source_id": "164395",
+      "reference": "train_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "ea73a8f8185554f9",
+      "field": "user_prompt",
+      "jaccard": 0.01719506,
+      "containment": 1.0
+    },
+    {
+      "source_id": "19133",
+      "reference": "train_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "39e75f1195ab6f66",
+      "field": "user_prompt",
+      "jaccard": 0.01300813,
+      "containment": 0.82758621
+    },
+    {
+      "source_id": "137348",
+      "reference": "train_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "11aba3176c2d52be",
+      "field": "user_prompt",
+      "jaccard": 0.01467505,
+      "containment": 0.84848485
+    },
+    {
+      "source_id": "87107",
+      "reference": "train_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "916c34018aafb8a9",
+      "field": "user_prompt",
+      "jaccard": 0.0102764,
+      "containment": 0.85294118
+    },
+    {
+      "source_id": "87019",
+      "reference": "train_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "916c34018aafb8a9",
+      "field": "user_prompt",
+      "jaccard": 0.01048066,
+      "containment": 0.85294118
+    },
+    {
+      "source_id": "118801",
+      "reference": "train_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "c7dd60986cee3266",
+      "field": "user_prompt",
+      "jaccard": 0.01304978,
+      "containment": 0.81818182
+    },
+    {
+      "source_id": "148229",
+      "reference": "train_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "eaf8a66d7a147169",
+      "field": "user_prompt",
+      "jaccard": 0.01165595,
+      "containment": 0.82857143
+    },
+    {
+      "source_id": "35783",
+      "reference": "train_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "ab10d5d6faf50cef",
+      "field": "user_prompt",
+      "jaccard": 0.03586498,
+      "containment": 1.0
+    },
+    {
+      "source_id": "92506",
+      "reference": "train_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "146a2b9de5b0feec",
+      "field": "text",
+      "jaccard": 0.19053435,
+      "containment": 0.87394958
+    },
+    {
+      "source_id": "92212",
+      "reference": "train_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "146a2b9de5b0feec",
+      "field": "text",
+      "jaccard": 0.19059255,
+      "containment": 0.87394958
+    },
+    {
+      "source_id": "149862",
+      "reference": "train_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "d1ce5e4746aa87a0",
+      "field": "text",
+      "jaccard": 0.21661538,
+      "containment": 0.94623656
+    },
+    {
+      "source_id": "149627",
+      "reference": "train_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "d1ce5e4746aa87a0",
+      "field": "text",
+      "jaccard": 0.20382166,
+      "containment": 0.94623656
+    },
+    {
+      "source_id": "62027",
+      "reference": "train_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "7f88396940a4e472",
+      "field": "text",
+      "jaccard": 0.30836048,
+      "containment": 0.99824253
+    },
+    {
+      "source_id": "62027",
+      "reference": "train_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "7f88396940a4e472",
+      "field": "user_prompt",
+      "jaccard": 0.01629549,
+      "containment": 1.0
+    },
+    {
+      "source_id": "164542",
+      "reference": "train_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "1cafe0c169c8b39b",
+      "field": "text",
+      "jaccard": 0.27097447,
+      "containment": 0.98671727
+    },
+    {
+      "source_id": "164408",
+      "reference": "train_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "1cafe0c169c8b39b",
+      "field": "text",
+      "jaccard": 0.26753247,
+      "containment": 0.9772296
+    },
+    {
+      "source_id": "164542",
+      "reference": "train_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "1cafe0c169c8b39b",
+      "field": "user_prompt",
+      "jaccard": 0.01935146,
+      "containment": 1.0
+    },
+    {
+      "source_id": "164408",
+      "reference": "train_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "1cafe0c169c8b39b",
+      "field": "user_prompt",
+      "jaccard": 0.01934135,
+      "containment": 1.0
+    },
+    {
+      "source_id": "42790",
+      "reference": "train_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "b8e56be0061fa35b",
+      "field": "user_prompt",
+      "jaccard": 0.01273533,
+      "containment": 0.92
+    },
+    {
+      "source_id": "91562",
+      "reference": "train_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "2bcc0b52fa85c12d",
+      "field": "text",
+      "jaccard": 0.28963795,
+      "containment": 0.9015544
+    },
+    {
+      "source_id": "145013",
+      "reference": "train_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "e10999f37015f37f",
+      "field": "text",
+      "jaccard": 0.11053837,
+      "containment": 1.0
+    },
+    {
+      "source_id": "144987",
+      "reference": "train_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "e10999f37015f37f",
+      "field": "text",
+      "jaccard": 0.10975263,
+      "containment": 1.0
+    },
+    {
+      "source_id": "144970",
+      "reference": "train_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "e10999f37015f37f",
+      "field": "text",
+      "jaccard": 0.10832613,
+      "containment": 0.97409326
+    },
+    {
+      "source_id": "144893",
+      "reference": "train_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "e10999f37015f37f",
+      "field": "text",
+      "jaccard": 0.18729097,
+      "containment": 0.87046632
+    },
+    {
+      "source_id": "145013",
+      "reference": "train_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "e10999f37015f37f",
+      "field": "user_prompt",
+      "jaccard": 0.01088202,
+      "containment": 1.0
+    },
+    {
+      "source_id": "144987",
+      "reference": "train_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "e10999f37015f37f",
+      "field": "user_prompt",
+      "jaccard": 0.01080466,
+      "containment": 1.0
+    },
+    {
+      "source_id": "144970",
+      "reference": "train_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "e10999f37015f37f",
+      "field": "user_prompt",
+      "jaccard": 0.01097949,
+      "containment": 1.0
+    },
+    {
+      "source_id": "144893",
+      "reference": "train_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "e10999f37015f37f",
+      "field": "user_prompt",
+      "jaccard": 0.02178899,
+      "containment": 1.0
+    },
+    {
+      "source_id": "145013",
+      "reference": "train_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "b57add3e742a921f",
+      "field": "text",
+      "jaccard": 0.13734393,
+      "containment": 0.9379845
+    },
+    {
+      "source_id": "144987",
+      "reference": "train_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "b57add3e742a921f",
+      "field": "text",
+      "jaccard": 0.13669673,
+      "containment": 0.93992248
+    },
+    {
+      "source_id": "144970",
+      "reference": "train_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "b57add3e742a921f",
+      "field": "text",
+      "jaccard": 0.13401768,
+      "containment": 0.91085271
+    },
+    {
+      "source_id": "85458",
+      "reference": "train_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "73a20cf6e25f84e0",
+      "field": "text",
+      "jaccard": 0.20877944,
+      "containment": 0.975
+    },
+    {
+      "source_id": "85458",
+      "reference": "train_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "73a20cf6e25f84e0",
+      "field": "user_prompt",
+      "jaccard": 0.01883746,
+      "containment": 1.0
+    },
+    {
+      "source_id": "215570",
+      "reference": "train_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "c144a10bc83258b2",
+      "field": "text",
+      "jaccard": 0.18047983,
+      "containment": 0.91184573
+    },
+    {
+      "source_id": "149928",
+      "reference": "train_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "7dc8c00aca366d2a",
+      "field": "text",
+      "jaccard": 0.15220434,
+      "containment": 0.92356688
+    },
+    {
+      "source_id": "149588",
+      "reference": "train_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "7dc8c00aca366d2a",
+      "field": "text",
+      "jaccard": 0.15095652,
+      "containment": 0.92144374
+    },
+    {
+      "source_id": "149184",
+      "reference": "train_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "7dc8c00aca366d2a",
+      "field": "text",
+      "jaccard": 0.15354748,
+      "containment": 0.92356688
+    },
+    {
+      "source_id": "148867",
+      "reference": "train_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "7dc8c00aca366d2a",
+      "field": "text",
+      "jaccard": 0.15735862,
+      "containment": 0.95116773
+    },
+    {
+      "source_id": "149928",
+      "reference": "train_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "7dc8c00aca366d2a",
+      "field": "user_prompt",
+      "jaccard": 0.01275691,
+      "containment": 1.0
+    },
+    {
+      "source_id": "149588",
+      "reference": "train_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "7dc8c00aca366d2a",
+      "field": "user_prompt",
+      "jaccard": 0.01268499,
+      "containment": 1.0
+    },
+    {
+      "source_id": "149184",
+      "reference": "train_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "7dc8c00aca366d2a",
+      "field": "user_prompt",
+      "jaccard": 0.01287093,
+      "containment": 1.0
+    },
+    {
+      "source_id": "148867",
+      "reference": "train_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "7dc8c00aca366d2a",
+      "field": "user_prompt",
+      "jaccard": 0.01274788,
+      "containment": 1.0
+    },
+    {
+      "source_id": "89987",
+      "reference": "train_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "f8cce96f9affe1b9",
+      "field": "user_prompt",
+      "jaccard": 0.01584158,
+      "containment": 1.0
+    },
+    {
+      "source_id": "211070",
+      "reference": "train_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "daaf4a62748617fa",
+      "field": "text",
+      "jaccard": 0.11476279,
+      "containment": 0.87829615
+    },
+    {
+      "source_id": "149928",
+      "reference": "train_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "c7176d08806cc127",
+      "field": "text",
+      "jaccard": 0.20168634,
+      "containment": 0.80701754
+    },
+    {
+      "source_id": "149184",
+      "reference": "train_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "c7176d08806cc127",
+      "field": "text",
+      "jaccard": 0.20340136,
+      "containment": 0.80701754
+    },
+    {
+      "source_id": "147719",
+      "reference": "train_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "c7176d08806cc127",
+      "field": "text",
+      "jaccard": 0.2243083,
+      "containment": 0.91902834
+    },
+    {
+      "source_id": "147313",
+      "reference": "train_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "c7176d08806cc127",
+      "field": "text",
+      "jaccard": 0.225,
+      "containment": 0.92307692
+    },
+    {
+      "source_id": "103338",
+      "reference": "train_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "d5bc2a0404fd5bc9",
+      "field": "user_prompt",
+      "jaccard": 0.0212766,
+      "containment": 0.97368421
+    },
+    {
+      "source_id": "175277",
+      "reference": "train_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "21a42bdb155ff762",
+      "field": "text",
+      "jaccard": 0.18150174,
+      "containment": 0.94805195
+    },
+    {
+      "source_id": "175277",
+      "reference": "train_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "21a42bdb155ff762",
+      "field": "user_prompt",
+      "jaccard": 0.01452906,
+      "containment": 0.85294118
+    },
+    {
+      "source_id": "40858",
+      "reference": "train_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "c2e869b01ec279a8",
+      "field": "text",
+      "jaccard": 0.24224719,
+      "containment": 1.0
+    },
+    {
+      "source_id": "40858",
+      "reference": "train_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "c2e869b01ec279a8",
+      "field": "user_prompt",
+      "jaccard": 0.01168539,
+      "containment": 1.0
+    },
+    {
+      "source_id": "170728",
+      "reference": "train_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "bb23b48708fdb0ac",
+      "field": "text",
+      "jaccard": 0.23106061,
+      "containment": 0.84722222
+    },
+    {
+      "source_id": "91562",
+      "reference": "train_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "a567ee3292e3c309",
+      "field": "text",
+      "jaccard": 0.22019111,
+      "containment": 0.86885246
+    },
+    {
+      "source_id": "91562",
+      "reference": "train_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "a567ee3292e3c309",
+      "field": "user_prompt",
+      "jaccard": 0.01114445,
+      "containment": 0.8125
+    },
+    {
+      "source_id": "95539",
+      "reference": "train_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "a7769b3847c7dfbe",
+      "field": "user_prompt",
+      "jaccard": 0.01727542,
+      "containment": 0.94594595
+    },
+    {
+      "source_id": "70303",
+      "reference": "train_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "fedac1f2eaf93593",
+      "field": "text",
+      "jaccard": 0.11413043,
+      "containment": 0.83259912
+    },
+    {
+      "source_id": "121241",
+      "reference": "train_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "0e5c325c2f9afa83",
+      "field": "text",
+      "jaccard": 0.14982844,
+      "containment": 0.81198347
+    },
+    {
+      "source_id": "186504",
+      "reference": "train_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "708524173c5c7115",
+      "field": "text",
+      "jaccard": 0.20025136,
+      "containment": 1.0
+    },
+    {
+      "source_id": "186504",
+      "reference": "train_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "708524173c5c7115",
+      "field": "user_prompt",
+      "jaccard": 0.01466276,
+      "containment": 1.0
+    },
+    {
+      "source_id": "78891",
+      "reference": "train_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "84d81291136b4b04",
+      "field": "text",
+      "jaccard": 0.12252541,
+      "containment": 1.0
+    },
+    {
+      "source_id": "78891",
+      "reference": "train_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "84d81291136b4b04",
+      "field": "user_prompt",
+      "jaccard": 0.01979668,
+      "containment": 1.0
+    },
+    {
+      "source_id": "96460",
+      "reference": "train_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "949be63079726c48",
+      "field": "text",
+      "jaccard": 0.1427896,
+      "containment": 0.87790698
+    },
+    {
+      "source_id": "96460",
+      "reference": "train_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "949be63079726c48",
+      "field": "user_prompt",
+      "jaccard": 0.0144648,
+      "containment": 0.96774194
+    },
+    {
+      "source_id": "78891",
+      "reference": "train_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "c8867af22307c658",
+      "field": "user_prompt",
+      "jaccard": 0.02086677,
+      "containment": 1.0
+    },
+    {
+      "source_id": "23836",
+      "reference": "train_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "b09f0915fb031627",
+      "field": "text",
+      "jaccard": 0.21185107,
+      "containment": 0.97820823
+    },
+    {
+      "source_id": "21589",
+      "reference": "train_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "b09f0915fb031627",
+      "field": "text",
+      "jaccard": 0.21732114,
+      "containment": 0.97820823
+    },
+    {
+      "source_id": "85458",
+      "reference": "train_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "9b2a1b0a6a480826",
+      "field": "text",
+      "jaccard": 0.20779915,
+      "containment": 0.96526055
+    },
+    {
+      "source_id": "85458",
+      "reference": "train_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "9b2a1b0a6a480826",
+      "field": "user_prompt",
+      "jaccard": 0.01883746,
+      "containment": 1.0
+    },
+    {
+      "source_id": "144893",
+      "reference": "train_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "6854194a9181af87",
+      "field": "text",
+      "jaccard": 0.16417083,
+      "containment": 0.83380282
+    },
+    {
+      "source_id": "103338",
+      "reference": "train_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "8800358bc47f5d59",
+      "field": "user_prompt",
+      "jaccard": 0.01781609,
+      "containment": 0.93939394
+    },
+    {
+      "source_id": "95539",
+      "reference": "train_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "373e98c3d760611f",
+      "field": "user_prompt",
+      "jaccard": 0.01828063,
+      "containment": 1.0
+    },
+    {
+      "source_id": "87107",
+      "reference": "train_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "8a62448f8b3d4c1a",
+      "field": "user_prompt",
+      "jaccard": 0.00992556,
+      "containment": 0.875
+    },
+    {
+      "source_id": "87019",
+      "reference": "train_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "8a62448f8b3d4c1a",
+      "field": "user_prompt",
+      "jaccard": 0.01012292,
+      "containment": 0.875
+    },
+    {
+      "source_id": "62229",
+      "reference": "train_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "84e7984f318fb37b",
+      "field": "user_prompt",
+      "jaccard": 0.00831354,
+      "containment": 0.84
+    },
+    {
+      "source_id": "37860",
+      "reference": "train_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "8be8f438c7fbc0ab",
+      "field": "text",
+      "jaccard": 0.05980126,
+      "containment": 0.85089974
+    },
+    {
+      "source_id": "37245",
+      "reference": "train_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "8be8f438c7fbc0ab",
+      "field": "text",
+      "jaccard": 0.05731795,
+      "containment": 0.81748072
+    },
+    {
+      "source_id": "90185",
+      "reference": "train_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "8be8f438c7fbc0ab",
+      "field": "user_prompt",
+      "jaccard": 0.01629007,
+      "containment": 0.91176471
+    },
+    {
+      "source_id": "205423",
+      "reference": "train_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "8be8f438c7fbc0ab",
+      "field": "user_prompt",
+      "jaccard": 0.01693002,
+      "containment": 0.88235294
+    },
+    {
+      "source_id": "164542",
+      "reference": "train_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "8be8f438c7fbc0ab",
+      "field": "user_prompt",
+      "jaccard": 0.01565762,
+      "containment": 0.88235294
+    },
+    {
+      "source_id": "164486",
+      "reference": "train_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "8be8f438c7fbc0ab",
+      "field": "user_prompt",
+      "jaccard": 0.01165954,
+      "containment": 0.88235294
+    },
+    {
+      "source_id": "164408",
+      "reference": "train_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "8be8f438c7fbc0ab",
+      "field": "user_prompt",
+      "jaccard": 0.01564945,
+      "containment": 0.88235294
+    },
+    {
+      "source_id": "163867",
+      "reference": "train_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "8be8f438c7fbc0ab",
+      "field": "user_prompt",
+      "jaccard": 0.00752445,
+      "containment": 0.88235294
+    },
+    {
+      "source_id": "45265",
+      "reference": "train_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "cbd8be5ae2183152",
+      "field": "text",
+      "jaccard": 0.30660377,
+      "containment": 1.0
+    },
+    {
+      "source_id": "45265",
+      "reference": "train_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "cbd8be5ae2183152",
+      "field": "user_prompt",
+      "jaccard": 0.01157804,
+      "containment": 1.0
+    },
+    {
+      "source_id": "40412",
+      "reference": "train_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "5003ec7badad2f0b",
+      "field": "user_prompt",
+      "jaccard": 0.011563,
+      "containment": 0.80555556
+    },
+    {
+      "source_id": "40858",
+      "reference": "train_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "11a92abd45a3fccd",
+      "field": "text",
+      "jaccard": 0.17573034,
+      "containment": 1.0
+    },
+    {
+      "source_id": "40858",
+      "reference": "train_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "11a92abd45a3fccd",
+      "field": "user_prompt",
+      "jaccard": 0.01348315,
+      "containment": 1.0
+    },
+    {
+      "source_id": "83808",
+      "reference": "train_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "aa742949395f2ebf",
+      "field": "text",
+      "jaccard": 0.30120482,
+      "containment": 0.9
+    },
+    {
+      "source_id": "85458",
+      "reference": "train_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "6d8ba5b7437653ef",
+      "field": "user_prompt",
+      "jaccard": 0.01719506,
+      "containment": 0.91428571
+    },
+    {
+      "source_id": "146930",
+      "reference": "train_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "35f6c6a9f496e137",
+      "field": "user_prompt",
+      "jaccard": 0.01175842,
+      "containment": 0.81481481
+    },
+    {
+      "source_id": "78891",
+      "reference": "train_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "315db6872e57e8bf",
+      "field": "text",
+      "jaccard": 0.1540931,
+      "containment": 1.0
+    },
+    {
+      "source_id": "78891",
+      "reference": "train_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "315db6872e57e8bf",
+      "field": "user_prompt",
+      "jaccard": 0.01872659,
+      "containment": 1.0
+    },
+    {
+      "source_id": "164849",
+      "reference": "train_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "3f224c62e357e2ec",
+      "field": "user_prompt",
+      "jaccard": 0.01555275,
+      "containment": 1.0
+    },
+    {
+      "source_id": "196765",
+      "reference": "train_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "8ac4720167138414",
+      "field": "text",
+      "jaccard": 0.23988577,
+      "containment": 0.92647059
+    },
+    {
+      "source_id": "55654",
+      "reference": "train_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "ae518add09cf224c",
+      "field": "text",
+      "jaccard": 0.07943392,
+      "containment": 0.82660333
+    },
+    {
+      "source_id": "75429",
+      "reference": "train_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "2e22808c12bec3c3",
+      "field": "user_prompt",
+      "jaccard": 0.01674877,
+      "containment": 0.89473684
+    },
+    {
+      "source_id": "55755",
+      "reference": "train_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "51782fae032b3f32",
+      "field": "text",
+      "jaccard": 0.14505283,
+      "containment": 0.86285714
+    },
+    {
+      "source_id": "127540",
+      "reference": "train_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "fc7ffa74c77f11b2",
+      "field": "user_prompt",
+      "jaccard": 0.01057801,
+      "containment": 0.84848485
+    },
+    {
+      "source_id": "35783",
+      "reference": "train_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "904658def0d83a7e",
+      "field": "text",
+      "jaccard": 0.39096267,
+      "containment": 0.85042735
+    },
+    {
+      "source_id": "111161",
+      "reference": "train_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "1289abc84d3d93e7",
+      "field": "text",
+      "jaccard": 0.18831572,
+      "containment": 1.0
+    },
+    {
+      "source_id": "111161",
+      "reference": "train_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "1289abc84d3d93e7",
+      "field": "user_prompt",
+      "jaccard": 0.00994406,
+      "containment": 1.0
+    },
+    {
+      "source_id": "134424",
+      "reference": "train_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "09a5fb3e022cfede",
+      "field": "user_prompt",
+      "jaccard": 0.0167364,
+      "containment": 0.8
+    },
+    {
+      "source_id": "33179",
+      "reference": "train_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "83385519b53f53df",
+      "field": "text",
+      "jaccard": 0.25038961,
+      "containment": 0.96015936
+    },
+    {
+      "source_id": "33100",
+      "reference": "train_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "83385519b53f53df",
+      "field": "text",
+      "jaccard": 0.25012974,
+      "containment": 0.96015936
+    },
+    {
+      "source_id": "33179",
+      "reference": "train_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "83385519b53f53df",
+      "field": "user_prompt",
+      "jaccard": 0.0167979,
+      "containment": 1.0
+    },
+    {
+      "source_id": "33100",
+      "reference": "train_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "83385519b53f53df",
+      "field": "user_prompt",
+      "jaccard": 0.01678028,
+      "containment": 1.0
+    },
+    {
+      "source_id": "38288",
+      "reference": "train_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "9236e29d1665eeb1",
+      "field": "user_prompt",
+      "jaccard": 0.02851109,
+      "containment": 0.84375
+    },
+    {
+      "source_id": "35783",
+      "reference": "train_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "9236e29d1665eeb1",
+      "field": "user_prompt",
+      "jaccard": 0.02833158,
+      "containment": 0.84375
+    },
+    {
+      "source_id": "35309",
+      "reference": "train_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "9236e29d1665eeb1",
+      "field": "user_prompt",
+      "jaccard": 0.028451,
+      "containment": 0.84375
+    },
+    {
+      "source_id": "40858",
+      "reference": "train_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "55ee3443f0937cef",
+      "field": "text",
+      "jaccard": 0.22859704,
+      "containment": 0.98837209
+    },
+    {
+      "source_id": "40858",
+      "reference": "train_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "55ee3443f0937cef",
+      "field": "user_prompt",
+      "jaccard": 0.0121022,
+      "containment": 0.81818182
+    },
+    {
+      "source_id": "179886",
+      "reference": "train_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "b957da9ab8c93403",
+      "field": "text",
+      "jaccard": 0.17559359,
+      "containment": 0.89577465
+    },
+    {
+      "source_id": "179886",
+      "reference": "train_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "b957da9ab8c93403",
+      "field": "user_prompt",
+      "jaccard": 0.01914414,
+      "containment": 0.94444444
+    },
+    {
+      "source_id": "141819",
+      "reference": "train_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "b849f358498896eb",
+      "field": "text",
+      "jaccard": 0.13532173,
+      "containment": 0.917603
+    },
+    {
+      "source_id": "141819",
+      "reference": "train_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "b849f358498896eb",
+      "field": "user_prompt",
+      "jaccard": 0.00950517,
+      "containment": 1.0
+    },
+    {
+      "source_id": "12694",
+      "reference": "train_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "047451e23db2c5b6",
+      "field": "user_prompt",
+      "jaccard": 0.02093945,
+      "containment": 0.94871795
+    },
+    {
+      "source_id": "134424",
+      "reference": "train_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "650c27303e65df77",
+      "field": "user_prompt",
+      "jaccard": 0.01675643,
+      "containment": 0.84848485
+    },
+    {
+      "source_id": "145013",
+      "reference": "train_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "af0f4ec84def487f",
+      "field": "text",
+      "jaccard": 0.18484596,
+      "containment": 0.85714286
+    },
+    {
+      "source_id": "144987",
+      "reference": "train_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "af0f4ec84def487f",
+      "field": "text",
+      "jaccard": 0.18914428,
+      "containment": 0.87902188
+    },
+    {
+      "source_id": "144970",
+      "reference": "train_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "af0f4ec84def487f",
+      "field": "text",
+      "jaccard": 0.18645017,
+      "containment": 0.85714286
+    },
+    {
+      "source_id": "144987",
+      "reference": "train_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "af0f4ec84def487f",
+      "field": "user_prompt",
+      "jaccard": 0.00851789,
+      "containment": 0.85714286
+    },
+    {
+      "source_id": "142288",
+      "reference": "train_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "fb34e8262ff58fd5",
+      "field": "text",
+      "jaccard": 0.13965268,
+      "containment": 0.98974359
+    },
+    {
+      "source_id": "142288",
+      "reference": "train_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "fb34e8262ff58fd5",
+      "field": "user_prompt",
+      "jaccard": 0.01268116,
+      "containment": 1.0
+    },
+    {
+      "source_id": "42790",
+      "reference": "train_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "2cb86162c2b96257",
+      "field": "user_prompt",
+      "jaccard": 0.01325967,
+      "containment": 0.8
+    },
+    {
+      "source_id": "164395",
+      "reference": "train_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "b268333197da1754",
+      "field": "text",
+      "jaccard": 0.40784524,
+      "containment": 1.0
+    },
+    {
+      "source_id": "164395",
+      "reference": "train_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "b268333197da1754",
+      "field": "user_prompt",
+      "jaccard": 0.01719506,
+      "containment": 1.0
+    },
+    {
+      "source_id": "141121",
+      "reference": "train_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "bb236dea14742143",
+      "field": "text",
+      "jaccard": 0.15928753,
+      "containment": 0.94561934
+    },
+    {
+      "source_id": "141121",
+      "reference": "train_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "bb236dea14742143",
+      "field": "user_prompt",
+      "jaccard": 0.0190036,
+      "containment": 1.0
+    },
+    {
+      "source_id": "53769",
+      "reference": "train_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "a93d19eb166b8468",
+      "field": "user_prompt",
+      "jaccard": 0.01486326,
+      "containment": 0.92592593
+    },
+    {
+      "source_id": "61706",
+      "reference": "train_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "ccb632b78e4ae460",
+      "field": "user_prompt",
+      "jaccard": 0.01386896,
+      "containment": 0.85294118
+    },
+    {
+      "source_id": "78891",
+      "reference": "train_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "a07b15568e085308",
+      "field": "user_prompt",
+      "jaccard": 0.01545842,
+      "containment": 0.80555556
+    },
+    {
+      "source_id": "184433",
+      "reference": "train_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "bb1cbd8effd83b56",
+      "field": "text",
+      "jaccard": 0.22609435,
+      "containment": 0.92361111
+    },
+    {
+      "source_id": "105796",
+      "reference": "train_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "5ed062bc93ab84dc",
+      "field": "user_prompt",
+      "jaccard": 0.02021277,
+      "containment": 0.97435897
+    },
+    {
+      "source_id": "37860",
+      "reference": "train_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "c09e34da6e989e12",
+      "field": "text",
+      "jaccard": 0.12782091,
+      "containment": 0.91948052
+    },
+    {
+      "source_id": "37245",
+      "reference": "train_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "c09e34da6e989e12",
+      "field": "text",
+      "jaccard": 0.12578843,
+      "containment": 0.90649351
+    },
+    {
+      "source_id": "42790",
+      "reference": "train_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "900ce33b8bee26ea",
+      "field": "user_prompt",
+      "jaccard": 0.01828255,
+      "containment": 0.97058824
+    },
+    {
+      "source_id": "205423",
+      "reference": "train_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "a80c0dab9ee37794",
+      "field": "text",
+      "jaccard": 0.30673854,
+      "containment": 0.86737805
+    },
+    {
+      "source_id": "40412",
+      "reference": "val_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "6d8ffbd1608c4af5",
+      "field": "user_prompt",
+      "jaccard": 0.011563,
+      "containment": 0.80555556
+    },
+    {
+      "source_id": "91562",
+      "reference": "val_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "ea5e38f3c8116300",
+      "field": "user_prompt",
+      "jaccard": 0.01243568,
+      "containment": 0.85294118
+    },
+    {
+      "source_id": "101570",
+      "reference": "val_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "73d1dc4e92c2ab5a",
+      "field": "text",
+      "jaccard": 0.09567698,
+      "containment": 0.94989107
+    },
+    {
+      "source_id": "100755",
+      "reference": "val_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "73d1dc4e92c2ab5a",
+      "field": "text",
+      "jaccard": 0.18303571,
+      "containment": 0.98257081
+    },
+    {
+      "source_id": "101570",
+      "reference": "val_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "73d1dc4e92c2ab5a",
+      "field": "user_prompt",
+      "jaccard": 0.00771775,
+      "containment": 0.97222222
+    },
+    {
+      "source_id": "100755",
+      "reference": "val_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "73d1dc4e92c2ab5a",
+      "field": "user_prompt",
+      "jaccard": 0.01424501,
+      "containment": 0.97222222
+    },
+    {
+      "source_id": "62229",
+      "reference": "val_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "660958f24630e924",
+      "field": "text",
+      "jaccard": 0.12720157,
+      "containment": 0.90782123
+    },
+    {
+      "source_id": "62229",
+      "reference": "val_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "660958f24630e924",
+      "field": "user_prompt",
+      "jaccard": 0.00951249,
+      "containment": 0.96
+    },
+    {
+      "source_id": "87107",
+      "reference": "val_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "fb9750e1a15a9c95",
+      "field": "user_prompt",
+      "jaccard": 0.01099681,
+      "containment": 0.93939394
+    },
+    {
+      "source_id": "87019",
+      "reference": "val_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "fb9750e1a15a9c95",
+      "field": "user_prompt",
+      "jaccard": 0.01121563,
+      "containment": 0.93939394
+    },
+    {
+      "source_id": "144960",
+      "reference": "val_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "7c16ce5994c6924b",
+      "field": "text",
+      "jaccard": 0.10794955,
+      "containment": 0.94117647
+    },
+    {
+      "source_id": "144960",
+      "reference": "val_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "7c16ce5994c6924b",
+      "field": "user_prompt",
+      "jaccard": 0.00974601,
+      "containment": 1.0
+    },
+    {
+      "source_id": "127540",
+      "reference": "val_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "a1bb1f0f15a8450c",
+      "field": "user_prompt",
+      "jaccard": 0.01057801,
+      "containment": 0.84848485
+    },
+    {
+      "source_id": "87107",
+      "reference": "val_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "ca7f75013fccffbf",
+      "field": "text",
+      "jaccard": 0.19486301,
+      "containment": 0.84672619
+    },
+    {
+      "source_id": "53303",
+      "reference": "val_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "4a5e66fe352a1a2e",
+      "field": "text",
+      "jaccard": 0.36278381,
+      "containment": 0.8996328
+    },
+    {
+      "source_id": "116258",
+      "reference": "val_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "aa7ba926808e9d37",
+      "field": "text",
+      "jaccard": 0.36234097,
+      "containment": 0.95442359
+    },
+    {
+      "source_id": "116258",
+      "reference": "val_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "aa7ba926808e9d37",
+      "field": "user_prompt",
+      "jaccard": 0.01501813,
+      "containment": 1.0
+    },
+    {
+      "source_id": "36965",
+      "reference": "val_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "3e70639eb955caa7",
+      "field": "text",
+      "jaccard": 0.22776911,
+      "containment": 0.81223922
+    },
+    {
+      "source_id": "187190",
+      "reference": "val_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "d74fc23bfed5b722",
+      "field": "text",
+      "jaccard": 0.28971394,
+      "containment": 0.96356275
+    },
+    {
+      "source_id": "187190",
+      "reference": "val_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "d74fc23bfed5b722",
+      "field": "user_prompt",
+      "jaccard": 0.01846154,
+      "containment": 1.0
+    },
+    {
+      "source_id": "145172",
+      "reference": "val_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "fcf7cf4ad13615f3",
+      "field": "text",
+      "jaccard": 0.19880419,
+      "containment": 1.0
+    },
+    {
+      "source_id": "145172",
+      "reference": "val_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "fcf7cf4ad13615f3",
+      "field": "user_prompt",
+      "jaccard": 0.01793722,
+      "containment": 1.0
+    },
+    {
+      "source_id": "40412",
+      "reference": "val_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "60000ff36f2df76b",
+      "field": "text",
+      "jaccard": 0.18568147,
+      "containment": 0.81375839
+    },
+    {
+      "source_id": "87107",
+      "reference": "val_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "7618042bc46aab18",
+      "field": "user_prompt",
+      "jaccard": 0.01099681,
+      "containment": 0.93939394
+    },
+    {
+      "source_id": "87019",
+      "reference": "val_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "7618042bc46aab18",
+      "field": "user_prompt",
+      "jaccard": 0.01121563,
+      "containment": 0.93939394
+    },
+    {
+      "source_id": "55654",
+      "reference": "val_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "628f3790936b33a2",
+      "field": "text",
+      "jaccard": 0.10002268,
+      "containment": 0.81365314
+    },
+    {
+      "source_id": "55654",
+      "reference": "val_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "628f3790936b33a2",
+      "field": "user_prompt",
+      "jaccard": 0.00719591,
+      "containment": 1.0
+    },
+    {
+      "source_id": "120000",
+      "reference": "val_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "c7b710e7c3766054",
+      "field": "text",
+      "jaccard": 0.22396576,
+      "containment": 0.8134715
+    },
+    {
+      "source_id": "19133",
+      "reference": "val_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "ed33fbdcc5cbac55",
+      "field": "user_prompt",
+      "jaccard": 0.01576087,
+      "containment": 1.0
+    },
+    {
+      "source_id": "149928",
+      "reference": "val_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "10edce3f9fc8036c",
+      "field": "text",
+      "jaccard": 0.12399017,
+      "containment": 0.93386243
+    },
+    {
+      "source_id": "149588",
+      "reference": "val_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "10edce3f9fc8036c",
+      "field": "text",
+      "jaccard": 0.12016719,
+      "containment": 0.91269841
+    },
+    {
+      "source_id": "149184",
+      "reference": "val_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "10edce3f9fc8036c",
+      "field": "text",
+      "jaccard": 0.12508859,
+      "containment": 0.93386243
+    },
+    {
+      "source_id": "148867",
+      "reference": "val_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "10edce3f9fc8036c",
+      "field": "text",
+      "jaccard": 0.12508784,
+      "containment": 0.94179894
+    },
+    {
+      "source_id": "149928",
+      "reference": "val_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "10edce3f9fc8036c",
+      "field": "user_prompt",
+      "jaccard": 0.01275239,
+      "containment": 0.97297297
+    },
+    {
+      "source_id": "149588",
+      "reference": "val_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "10edce3f9fc8036c",
+      "field": "user_prompt",
+      "jaccard": 0.01268052,
+      "containment": 0.97297297
+    },
+    {
+      "source_id": "149184",
+      "reference": "val_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "10edce3f9fc8036c",
+      "field": "user_prompt",
+      "jaccard": 0.01286633,
+      "containment": 0.97297297
+    },
+    {
+      "source_id": "148867",
+      "reference": "val_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "10edce3f9fc8036c",
+      "field": "user_prompt",
+      "jaccard": 0.01274336,
+      "containment": 0.97297297
+    },
+    {
+      "source_id": "187190",
+      "reference": "val_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "b3687c9c1d11091d",
+      "field": "text",
+      "jaccard": 0.29387515,
+      "containment": 0.87237762
+    },
+    {
+      "source_id": "62229",
+      "reference": "val_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "823d954479a4014a",
+      "field": "text",
+      "jaccard": 0.19623972,
+      "containment": 0.94172932
+    },
+    {
+      "source_id": "62229",
+      "reference": "val_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "823d954479a4014a",
+      "field": "user_prompt",
+      "jaccard": 0.00911252,
+      "containment": 0.92
+    },
+    {
+      "source_id": "78891",
+      "reference": "val_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "8d03e1d2abe8d1d3",
+      "field": "user_prompt",
+      "jaccard": 0.01174586,
+      "containment": 0.84615385
+    },
+    {
+      "source_id": "37860",
+      "reference": "val_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "1e6491526d9294b6",
+      "field": "text",
+      "jaccard": 0.13001808,
+      "containment": 0.93134715
+    },
+    {
+      "source_id": "37245",
+      "reference": "val_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "1e6491526d9294b6",
+      "field": "text",
+      "jaccard": 0.12412304,
+      "containment": 0.89378238
+    },
+    {
+      "source_id": "205423",
+      "reference": "val_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "1e6491526d9294b6",
+      "field": "user_prompt",
+      "jaccard": 0.01748449,
+      "containment": 0.86111111
+    },
+    {
+      "source_id": "164542",
+      "reference": "val_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "1e6491526d9294b6",
+      "field": "user_prompt",
+      "jaccard": 0.0161711,
+      "containment": 0.86111111
+    },
+    {
+      "source_id": "164486",
+      "reference": "val_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "1e6491526d9294b6",
+      "field": "user_prompt",
+      "jaccard": 0.01204351,
+      "containment": 0.86111111
+    },
+    {
+      "source_id": "164408",
+      "reference": "val_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "1e6491526d9294b6",
+      "field": "user_prompt",
+      "jaccard": 0.01616267,
+      "containment": 0.86111111
+    },
+    {
+      "source_id": "163867",
+      "reference": "val_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "1e6491526d9294b6",
+      "field": "user_prompt",
+      "jaccard": 0.00777332,
+      "containment": 0.86111111
+    },
+    {
+      "source_id": "90185",
+      "reference": "val_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "1e6491526d9294b6",
+      "field": "user_prompt",
+      "jaccard": 0.01627297,
+      "containment": 0.86111111
+    },
+    {
+      "source_id": "137348",
+      "reference": "val_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "3878bd5d1c9ac760",
+      "field": "user_prompt",
+      "jaccard": 0.01467505,
+      "containment": 0.84848485
+    },
+    {
+      "source_id": "70303",
+      "reference": "val_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "8cdfad01996059dc",
+      "field": "user_prompt",
+      "jaccard": 0.00987045,
+      "containment": 0.84210526
+    },
+    {
+      "source_id": "195976",
+      "reference": "val_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "433e16e269ce6c3c",
+      "field": "user_prompt",
+      "jaccard": 0.00822079,
+      "containment": 0.875
+    },
+    {
+      "source_id": "42790",
+      "reference": "val_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "8584f2669d657c95",
+      "field": "user_prompt",
+      "jaccard": 0.01769912,
+      "containment": 0.88888889
+    },
+    {
+      "source_id": "18211",
+      "reference": "val_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "5ae073bf67b67626",
+      "field": "text",
+      "jaccard": 0.2119353,
+      "containment": 0.97938144
+    },
+    {
+      "source_id": "18211",
+      "reference": "val_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "5ae073bf67b67626",
+      "field": "user_prompt",
+      "jaccard": 0.01792717,
+      "containment": 1.0
+    },
+    {
+      "source_id": "33179",
+      "reference": "val_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "5dc36002802b40b0",
+      "field": "text",
+      "jaccard": 0.26680141,
+      "containment": 0.87707641
+    },
+    {
+      "source_id": "33100",
+      "reference": "val_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "5dc36002802b40b0",
+      "field": "text",
+      "jaccard": 0.26653205,
+      "containment": 0.87707641
+    },
+    {
+      "source_id": "95539",
+      "reference": "val_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "299a945341536285",
+      "field": "user_prompt",
+      "jaccard": 0.01527846,
+      "containment": 0.86111111
+    },
+    {
+      "source_id": "83808",
+      "reference": "val_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "35d8582c48561a56",
+      "field": "text",
+      "jaccard": 0.14568345,
+      "containment": 0.84816754
+    },
+    {
+      "source_id": "87107",
+      "reference": "val_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "35d8582c48561a56",
+      "field": "user_prompt",
+      "jaccard": 0.01099681,
+      "containment": 0.93939394
+    },
+    {
+      "source_id": "87019",
+      "reference": "val_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "35d8582c48561a56",
+      "field": "user_prompt",
+      "jaccard": 0.01121563,
+      "containment": 0.93939394
+    },
+    {
+      "source_id": "97369",
+      "reference": "val_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "09f534bd4e981b73",
+      "field": "text",
+      "jaccard": 0.07130061,
+      "containment": 0.8122449
+    },
+    {
+      "source_id": "193389",
+      "reference": "val_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "943f0aed0bf0d2ca",
+      "field": "user_prompt",
+      "jaccard": 0.01467269,
+      "containment": 0.8125
+    },
+    {
+      "source_id": "92506",
+      "reference": "val_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "1adad49de1d1bf6e",
+      "field": "text",
+      "jaccard": 0.13308341,
+      "containment": 0.9638009
+    },
+    {
+      "source_id": "92212",
+      "reference": "val_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "1adad49de1d1bf6e",
+      "field": "text",
+      "jaccard": 0.133125,
+      "containment": 0.9638009
+    },
+    {
+      "source_id": "92506",
+      "reference": "val_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "1adad49de1d1bf6e",
+      "field": "user_prompt",
+      "jaccard": 0.01098901,
+      "containment": 1.0
+    },
+    {
+      "source_id": "92212",
+      "reference": "val_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "1adad49de1d1bf6e",
+      "field": "user_prompt",
+      "jaccard": 0.01099246,
+      "containment": 1.0
+    },
+    {
+      "source_id": "164542",
+      "reference": "val_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "910001c19e51a66d",
+      "field": "user_prompt",
+      "jaccard": 0.01617954,
+      "containment": 0.88571429
+    },
+    {
+      "source_id": "164408",
+      "reference": "val_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "910001c19e51a66d",
+      "field": "user_prompt",
+      "jaccard": 0.0161711,
+      "containment": 0.88571429
+    },
+    {
+      "source_id": "103338",
+      "reference": "val_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "6d267ebe8b459708",
+      "field": "text",
+      "jaccard": 0.39954076,
+      "containment": 0.99428571
+    },
+    {
+      "source_id": "103338",
+      "reference": "val_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "6d267ebe8b459708",
+      "field": "user_prompt",
+      "jaccard": 0.01607348,
+      "containment": 0.875
+    },
+    {
+      "source_id": "90185",
+      "reference": "val_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "1dc3ae94378e3d8e",
+      "field": "user_prompt",
+      "jaccard": 0.01629007,
+      "containment": 0.91176471
+    },
+    {
+      "source_id": "205423",
+      "reference": "val_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "1dc3ae94378e3d8e",
+      "field": "user_prompt",
+      "jaccard": 0.01693002,
+      "containment": 0.88235294
+    },
+    {
+      "source_id": "164542",
+      "reference": "val_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "1dc3ae94378e3d8e",
+      "field": "user_prompt",
+      "jaccard": 0.01565762,
+      "containment": 0.88235294
+    },
+    {
+      "source_id": "164486",
+      "reference": "val_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "1dc3ae94378e3d8e",
+      "field": "user_prompt",
+      "jaccard": 0.01165954,
+      "containment": 0.88235294
+    },
+    {
+      "source_id": "164408",
+      "reference": "val_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "1dc3ae94378e3d8e",
+      "field": "user_prompt",
+      "jaccard": 0.01564945,
+      "containment": 0.88235294
+    },
+    {
+      "source_id": "163867",
+      "reference": "val_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "1dc3ae94378e3d8e",
+      "field": "user_prompt",
+      "jaccard": 0.00752445,
+      "containment": 0.88235294
+    },
+    {
+      "source_id": "36965",
+      "reference": "val_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "c55369398c51780b",
+      "field": "text",
+      "jaccard": 0.16058684,
+      "containment": 0.81325301
+    },
+    {
+      "source_id": "135428",
+      "reference": "val_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "093dea3bf32f49a6",
+      "field": "text",
+      "jaccard": 0.15273079,
+      "containment": 0.84266667
+    },
+    {
+      "source_id": "135428",
+      "reference": "val_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "093dea3bf32f49a6",
+      "field": "user_prompt",
+      "jaccard": 0.01639344,
+      "containment": 0.91666667
+    },
+    {
+      "source_id": "181228",
+      "reference": "val_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "690d22fbb2e63ab7",
+      "field": "user_prompt",
+      "jaccard": 0.01752629,
+      "containment": 0.94594595
+    },
+    {
+      "source_id": "144893",
+      "reference": "val_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "7115bdfa60720b37",
+      "field": "text",
+      "jaccard": 0.19808126,
+      "containment": 0.92612137
+    },
+    {
+      "source_id": "147313",
+      "reference": "val_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "2a286e096561ed92",
+      "field": "user_prompt",
+      "jaccard": 0.01070592,
+      "containment": 0.84210526
+    },
+    {
+      "source_id": "148229",
+      "reference": "val_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "2a286e096561ed92",
+      "field": "user_prompt",
+      "jaccard": 0.01286174,
+      "containment": 0.84210526
+    },
+    {
+      "source_id": "40858",
+      "reference": "val_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "2ec94afae26bbaa4",
+      "field": "text",
+      "jaccard": 0.22247191,
+      "containment": 1.0
+    },
+    {
+      "source_id": "40858",
+      "reference": "val_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "2ec94afae26bbaa4",
+      "field": "user_prompt",
+      "jaccard": 0.01258427,
+      "containment": 1.0
+    },
+    {
+      "source_id": "42790",
+      "reference": "val_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "1a853a97f776eacc",
+      "field": "user_prompt",
+      "jaccard": 0.01495845,
+      "containment": 0.96428571
+    },
+    {
+      "source_id": "211581",
+      "reference": "val_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "3a47ae3a1163d13c",
+      "field": "user_prompt",
+      "jaccard": 0.0092116,
+      "containment": 0.97142857
+    },
+    {
+      "source_id": "82707",
+      "reference": "val_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "37b5bfb7fc7e63d5",
+      "field": "text",
+      "jaccard": 0.29418516,
+      "containment": 0.98716303
+    },
+    {
+      "source_id": "82707",
+      "reference": "val_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "37b5bfb7fc7e63d5",
+      "field": "user_prompt",
+      "jaccard": 0.01305684,
+      "containment": 1.0
+    },
+    {
+      "source_id": "121241",
+      "reference": "val_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "b8ee7f18fdae9984",
+      "field": "text",
+      "jaccard": 0.18709431,
+      "containment": 0.8492201
+    },
+    {
+      "source_id": "95787",
+      "reference": "val_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "7a37d4a37ae9331c",
+      "field": "text",
+      "jaccard": 0.23615875,
+      "containment": 0.9796748
+    },
+    {
+      "source_id": "95787",
+      "reference": "val_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "7a37d4a37ae9331c",
+      "field": "user_prompt",
+      "jaccard": 0.01674052,
+      "containment": 1.0
+    },
+    {
+      "source_id": "144893",
+      "reference": "val_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "6bd9ee769170f1d6",
+      "field": "text",
+      "jaccard": 0.28738188,
+      "containment": 0.90384615
+    },
+    {
+      "source_id": "127640",
+      "reference": "val_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "09d7996eb42140f1",
+      "field": "text",
+      "jaccard": 0.17345068,
+      "containment": 0.9497992
+    },
+    {
+      "source_id": "127640",
+      "reference": "val_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "09d7996eb42140f1",
+      "field": "user_prompt",
+      "jaccard": 0.00960473,
+      "containment": 0.83870968
+    },
+    {
+      "source_id": "215556",
+      "reference": "val_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "e1b0650d3247354d",
+      "field": "user_prompt",
+      "jaccard": 0.0151357,
+      "containment": 0.93548387
+    },
+    {
+      "source_id": "40858",
+      "reference": "val_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "0c00e89894c27c51",
+      "field": "user_prompt",
+      "jaccard": 0.01348315,
+      "containment": 1.0
+    },
+    {
+      "source_id": "23836",
+      "reference": "val_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "7e1dc27b8a41873e",
+      "field": "text",
+      "jaccard": 0.32563025,
+      "containment": 0.99041534
+    },
+    {
+      "source_id": "21589",
+      "reference": "val_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "7e1dc27b8a41873e",
+      "field": "text",
+      "jaccard": 0.33765532,
+      "containment": 0.99840256
+    },
+    {
+      "source_id": "23836",
+      "reference": "val_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "7e1dc27b8a41873e",
+      "field": "user_prompt",
+      "jaccard": 0.02002107,
+      "containment": 1.0
+    },
+    {
+      "source_id": "21589",
+      "reference": "val_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "7e1dc27b8a41873e",
+      "field": "user_prompt",
+      "jaccard": 0.02054054,
+      "containment": 1.0
+    },
+    {
+      "source_id": "55654",
+      "reference": "val_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "e80c79cb47dedd26",
+      "field": "text",
+      "jaccard": 0.12302043,
+      "containment": 0.91623932
+    },
+    {
+      "source_id": "50618",
+      "reference": "val_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "51e38dfddc210b5c",
+      "field": "text",
+      "jaccard": 0.2056928,
+      "containment": 0.93414634
+    },
+    {
+      "source_id": "50618",
+      "reference": "val_full.json-Sailor2-8B-Chat.jsonl",
+      "reference_id": "51e38dfddc210b5c",
+      "field": "user_prompt",
+      "jaccard": 0.01900109,
+      "containment": 0.83333333
+    },
+    {
+      "source_id": "215556",
+      "reference": "test_full_cleaned.json-gemma-3-12b-it.jsonl",
+      "reference_id": "e02e6a8c770c0f54",
+      "field": "user_prompt",
+      "jaccard": 0.015625,
+      "containment": 0.83333333
+    },
+    {
+      "source_id": "215556",
+      "reference": "test_full_cleaned.json-gemma-3-12b-it.jsonl",
+      "reference_id": "03199b2ad06a6fa4",
+      "field": "user_prompt",
+      "jaccard": 0.01671891,
+      "containment": 1.0
+    },
+    {
+      "source_id": "215556",
+      "reference": "test_full_cleaned.json-gemma-3-12b-it.jsonl",
+      "reference_id": "a818a49753d4800c",
+      "field": "user_prompt",
+      "jaccard": 0.01616267,
+      "containment": 0.88571429
+    },
+    {
+      "source_id": "195976",
+      "reference": "test_full_cleaned.json-gemma-3-12b-it.jsonl",
+      "reference_id": "90f238de3895ba1a",
+      "field": "text",
+      "jaccard": 0.12675234,
+      "containment": 0.95175439
+    },
+    {
+      "source_id": "195976",
+      "reference": "test_full_cleaned.json-gemma-3-12b-it.jsonl",
+      "reference_id": "90f238de3895ba1a",
+      "field": "user_prompt",
+      "jaccard": 0.00704225,
+      "containment": 0.8
+    },
+    {
+      "source_id": "196765",
+      "reference": "test_full_cleaned.json-gemma-3-12b-it.jsonl",
+      "reference_id": "eb4499de2cf16c66",
+      "field": "text",
+      "jaccard": 0.18005808,
+      "containment": 0.9867374
+    },
+    {
+      "source_id": "196765",
+      "reference": "test_full_cleaned.json-gemma-3-12b-it.jsonl",
+      "reference_id": "eb4499de2cf16c66",
+      "field": "user_prompt",
+      "jaccard": 0.01795245,
+      "containment": 1.0
+    },
+    {
+      "source_id": "198993",
+      "reference": "test_full_cleaned.json-gemma-3-12b-it.jsonl",
+      "reference_id": "c71ed0139ea18070",
+      "field": "text",
+      "jaccard": 0.43759474,
+      "containment": 0.98858447
+    },
+    {
+      "source_id": "181670",
+      "reference": "test_full_cleaned.json-gemma-3-12b-it.jsonl",
+      "reference_id": "5ac2add190282c83",
+      "field": "user_prompt",
+      "jaccard": 0.01114306,
+      "containment": 0.88571429
+    },
+    {
+      "source_id": "215556",
+      "reference": "test_full_cleaned.json-gemma-3-12b-it.jsonl",
+      "reference_id": "0a7027bae9cc391f",
+      "field": "text",
+      "jaccard": 0.02444098,
+      "containment": 0.83928571
+    },
+    {
+      "source_id": "215556",
+      "reference": "test_full_cleaned.json-gemma-3-12b-it.jsonl",
+      "reference_id": "0a7027bae9cc391f",
+      "field": "user_prompt",
+      "jaccard": 0.0150963,
+      "containment": 0.80555556
+    },
+    {
+      "source_id": "214683",
+      "reference": "test_full_cleaned.json-gemma-3-12b-it.jsonl",
+      "reference_id": "c8a70827481df0d8",
+      "field": "user_prompt",
+      "jaccard": 0.01359587,
+      "containment": 0.82857143
+    },
+    {
+      "source_id": "187418",
+      "reference": "test_full_cleaned.json-gemma-3-12b-it.jsonl",
+      "reference_id": "300d18ba243c4bb1",
+      "field": "text",
+      "jaccard": 0.18840016,
+      "containment": 0.9379845
+    },
+    {
+      "source_id": "186504",
+      "reference": "test_full_cleaned.json-gemma-3-12b-it.jsonl",
+      "reference_id": "a1ce4355de410c4e",
+      "field": "text",
+      "jaccard": 0.1506397,
+      "containment": 0.91022444
+    },
+    {
+      "source_id": "184433",
+      "reference": "test_full_cleaned.json-gemma-3-12b-it.jsonl",
+      "reference_id": "31d7cf34ba4a847d",
+      "field": "text",
+      "jaccard": 0.14825828,
+      "containment": 0.8857868
+    },
+    {
+      "source_id": "181228",
+      "reference": "test_full_cleaned.json-gemma-3-12b-it.jsonl",
+      "reference_id": "a5b3ce1e289694c6",
+      "field": "text",
+      "jaccard": 0.02403605,
+      "containment": 0.96
+    },
+    {
+      "source_id": "181228",
+      "reference": "test_full_cleaned.json-gemma-3-12b-it.jsonl",
+      "reference_id": "a5b3ce1e289694c6",
+      "field": "user_prompt",
+      "jaccard": 0.01752629,
+      "containment": 0.94594595
+    },
+    {
+      "source_id": "48659",
+      "reference": "selected_human",
+      "reference_id": "48236",
+      "field": "text",
+      "jaccard": 0.96044625,
+      "containment": 0.99058577
+    }
+  ],
+  "final_overlap_matches": 0,
+  "human_publishers": {
+    "qdnd.vn": 4,
+    "vov.vn": 10,
+    "vtv.vn": 3,
+    "baoquocte": 3,
+    "vietnamnet.vn": 2,
+    "danviet": 4,
+    "baochinhphu": 3,
+    "cafebiz": 5,
+    "bongdaplus": 8,
+    "vnexpress": 3,
+    "zingnews": 3,
+    "tienphong": 5,
+    "dantri": 4,
+    "anninhthudo": 1,
+    "kenh14": 1,
+    "laodong": 1
+  },
+  "human_topic_counts": {
+    "chinh_tri": 12,
+    "kinh_te": 12,
+    "the_thao": 12,
+    "van_hoa": 12,
+    "xa_hoi": 12
+  },
+  "human_length_range": [
+    2122,
+    4853
+  ],
+  "limitations": [
+    "The source corpus was previously used in VietBinoculars.",
+    "Topic matching uses original category metadata, not AI subtopic annotations.",
+    "Human lengths are not exactly matched to AI lengths; intact articles are retained and the common length range is reported separately.",
+    "Lexical overlap checks do not establish semantic independence or verified human authorship.",
+    "AI prompt provenance is an author declaration.",
+    "Reference coverage is limited to the archived inputs listed in protocol.json."
+  ]
+}

@@ -294,3 +294,7 @@ This software is released under the [MIT License](LICENSE).
 >
 > Users are responsible for complying with the applicable model license terms.
 
+
+## Supplementary long-document evaluation
+
+The [Human-News-60 benchmark](benchmarks/human_news_60/README.md) evaluates 60 naturally authored Vietnamese news articles and 60 AI documents under fixed chunking configurations and the Youden threshold. Source manifests, reproduction scripts, archived predictions and results are included. This small news evaluation does not establish generalization across domains or corpus-level independence.

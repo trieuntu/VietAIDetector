@@ -1,0 +1,7 @@
+{
+  "source_environment_sha256": "3e47d6784dd38158eabea152ef8b78ee0e4b399f2f6cf589fc92adb1fb6792fb",
+  "target_environment_sha256": "3e47d6784dd38158eabea152ef8b78ee0e4b399f2f6cf589fc92adb1fb6792fb",
+  "changes": {},
+  "mixed_environment": false,
+  "limitation": "All OCR text is reused unchanged from the historical source. No new OCR environment is introduced. Both detector inputs are scored in the same new detector environment. Historical OCR time is not new-run wall time."
+}
