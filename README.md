@@ -206,7 +206,7 @@ For a full architecture diagram and data-flow description, see [ARCHITECTURE.md]
 
 ## Detection Thresholds
 
-Detection thresholds and mode mappings are defined in [`config/settings.py`](config/settings.py):
+Detection thresholds and mode mappings are defined in [`config/settings.py`](config/settings.py), recalibrated in August 2026 on `VietAIDetector-Calibration-News-2026-08`:
 
 - **Classification rule**:
   - $\text{Score} < \text{threshold} \implies \textbf{AI-generated}$

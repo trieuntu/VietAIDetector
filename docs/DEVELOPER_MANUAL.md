@@ -601,7 +601,7 @@ $$\text{Decision}(S) = \begin{cases} \textit{AI-generated} & \text{if } P_\text{
 
 ### 4.6 Detection Thresholds
 
-Detection thresholds are centralized in [`config/settings.py`](../config/settings.py) and derived from VietBinoculars benchmark experiments:
+Detection thresholds are centralized in [`config/settings.py`](../config/settings.py) and were recalibrated in August 2026 on `VietAIDetector-Calibration-News-2026-08`:
 
 - **Classification rule**:
   $$\text{Label}(\text{chunk}) = \begin{cases} \text{AI-generated} & \text{if } \text{score} < \text{threshold} \\ \text{Human-written} & \text{if } \text{score} \ge \text{threshold} \end{cases}$$
@@ -906,7 +906,7 @@ Each JSON file in `benchmarks/datasets/` is a list of objects with the following
 | `sub_topic` | `str` | Document sub-topic category |
 | `word_count` | `int` | Number of words in the document |
 
-The training datasets in `benchmarks/train_datasets/` follow JSONL format (one JSON object per line) and were used to derive the detection thresholds reported in the VietBinoculars paper.
+The training datasets in `benchmarks/train_datasets/` follow JSONL format (one JSON object per line) and provide the AI-generated texts for the August 2026 threshold recalibration (`VietAIDetector-Calibration-News-2026-08`).
 
 ### 8.3 Running Evaluations
 

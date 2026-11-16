@@ -12,7 +12,7 @@ OBSERVER_MODEL: str = "vinai/PhoGPT-4B"
 PERFORMER_MODEL: str = "vinai/PhoGPT-4B-Chat"
 HF_TOKEN: str | None = os.environ.get("HF_TOKEN", None)
 
-# Detection Thresholds (from VietBinoculars paper)
+# Detection Thresholds (recalibrated in August 2026 on VietAIDetector-Calibration-News-2026-08)
 # Score < threshold → classified as AI-generated
 # Score ≥ threshold → classified as Human-written
 

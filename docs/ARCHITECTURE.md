@@ -91,5 +91,5 @@ flowchart TD
    - Default parameters: Window = 450 tokens, Overlap = 100 tokens. The overlap ensures that contextual boundaries are preserved, preventing the artificial truncation of sentences from skewing the perplexity scores.
 
 4. **Decision Aggregation & Thresholds:**
-   - Implemented in `core/metrics.py` and `processing/aggregator.py`. The system aggregates chunk-level scores and classifies them based on pre-calculated F1-score thresholds derived from the VietBinoculars paper.
+   - Implemented in `core/metrics.py` and `processing/aggregator.py`. The system aggregates chunk-level scores and classifies them based on pre-calculated thresholds recalibrated in August 2026 on `VietAIDetector-Calibration-News-2026-08`.
    - Three operational modes are supported: `Youden` (Balanced), `Closest Point`, and `Low FPR`. A document is flagged if the ratio of AI-generated chunks exceeds the selected threshold.

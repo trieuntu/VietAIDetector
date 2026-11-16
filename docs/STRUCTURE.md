@@ -152,7 +152,7 @@ VietAIDetector/
 
 > **GPU Budget (Kaggle T4x2)**: cuda:0 = ~9/15 GB, cuda:1 = ~11.5/15 GB (when OCR is active)
 
-## Detection Thresholds (VietBinoculars Paper)
+## Detection Thresholds (Recalibrated August 2026)
 
 Centralized in [`config/settings.py`](../config/settings.py) ($\text{Score} < \text{threshold} \implies \text{AI}$, $\text{Score} \ge \text{threshold} \implies \text{Human}$):
 
